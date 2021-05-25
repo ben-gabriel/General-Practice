@@ -1,0 +1,61 @@
+body{
+  margin: 0;
+
+  position: relative;
+  
+  min-height: 100vh;
+  min-width: 100%;
+
+  background: rgb(156, 156, 154);
+}
+
+.nav{
+  position: absolute;
+  top: -50%;
+}
+
+.centered{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sandbox{
+  position: absolute;
+
+  height: 50%;
+  width: 50%;
+
+  background: rgb(245, 244, 202);
+  border: black solid 3px;
+}
+
+.container{  
+  height: 75%;
+  width: 75%;
+
+  background: #fae2d4;
+  
+  border: rgb(255, 0, 0) solid 3px;
+}
+
+.box{
+  height: 50%;
+  width: 50%;
+  
+  border: black solid 3px;
+
+  opacity: 0.9 ;
+}
+
+.box1{
+  background: rgb(223, 105, 105);
+}
+
+.box2{
+  background: rgb(91, 190, 91);
+}
+
+.box3{
+  background: rgb(94, 94, 196);
+}
