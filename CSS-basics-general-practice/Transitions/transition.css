@@ -1,1 +1,25 @@
 /* To do: investigate animation/transition css tag further */
+.box {
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: #333;
+    -ms-transition: width 1.5s, height 1.5s,
+    background-color 1.5s, -webkit-transform 1.5s;
+    /* transition: width 1.5s, height 1.5s, */
+    background-color 1.5s, transform 1.5s;
+  }
+
+  .box:hover {
+    background-color: #FF8888;
+    width:200px;
+    height:200px;
+    -ms-transform:rotate(360deg);
+    /* transform:rotate(360deg); */
+  }
+
+  .centered{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+  }
