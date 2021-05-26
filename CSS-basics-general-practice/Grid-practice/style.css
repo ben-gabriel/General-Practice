@@ -7,14 +7,14 @@ body{
     width: 95vw;
     background: linear-gradient(
         45deg,
-        hsl(260, 55%, 75%),
-        hsl(266, 60%, 75%),
-        hsl(278, 50%, 70%),
-        hsl(298, 40%, 70%));
+        hsl(197, 100%, 80%),
+        hsl(200, 60%, 75%),
+        hsl(210, 50%, 70%),
+        hsl(205, 40%, 70%));
 }
 
 .mainContainer{
-    border: rgb(71, 53, 56) solid 1px;
+    border: rgb(0, 0, 0) solid 1px;
     display: grid;
     grid-template-columns: repeat(4, 100px);
     grid-auto-rows: 150px;
@@ -22,8 +22,8 @@ body{
 }
 
 .gridItem {
-    opacity: 0.5;
-    background: hsl(278, 90%, 50%);
-    border: solid hsl(278, 90%, 30%) 1px;
+    opacity: 0.65;
+    background: hsl(199, 90%, 50%);
+    border: solid hsl(0, 0%, 100%) 1px;
 
 }
