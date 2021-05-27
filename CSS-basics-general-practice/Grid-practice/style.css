@@ -27,13 +27,14 @@ h1{
 
 p{
     text-align:justify;
+    font-size: 1.2em;
     padding: 1em;
     color: #fbfdff;
 }
 
 .mainContainer{
     border: solid #ffffff52 15px;
-    padding: 3em;
+    padding: 1vw;
 
     min-height: 100vh;
     width: 100%;
@@ -50,8 +51,14 @@ p{
 
     display: grid;
 
-    grid-template-columns: repeat(auto-fit, 20em);
+    grid-template-columns: repeat(auto-fit, 30em);
 
+    justify-content: center;
+    align-items: center;
+
+    gap: 20px;
+
+    grid-area: ;
 
 }
 
@@ -60,6 +67,10 @@ p{
     background: #062b55;
     border: hsl(0, 0%, 100%) solid 1px;
     
+}
+
+img{
+    max-width: 100%;
 }
 
 
