@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 body{
     position: relative;
     margin: 0;
@@ -27,9 +30,8 @@ p{
     border: solid red 2px;
     padding: 3em;
 
-    height: calc((100%)- 3em);
-    width: calc((100%)- 3em);
-
+    height: 100%;
+    width: 100%;
 }
 
 /*
@@ -43,8 +45,6 @@ p{
     border: hsl(230, 100%, 50%, 15%) solid 1px;
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, 300px);
-    grid-template-rows: repeat(auto-fit, 300px%);
 
 }
 
