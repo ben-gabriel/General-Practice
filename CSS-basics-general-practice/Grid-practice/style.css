@@ -52,6 +52,7 @@ p{
     display: grid;
 
     grid-template-columns: repeat(auto-fit, minmax(200px, 30em));
+    grid-template-rows: repeat(auto-fit, minmax(30vh, 30em));
 
     justify-content: center;
     align-items: stretch;
@@ -74,21 +75,41 @@ img{
 }
 
 
-.n2 p,h1{
-    padding-top: 2%;
-    padding-left: 15%;
-    padding-right: 15%;
+.n1 {
+    background: url(https://source.unsplash.com/random/800x601);
 }
 
-.n6, .n8{
-    background: url(https://source.unsplash.com/random/800x500);
+.n2 {
+    background: url(https://source.unsplash.com/random/800x602);
+}
+
+.n3 {
+    background: url(https://source.unsplash.com/random/800x603);
+}
+
+.n4 {
+    background: url(https://source.unsplash.com/random/800x604);
+}
+
+.n5 {
+    background: url(https://source.unsplash.com/random/800x605);
+}
+
+.n6 {
+    background: url(https://source.unsplash.com/random/800x606);
 }
 
 .n7{
-    background: url(https://source.unsplash.com/random/800x501);
+    background: url(https://source.unsplash.com/random/800x607);
 }
 
+.n8{
+    background: url(https://source.unsplash.com/random/800x608);
+}
 
+.n9 {
+    background: url(https://source.unsplash.com/random/800x609);
+}
 
 
 
