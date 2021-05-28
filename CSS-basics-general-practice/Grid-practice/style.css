@@ -22,7 +22,7 @@ body{
 h1{
     position: absolute;
     font-weight: lighter;
-    color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255, 65%);
 }
 
 p{
@@ -82,20 +82,31 @@ img{
 }
 
 @media (min-width: 1000px){
+    
     .gridContainer{
         /* border: #002aff26 solid 1px; */
-/*     
-        display: grid;
-     */
-        grid-template-columns: repeat(3, 29vh);
-    
+        /* display: grid; */
         /* justify-content: center; */
-    
-    
-        column-gap: 10vw;
-    
-    
+        
+        column-gap: 40px;
+        grid-template-columns: minmax(15vw, 29vh) repeat(3, minmax(14.5vw, 29vh));
+        grid-template-areas: 
+            "about item item item"
+            "about item item item"
+            "about item item item";
     }
+
+    .about{
+        grid-area: about;
+        background: linear-gradient(10deg,
+            #062b55,
+            #073569,
+            #0b59b3,
+            #0c5fbe,
+            #0077ff);
+    }
+
+
 }
 
 
