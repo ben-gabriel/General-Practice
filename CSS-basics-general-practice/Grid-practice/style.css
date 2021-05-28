@@ -20,7 +20,7 @@ body{
 }
 
 h1{
-    text-align: center;
+    position: absolute;
     font-weight: lighter;
     color: rgb(255, 255, 255);
 }
@@ -47,14 +47,14 @@ p{
 */
 
 .gridContainer{
-    border: #002aff26 solid 1px;
+    /* border: #002aff26 solid 1px; */
 
     display: grid;
 
-    grid-template-columns: repeat(auto-fit, minmax(200px, 50em));
+    grid-template-columns: repeat(auto-fit, minmax(250px, auto));
 
     justify-content: center;
-    align-items: stretch;
+
 
     gap: 20px;
 
@@ -62,51 +62,41 @@ p{
 }
 
 .gridItem {
+    position: relative;
     opacity: 1;
     background: #062b55;
     border: hsl(0, 0%, 100%, 90%) solid 2px;
 
-    min-height: 250px;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 img{
-    border-top: hsl(0, 0%, 100%, 50%) solid 2px;
-    max-width: 100%;
+    /* border-top: hsl(0, 0%, 100%, 50%) solid 2px; */
+
+    width: 100%;
+    overflow: scroll;
+    /* min-width: 250px; */
+
 }
 
-
-.n1 {
+@media (min-width: 1000px){
+    .gridContainer{
+        /* border: #002aff26 solid 1px; */
+/*     
+        display: grid;
+     */
+        grid-template-columns: repeat(3, 29vh);
+    
+        /* justify-content: center; */
+    
+    
+        column-gap: 10vw;
+    
+    
+    }
 }
-
-.n2 {
-}
-
-.n3 {
-}
-
-.n4 {
-}
-
-.n5 {
-}
-
-.n6 {
-}
-
-.n7{
-}
-
-.n8{
-}
-
-.n9 {
-}
-
-
-
-
-
 
 
 
