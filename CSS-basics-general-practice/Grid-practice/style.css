@@ -1,6 +1,7 @@
 *{
     box-sizing: border-box;
 }
+
 body{
     position: relative;
     margin: 0;
@@ -17,6 +18,14 @@ body{
         #2463AB
         );
     font-family: poppins;
+}
+
+img{
+    width: 100%;
+    overflow: hidden;
+
+    color: #fbfdff;
+    text-align: center;
 }
 
 .gridItem h1{
@@ -37,7 +46,6 @@ p{
 }
 
 .about{
-    
     background: linear-gradient(10deg,
         #062b55,
         #073569,
@@ -46,8 +54,8 @@ p{
         #0077ff);
 
     justify-content: center;
-    
 }
+
 .about h1{
     text-align: center;
     padding-top: 1em;
@@ -66,12 +74,10 @@ p{
     align-self: center;
     align-items: center;
     justify-content: center;
-
 }
 
-.gridContainer > *{
+.gridItem {
     box-shadow: -1px 2px 0.5em hsla(212, 87%, 18%, 0.25);
-    
 }
 
 /*
@@ -80,9 +86,7 @@ General styling
 Grid Practice
 */
 
-.gridContainer{
-    /* border: #002aff26 solid 1px; */
-    
+.gridContainer{  
     display: grid;
     
     grid-template-columns: repeat(auto-fit, minmax(250px, auto));
@@ -92,8 +96,6 @@ Grid Practice
     align-items: center;
     
     gap: 20px;
-
-
 }
 
 .gridItem {
@@ -105,18 +107,8 @@ Grid Practice
     display: flex;
     justify-content: center;
     align-items: center;
-
-
 }
 
-img{
-    /* border-top: hsl(0, 0%, 100%, 50%) solid 2px; */
-    
-    width: 100%;
-    overflow: hidden;
-    /* min-width: 250px; */
-
-}
 
 @media (min-width: 1000px){
     
@@ -140,13 +132,19 @@ img{
 }
 
 @media (min-width: 1370px){
+
     p{
         font-size: 1.3em;
         text-align: justify;
     }
+    
 }
 
-
+/*
+Grid Practice
+------------------
+Extra
+*/
 
 
 
