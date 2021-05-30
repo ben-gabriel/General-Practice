@@ -162,29 +162,31 @@ Extra
     color: #ffffff;
 
     opacity: 0;
-    transition: opacity 1.5s;
+    transition: opacity 0.91s;
 }
 
 .gridItem::after{
+    z-index: 0;
     position: absolute;
     content: "";
 
     width: var(--inital-size);
     height: var(--alt-size);
-    border-top: #ffffff 2px solid;
-    border-bottom: #ffffff 2px solid;
+    border-top: #ffffff88 2px solid;
+    border-bottom: #ffffff88 2px solid;
 
     transition: width 1s;
 }
 
 .gridItem::before{
+    z-index: 1;
     position: absolute;
     content: "";
 
     width: var(--alt-size);
     height: var(--inital-size);
-    border-left: #ffffff 2px solid;
-    border-right: #ffffff 2px solid;
+    border-left: #ffffff55 2px solid;
+    border-right: #ffffff55 2px solid;
     
     transition: height 1s;
 }
