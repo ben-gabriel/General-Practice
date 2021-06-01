@@ -1,35 +1,41 @@
 //https://pokeapi.co/api/v2/pokemon/ditto
 
-// async function fetcher(element) {
-//     let myvar = await fetch('https://pokeapi.co/api/v2/pokemon/raichu');
-//     let myjson = await myvar.json();
-//     console.log(myjson);
-    
-//     console.log(myjson.sprites.other['official-artwork'].front_default);
-//     element.src = myjson.sprites.other['official-artwork'].front_default;
-// }
-
 async function fetcher(name){
-    console.log(name+' inside fetcher');
-    return ((await fetch('https://pokeapi.co/api/v2/pokemon/'+name)).json());
-    //returns the promise of a json object given that is an async function
+    try{    
+        return ((await fetch('https://pokeapi.co/api/v2/pokemon/'+name)).json());
+        //returns the promise of a json object given that is an async function
+    }catch(error){
+        console.log('Error found: ' + error);
+    }
 }
 
-async function addImage(name, newElement){
-    console.log(name+' inside add image');
-    let myjson = await fetcher(name);
-    newElement.src = myjson.sprites.other['official-artwork'].front_default;
+function createImg(parent){
+    let newImage = document.createElement('img');
+    parent.appendChild(newImage);    
+    return newImage;
 }
 
-const myDiv = document.getElementById('myDiv');
+async function addImage(name, parent){
+    let imgElement = createImg(parent);
+    try{
+        let myjson = await fetcher(name);
+        imgElement.src = myjson.sprites.other['official-artwork'].front_default;
+    }catch(error){
+        console.log('Error found: ' + error)
+    }
+}
 
-let newE = document.createElement('img');
 
-myDiv.appendChild(newE);
+//----main----
 
-addImage('pikachu',newE);
-
-//newE.src = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png"
-//object. sprites. other. official-artwork. front_default
+const display = document.getElementById('imgDisplay');
+const submit = document.getElementById('submitBtn');
+const input = document.getElementById('textField');
 
 
+submit.addEventListener('click', ()=>{
+    addImage(input.value, display);
+    input.value = '';    
+});
+
+addImage('pikachu', display);
