@@ -1,3 +1,33 @@
 *{
     margin: 0;
 }
+
+body{
+    background: linear-gradient(10deg,
+    #062b55,
+    #073569,
+    #0b59b3,
+    #0c5fbe,
+    #0077ff);
+
+    width: 100%;
+    min-height: 100vh;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: minmax(14.5vw,29vh) repeat(auto-fit, minmax(14.5vw, 29vh));
+    grid-template-areas: 
+        'input auto'
+        'input auto'
+    ;
+}
+
+img{
+    width: 100%;
+    grid-area: auto;
+}
+
+.inputField{
+    grid-area: input;
+}
