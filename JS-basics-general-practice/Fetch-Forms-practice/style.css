@@ -5,12 +5,12 @@
 body{
     position: relative;
 
-    background: linear-gradient(10deg,
-    #062b55,
-    #073569,
-    #0b59b3,
-    #0c5fbe,
-    #0077ff);
+    background: linear-gradient(-45deg,
+    #ffffff 49.9%,
+    #000000 50%,
+    #000000 52%,
+    #ff0000 52%
+    );
 
     width: 100%;
     min-height: 100vh;
@@ -30,15 +30,23 @@ body{
 
 .inputField{
     grid-area: input;
+    padding: 1em;
+    position: sticky;
+    grid
 }
 
 .imgGrid{
     grid-area: images;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+    gap: 1.5em;
 }
 
 img{
     width: 100%;
+    border-radius: 0px;
+    background-image: url('https://pngimg.com/uploads/pokeball/pokeball_PNG27.png');
+    background-position: center;
+    background-size: cover;
 }
 
