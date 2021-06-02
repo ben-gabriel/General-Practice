@@ -1,49 +1,74 @@
 *{
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body{
     position: relative;
 
-    /* background: linear-gradient(-45deg,
+    /* background: linear-gradient(0deg,
     hsl(0, 0%, 100%) 50%,
     hsl(0, 0%, 0%) 50%,
     hsl(0, 0%, 0%) 52%,
     hsl(0, 100%, 50%) 52%
     ); */
 
-    background: linear-gradient(0deg,
-    hsl(0, 100%, 40%) 00%,
-    hsl(0, 100%, 45%) 10%,
-    hsl(0, 0%, 20%) 10%,
-    hsl(0, 0%, 10%) 12%,
-    hsl(0, 0%, 100%) 12%,
-    hsl(0, 0%, 100%) 88%,
-    hsl(0, 0%, 0%) 88%,
-    hsl(0, 0%, 20%) 90%,
-    hsl(0, 100%, 45%) 90%,
-    hsl(0, 100%, 40%) 100%
-    );
-
-    width: 100%;
     min-height: 100vh;
-}
-
-.flex{
-    display: flex;
+    width: 100%;
 }
 
 .container{
+    min-height: 100vh;
     display: grid;
     grid-template: 
+        'header header' 5vh
         'input images' auto
-        /0.25fr 0.75fr
+        'footer footer' 5vh
+        /1fr 3fr
     ;
 }
 
+.sidebar1{
+    position: sticky;
+    width: 100%;
+    height: 5vh;
+    top: 0;
+    background: linear-gradient(45deg,
+        hsl(0, 0%, 20%) 0%,
+        hsl(0, 0%, 10%) 29%,
+        hsla(0, 0%, 100%) 29%,
+        hsla(0, 0%, 100%) 30%,
+        hsl(0, 100%, 45%) 30%,
+        hsl(0, 100%, 40%) 100%
+    ); 
+}
+.sidebar2{
+    position: sticky;
+    width: 100%;
+    height: 5vh;
+    bottom: 0;
+    background: linear-gradient(45deg,
+        hsl(0, 100%, 40%) 0%,
+        hsl(0, 100%, 45%) 55%,
+        hsl(0, 0%, 100%) 55%,
+        hsl(0, 0%, 100%) 56%,
+        hsl(0, 0%, 20%) 56%,
+        hsl(0, 0%, 10%) 100%
+    ); 
+}
+
 .inputField{
+    height: 75vh;
+    background: chartreuse;
+    position: sticky;
+    top: 12.5vh;
     grid-area: input;
     padding: 1em;
+}
+
+.inputField >*{
+    background: brown;
     position: sticky;
 }
 
@@ -55,8 +80,9 @@ body{
 }
 
 img{
+    z-index: ;
     width: 100%;
-    border-radius: 0px;
+    max-width: 350px;
     background-image: url('https://pngimg.com/uploads/pokeball/pokeball_PNG27.png');
     background-position: center;
     background-size: cover;
