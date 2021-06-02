@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: inconsolata;
 }
 
 body{
@@ -14,12 +15,10 @@ body{
     hsl(0, 100%, 50%) 52%
     ); */
 
-    min-height: 100vh;
-    width: 100%;
 }
 
 .container{
-    min-height: 100vh;
+    min-height: 90vh;
     display: grid;
     grid-template: 
         'header header' 5vh
@@ -29,58 +28,69 @@ body{
     ;
 }
 
-.sidebar1{
+.sidebar{
     position: sticky;
     width: 100%;
     height: 5vh;
+    
+}
+.s1{
     top: 0;
     background: linear-gradient(45deg,
-        hsl(0, 0%, 20%) 0%,
-        hsl(0, 0%, 10%) 29%,
-        hsla(0, 0%, 100%) 29%,
-        hsla(0, 0%, 100%) 30%,
-        hsl(0, 100%, 45%) 30%,
-        hsl(0, 100%, 40%) 100%
+    hsl(0, 0%, 20%) 0%,
+    hsl(0, 0%, 10%) 29%,
+    hsla(0, 0%, 100%) 29%,
+    hsla(0, 0%, 100%) 30%,
+    hsl(0, 100%, 45%) 30%,
+    hsl(0, 100%, 40%) 100%
     ); 
+    border-bottom: hsl(0, 0%, 20%) solid 5px;
 }
-.sidebar2{
-    position: sticky;
-    width: 100%;
-    height: 5vh;
+.s2{
     bottom: 0;
     background: linear-gradient(45deg,
-        hsl(0, 100%, 40%) 0%,
-        hsl(0, 100%, 45%) 55%,
-        hsl(0, 0%, 100%) 55%,
-        hsl(0, 0%, 100%) 56%,
-        hsl(0, 0%, 20%) 56%,
-        hsl(0, 0%, 10%) 100%
+    hsl(0, 100%, 40%) 0%,
+    hsl(0, 100%, 45%) 55%,
+    hsl(0, 0%, 100%) 55%,
+    hsl(0, 0%, 100%) 56%,
+    hsl(0, 0%, 20%) 56%,
+    hsl(0, 0%, 10%) 100%
     ); 
+    border-top: hsl(0, 0%, 20%) solid 5px;
 }
 
 .inputField{
     height: 75vh;
-    background: chartreuse;
+    background: hsl(0, 100%, 40%);
     position: sticky;
+    margin: 1em;
     top: 12.5vh;
     grid-area: input;
     padding: 1em;
+    border: hsl(0, 0%, 20%) solid 5px;
 }
 
 .inputField >*{
-    background: brown;
+    background: linear-gradient(0deg,
+        hsl(184, 43%, 85%),
+        hsl(184, 43%, 90%)25%,
+        hsl(184, 43%, 90%)75%,
+        hsl(184, 43%, 85%) 
+    );
     position: sticky;
+    padding: 0.5em;
+    border: hsl(0, 0%, 20%) solid 2px;
 }
 
 .imgGrid{
     grid-area: images;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 20vw));
     gap: 1.5em;
+    justify-content: center;
 }
 
 img{
-    z-index: ;
     width: 100%;
     max-width: 350px;
     background-image: url('https://pngimg.com/uploads/pokeball/pokeball_PNG27.png');

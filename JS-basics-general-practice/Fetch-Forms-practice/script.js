@@ -25,17 +25,27 @@ async function addImage(name, parent){
     }
 }
 
+function newSubmition(input, display){
+    addImage(input.value, display);
+    input.value = '';
+    input.focus();
+}
 
 //----main----
 
 const display = document.getElementById('imgDisplay');
 const submit = document.getElementById('submitBtn');
 const input = document.getElementById('textField');
+const infoText = document.getElementById('infoText');
 
-
-submit.addEventListener('click', ()=>{
-    addImage(input.value, display);
-    input.value = '';    
+submit.addEventListener('click', () => {
+    newSubmition(input,display);
 });
 
-addImage('pikachu', display);
+input.addEventListener('keydown', (e)=>{
+    if(e.key== 'Enter'){
+        newSubmition(input,display);
+    }
+});
+
+//addImage('pikachu', display);
