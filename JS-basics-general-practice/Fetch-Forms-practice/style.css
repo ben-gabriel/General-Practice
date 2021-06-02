@@ -5,11 +5,24 @@
 body{
     position: relative;
 
-    background: linear-gradient(-45deg,
-    #ffffff 49.9%,
-    #000000 50%,
-    #000000 52%,
-    #ff0000 52%
+    /* background: linear-gradient(-45deg,
+    hsl(0, 0%, 100%) 50%,
+    hsl(0, 0%, 0%) 50%,
+    hsl(0, 0%, 0%) 52%,
+    hsl(0, 100%, 50%) 52%
+    ); */
+
+    background: linear-gradient(0deg,
+    hsl(0, 100%, 40%) 00%,
+    hsl(0, 100%, 45%) 10%,
+    hsl(0, 0%, 20%) 10%,
+    hsl(0, 0%, 10%) 12%,
+    hsl(0, 0%, 100%) 12%,
+    hsl(0, 0%, 100%) 88%,
+    hsl(0, 0%, 0%) 88%,
+    hsl(0, 0%, 20%) 90%,
+    hsl(0, 100%, 45%) 90%,
+    hsl(0, 100%, 40%) 100%
     );
 
     width: 100%;
@@ -32,7 +45,6 @@ body{
     grid-area: input;
     padding: 1em;
     position: sticky;
-    grid
 }
 
 .imgGrid{
