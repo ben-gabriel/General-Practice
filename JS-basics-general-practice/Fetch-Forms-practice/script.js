@@ -1,27 +1,30 @@
 //https://pokeapi.co/api/v2/pokemon/ditto
 
 const pokemons = {
-    pokemonsList:[],
+    list:[],
 
     // ----- refactoring into createJson()
-    fetcher: async function(pokemonName){
-        try{    
-            return ((await fetch('https://pokeapi.co/api/v2/pokemon/'+pokemonName)).json());
-            //returns the promise of a json object given that is an async function
-        }catch(error){
-            console.log('Error found: ' + error);
-        }
-    },
+    // fetcher: async function(pokemonName){
+    //     try{    
+    //         return ((await fetch('https://pokeapi.co/api/v2/pokemon/'+pokemonName)).json());
+    //         //returns the promise of a json object given that is an async function
+    //     }catch(error){
+    //         console.log('Error found: ' + error);
+    //     }
+    // },
 
     createJson: async function(pokemonName){
         try{
-            let myjson = await(await fetch('https://pokeapi.co/api/v2/pokemon/'+pokemonName)).json();
-            
-            this.pokemonsList[pokemonName] = this.pokemonsList[pokemonName] || [];
-            // check if the element already exist in the array || create empty otherwise
+            let pokemonJson = await(await fetch('https://pokeapi.co/api/v2/pokemon/'+pokemonName)).json();
+            let pokemonJsonBio = await(await fetch('https://pokeapi.co/api/v2/pokemon-species/'+pokemonName)).json(); 
+
             
 
-            this.pokemonsList[pokemonName] = (myjson);
+            this.list[pokemonName] = this.list[pokemonName] || [];
+            // check if the element already exist in the array || create empty otherwise
+            
+            this.list[pokemonName] = (pokemonJson);
+            this.list[pokemonName].bio = (pokemonJsonBio);
             
         }catch(error){
             console.log('Error found: ' + error);
@@ -30,10 +33,22 @@ const pokemons = {
 
     getInfo:{
         json: function(pokemonName){
-            return this.pokemonsList[pokemonName];
+            if(this.list.pokemonName.sprites){
+                //if true then pokemonName does have data
+                //return this.list[pokemonName];
+            }else{
+                //to do: trigger non existent pokemon actions
+            }
+        },
+
+        bio: function(pokemonName){
+            if(this.list.pokemonName.sprites){
+                //if true then pokemonName does have data
+                return this.list.pokemonName;
+            }else{
+                //to do: trigger non existent pokemon warning
+            }
         }
-
-
 
     },
 
@@ -88,9 +103,17 @@ pokemons.createJson('raichu');
 
 pokemons.createJson('pichu');
 
-let vary = pokemons.pokemonsList;
+let vary = pokemons.list;
 
 
 submit.addEventListener('click', () => {
-    console.log(vary.pichu)
+    if(vary.pichu.sprites){
+        console.log(vary.pikachu)
+    }
+    if(vary.pichu.jar){
+    }else{
+        console.log('non existent')
+    }
+    
+
 });
