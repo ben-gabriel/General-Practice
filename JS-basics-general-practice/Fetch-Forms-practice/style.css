@@ -3,6 +3,8 @@
 }
 
 body{
+    position: relative;
+
     background: linear-gradient(10deg,
     #062b55,
     #073569,
@@ -14,18 +16,25 @@ body{
     min-height: 100vh;
 }
 
+.flex{
+    display: flex;
+}
+
 .grid{
     display: grid;
-    grid-template-columns: minmax(14.5vw,29vh) repeat(auto-fit, minmax(14.5vw, 29vh));
-    grid-template-areas: 
-        'input auto'
-        'input auto'
+    grid-template: 
+        'input image' auto
+        /50vh 1fr
     ;
 }
 
+.container{
+
+}
+
 img{
-    width: 100%;
-    grid-area: auto;
+    width: minmax(30vh, 40vh);
+    grid-area: image;
 }
 
 .inputField{
