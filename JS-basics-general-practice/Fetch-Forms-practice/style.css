@@ -20,23 +20,25 @@ body{
     display: flex;
 }
 
-.grid{
+.container{
     display: grid;
     grid-template: 
-        'input image' auto
-        /50vh 1fr
+        'input images' auto
+        /0.25fr 0.75fr
     ;
-}
-
-.container{
-
-}
-
-img{
-    width: minmax(30vh, 40vh);
-    grid-area: image;
 }
 
 .inputField{
     grid-area: input;
 }
+
+.imgGrid{
+    grid-area: images;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, auto));
+}
+
+img{
+    width: 100%;
+}
+
