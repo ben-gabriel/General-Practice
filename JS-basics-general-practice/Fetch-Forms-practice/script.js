@@ -1,34 +1,61 @@
 //https://pokeapi.co/api/v2/pokemon/ditto
 
-async function fetcher(name){
-    try{    
-        return ((await fetch('https://pokeapi.co/api/v2/pokemon/'+name)).json());
-        //returns the promise of a json object given that is an async function
-    }catch(error){
-        console.log('Error found: ' + error);
+const pokemons = {
+    pokemonsList: [],
+
+    fetcher: async function(pokemonName){
+        try{    
+            return ((await fetch('https://pokeapi.co/api/v2/pokemon/'+pokemonName)).json());
+            //returns the promise of a json object given that is an async function
+        }catch(error){
+            console.log('Error found: ' + error);
+        }
+    },
+
+    getInfo:{
+        createJson:async function(pokemonName){
+            try{
+                let myjson = await this.fetcher(pokemonName);
+                
+                this.pokemonsList[pokemonName] = this.pokemonsList[pokemonName] || [];
+                // check if element already exist in array || create empty otherwise
+                
+                this.pokemonsList[pokemonName].push(myjson);
+            }catch(error){
+                console.log('Error found: ' + error)
+            }
+        },
+
+        getJson: function(pokemonName){
+
+        }
+
+
+
+    },
+
+    createImg: function(parent){
+        let newImage = document.createElement('img');
+        parent.insertBefore(newImage,parent.firstChild);    
+        return newImage;
+    },
+
+    addImage: async function(name, parent){
+        let imgElement = this.createImg(parent);
+        try{
+            let myjson = await this.fetcher(name);
+            imgElement.src = myjson.sprites.other['official-artwork'].front_default;
+        }catch(error){
+            console.log('Error found: ' + error)
+        }
+    },
+
+    newSubmition: function(input, display){
+        this.addImage(input.value, display);
+        input.value = '';
+        input.focus();
     }
-}
 
-function createImg(parent){
-    let newImage = document.createElement('img');
-    parent.appendChild(newImage);    
-    return newImage;
-}
-
-async function addImage(name, parent){
-    let imgElement = createImg(parent);
-    try{
-        let myjson = await fetcher(name);
-        imgElement.src = myjson.sprites.other['official-artwork'].front_default;
-    }catch(error){
-        console.log('Error found: ' + error)
-    }
-}
-
-function newSubmition(input, display){
-    addImage(input.value, display);
-    input.value = '';
-    input.focus();
 }
 
 //----main----
@@ -39,13 +66,13 @@ const input = document.getElementById('textField');
 const infoText = document.getElementById('infoText');
 
 submit.addEventListener('click', () => {
-    newSubmition(input,display);
+    pokemons.newSubmition(input,display);
 });
 
 input.addEventListener('keydown', (e)=>{
     if(e.key== 'Enter'){
-        newSubmition(input,display);
+        pokemons.newSubmition(input,display);
     }
 });
 
-//addImage('pikachu', display);
+pokemons.addImage('pikachu', display);
