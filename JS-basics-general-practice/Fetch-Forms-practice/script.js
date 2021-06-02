@@ -1,8 +1,9 @@
 //https://pokeapi.co/api/v2/pokemon/ditto
 
 const pokemons = {
-    pokemonsList: [],
+    pokemonsList:[],
 
+    // ----- refactoring into createJson()
     fetcher: async function(pokemonName){
         try{    
             return ((await fetch('https://pokeapi.co/api/v2/pokemon/'+pokemonName)).json());
@@ -12,22 +13,24 @@ const pokemons = {
         }
     },
 
+    createJson: async function(pokemonName){
+        try{
+            let myjson = await(await fetch('https://pokeapi.co/api/v2/pokemon/'+pokemonName)).json();
+            
+            this.pokemonsList[pokemonName] = this.pokemonsList[pokemonName] || [];
+            // check if the element already exist in the array || create empty otherwise
+            
+
+            this.pokemonsList[pokemonName] = (myjson);
+            
+        }catch(error){
+            console.log('Error found: ' + error);
+        }
+    },
+
     getInfo:{
-        createJson:async function(pokemonName){
-            try{
-                let myjson = await this.fetcher(pokemonName);
-                
-                this.pokemonsList[pokemonName] = this.pokemonsList[pokemonName] || [];
-                // check if element already exist in array || create empty otherwise
-                
-                this.pokemonsList[pokemonName].push(myjson);
-            }catch(error){
-                console.log('Error found: ' + error)
-            }
-        },
-
-        getJson: function(pokemonName){
-
+        json: function(pokemonName){
+            return this.pokemonsList[pokemonName];
         }
 
 
@@ -44,6 +47,7 @@ const pokemons = {
         let imgElement = this.createImg(parent);
         try{
             let myjson = await this.fetcher(name);
+            console.log(myjson);
             imgElement.src = myjson.sprites.other['official-artwork'].front_default;
         }catch(error){
             console.log('Error found: ' + error)
@@ -65,14 +69,28 @@ const submit = document.getElementById('submitBtn');
 const input = document.getElementById('textField');
 const infoText = document.getElementById('infoText');
 
+// submit.addEventListener('click', () => {
+//     pokemons.newSubmition(input,display);
+// });
+
+// input.addEventListener('keydown', (e)=>{
+//     if(e.key== 'Enter'){
+//         pokemons.newSubmition(input,display);
+//     }
+// });
+
+
+//pokemons.addImage('pikachu', display);
+
+pokemons.createJson('pikachu');
+
+pokemons.createJson('raichu');
+
+pokemons.createJson('pichu');
+
+let vary = pokemons.pokemonsList;
+
+
 submit.addEventListener('click', () => {
-    pokemons.newSubmition(input,display);
+    console.log(vary.pichu)
 });
-
-input.addEventListener('keydown', (e)=>{
-    if(e.key== 'Enter'){
-        pokemons.newSubmition(input,display);
-    }
-});
-
-pokemons.addImage('pikachu', display);
