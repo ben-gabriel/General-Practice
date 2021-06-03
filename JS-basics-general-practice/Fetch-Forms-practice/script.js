@@ -3,17 +3,7 @@
 const pokemons = {
     list:[],
 
-    // ----- refactoring into createJson()
-    // fetcher: async function(pokemonName){
-    //     try{    
-    //         return ((await fetch('https://pokeapi.co/api/v2/pokemon/'+pokemonName)).json());
-    //         //returns the promise of a json object given that is an async function
-    //     }catch(error){
-    //         console.log('Error found: ' + error);
-    //     }
-    // },
-
-    createJson: async function(pokemonName){
+    createPokemon: async function(pokemonName, fetchFlag){
         try{
 
             let fetcher = await fetch('https://pokeapi.co/api/v2/pokemon/'+pokemonName);
@@ -56,32 +46,17 @@ const pokemons = {
             }else{
                 //to do: trigger non existent pokemon actions
                 console.log('pokemon not found');
+                fetchFlag = false;
+                //In case of error a false flag indicates the fetch was invalid
+                return false;
             }
 
         }catch(error){
             console.log('Error found: ' + error);
+            fetchFlag = -1;
+            //In case of error a -1 flag indicates the fetch was not completed
+            return -1;
         }
-    },
-
-    getInfo:{
-        json: function(pokemonName){
-            if(this.list.pokemonName.sprites){
-                //if true then pokemonName does have data
-                //return this.list[pokemonName];
-            }else{
-                //to do: trigger non existent pokemon actions
-            }
-        },
-
-        bio: function(pokemonName){
-            if(this.list.pokemonName.sprites){
-                //if true then pokemonName does have data
-                return this.list.pokemonName;
-            }else{
-                //to do: trigger non existent pokemon warning
-            }
-        }
-
     },
 
     createImg: function(parent){
@@ -129,17 +104,17 @@ const infoText = document.getElementById('infoText');
 
 //pokemons.addImage('pikachu', display);
 
-pokemons.createJson('pikachu');
+pokemons.createPokemon('pikachu');
 
-pokemons.createJson('raichu');
+pokemons.createPokemon('raichu');
 
-pokemons.createJson('pichu');
+pokemons.createPokemon('pichu');
 
-let vary = pokemons.list;
+let pkl = pokemons.list;
 
 
 submit.addEventListener('click', () => {
     
-    console.log(vary.pikachu);
+    console.log(pkl.pikachu);
 
 });
