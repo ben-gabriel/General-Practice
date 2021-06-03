@@ -15,16 +15,66 @@ const pokemons = {
 
     createJson: async function(pokemonName){
         try{
-            let pokemonJson = await(await fetch('https://pokeapi.co/api/v2/pokemon/'+pokemonName)).json();
-            let pokemonJsonBio = await(await fetch('https://pokeapi.co/api/v2/pokemon-species/'+pokemonName)).json(); 
 
+            let fetcher = await fetch('https://pokeapi.co/api/v2/pokemon/'+pokemonName);
             
+            if(fetcher.ok === true){
+                //checks if the fetching was successful
+                console.log('pokemon found');
 
-            this.list[pokemonName] = this.list[pokemonName] || [];
-            // check if the element already exist in the array || create empty otherwise
+                let pokemonJson = await((fetcher).json());  
+                    // Artwork
+                    let pokemonImage = pokemonJson.sprites.other['official-artwork'].front_default;
+                    let pokemonAltImage = pokemonJson.sprites.other.dream_world.front_default;
+                    let pokemonImagePixel = pokemonJson.sprites.front_default;
+                    
+                    // info
+                    let pokemonType = pokemonJson.types[0].type.name;
+                    let pokemonWeight = pokemonJson.weight;
+                    let pokemonHeight = pokemonJson.height;
+
+                fetcher = await fetch('https://pokeapi.co/api/v2/pokemon-species/'+pokemonName);
+                pokemonJson = await(fetcher).json(); 
+                    
+                    // info
+                    let pokemonColor = pokemonJson.color.name;
+                    let pokemonGrowthRate = pokemonJson.growth_rate.name;
+                    let pokemonShape = pokemonJson.shape.name;
+                    let pokemonHabitat = pokemonJson.habitat.name;
+
+                    let pokemonEvFrom = '';
+                    if(pokemonJson.evolves_from_species !== null){
+                        pokemonEvFrom = pokemonJson.evolves_from_species.name;
+                    }else{
+                        pokemonEvFrom = 'none';
+                    }
+
+
+                this.list[pokemonName] = this.list[pokemonName] || [];
+                // check if the element already exist in the array || create empty otherwise
+                
+                // shorthand
+                let pkl = this.list[pokemonName];
+                
+                // artwork
+                pkl.image = pokemonImage;
+                pkl.imageAlt = pokemonAltImage;
+                pkl.imagePixel = pokemonImagePixel;
+
+                // Info
+                pkl.type = pokemonType;
+                pkl.color = pokemonColor;
+                pkl.shape = pokemonShape;
+                pkl.evFrom = pokemonEvFrom;
+                pkl.weight = pokemonWeight;
+                pkl.height = pokemonHeight;
+                pkl.habitat = pokemonHabitat;
+                pkl.growthRate = pokemonGrowthRate;
             
-            this.list[pokemonName] = (pokemonJson);
-            this.list[pokemonName].bio = (pokemonJsonBio);
+            }else{
+                //to do: trigger non existent pokemon actions
+                console.log('pokemon not found');
+            }
             
         }catch(error){
             console.log('Error found: ' + error);
@@ -107,13 +157,7 @@ let vary = pokemons.list;
 
 
 submit.addEventListener('click', () => {
-    if(vary.pichu.sprites){
-        console.log(vary.pikachu)
-    }
-    if(vary.pichu.jar){
-    }else{
-        console.log('non existent')
-    }
     
+    console.log(vary.pikachu);
 
 });
