@@ -22,60 +22,42 @@ const pokemons = {
                 //checks if the fetching was successful
                 console.log('pokemon found');
 
+                this.list[pokemonName] = this.list[pokemonName] || [];
+                // shorthand
+                let pkl = this.list[pokemonName];
+
                 let pokemonJson = await((fetcher).json());  
                     // Artwork
-                    let pokemonImage = pokemonJson.sprites.other['official-artwork'].front_default;
-                    let pokemonAltImage = pokemonJson.sprites.other.dream_world.front_default;
-                    let pokemonImagePixel = pokemonJson.sprites.front_default;
+                    pkl.image = pokemonJson.sprites.other['official-artwork'].front_default;
+                    pkl.imageAlt = pokemonJson.sprites.other.dream_world.front_default;
+                    pkl.imagePixel = pokemonJson.sprites.front_default;
                     
                     // info
-                    let pokemonType = pokemonJson.types[0].type.name;
-                    let pokemonWeight = pokemonJson.weight;
-                    let pokemonHeight = pokemonJson.height;
+                    pkl.type = pokemonJson.types[0].type.name;
+
+                    pkl.weight = pokemonJson.weight;
+                    pkl.height = pokemonJson.height;
 
                 fetcher = await fetch('https://pokeapi.co/api/v2/pokemon-species/'+pokemonName);
                 pokemonJson = await(fetcher).json(); 
                     
                     // info
-                    let pokemonColor = pokemonJson.color.name;
-                    let pokemonGrowthRate = pokemonJson.growth_rate.name;
-                    let pokemonShape = pokemonJson.shape.name;
-                    let pokemonHabitat = pokemonJson.habitat.name;
+                    pkl.color =  pokemonJson.color.name;
+                    pkl.shape = pokemonJson.shape.name;
+                    pkl.habitat = pokemonJson.habitat.name;
+                    pkl.growthRate = pokemonJson.growth_rate.name;
 
-                    let pokemonEvFrom = '';
                     if(pokemonJson.evolves_from_species !== null){
-                        pokemonEvFrom = pokemonJson.evolves_from_species.name;
+                        pkl.evFrom = pokemonJson.evolves_from_species.name;
                     }else{
-                        pokemonEvFrom = 'none';
+                        pkl.evFrom = 'none';
                     }
-
-
-                this.list[pokemonName] = this.list[pokemonName] || [];
-                // check if the element already exist in the array || create empty otherwise
-                
-                // shorthand
-                let pkl = this.list[pokemonName];
-                
-                // artwork
-                pkl.image = pokemonImage;
-                pkl.imageAlt = pokemonAltImage;
-                pkl.imagePixel = pokemonImagePixel;
-
-                // Info
-                pkl.type = pokemonType;
-                pkl.color = pokemonColor;
-                pkl.shape = pokemonShape;
-                pkl.evFrom = pokemonEvFrom;
-                pkl.weight = pokemonWeight;
-                pkl.height = pokemonHeight;
-                pkl.habitat = pokemonHabitat;
-                pkl.growthRate = pokemonGrowthRate;
             
             }else{
                 //to do: trigger non existent pokemon actions
                 console.log('pokemon not found');
             }
-            
+
         }catch(error){
             console.log('Error found: ' + error);
         }
