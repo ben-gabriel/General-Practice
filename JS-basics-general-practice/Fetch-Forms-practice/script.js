@@ -12,7 +12,7 @@ const pokemons = {
         weight :document.getElementById('weight'),   
         habitat :document.getElementById('habitat'),   
         growth :document.getElementById('growth'), 
-        evs :document.getElementById('evs')
+        evFrom :document.getElementById('evFrom')
     },
 
     createPokemon: async function(pokemonName){
@@ -40,17 +40,19 @@ const pokemons = {
                     pkl.weight = pokemonJson.weight;
                     pkl.height = pokemonJson.height;
                     
-                    console.log('log inside createPokemon: ', pkl.name);
+                    console.log('log inside createPokemon: ', pokemonJson);
 
                 fetcher = await fetch('https://pokeapi.co/api/v2/pokemon-species/'+pokemonName);
                
                 pokemonJson = await(fetcher).json(); 
                     
+                    console.log('log inside createPokemon: ', pokemonJson);
+ 
                     // info
                     pkl.color =  pokemonJson.color.name;
                     pkl.shape = pokemonJson.shape.name;
                     pkl.habitat = pokemonJson.habitat.name;
-                    pkl.growthRate = pokemonJson.growth_rate.name;
+                    pkl.growth = pokemonJson.growth_rate.name;
                     
                     if(pokemonJson.evolves_from_species !== null){
                         pkl.evFrom = pokemonJson.evolves_from_species.name;
@@ -74,6 +76,20 @@ const pokemons = {
         }
 
         return true;    
+    },
+
+    showInfo: function(pokemonName){
+        
+        console.log('Log inside show info: '+ pokemonName.value);
+
+        let object = this.html;
+
+        for (const key in object) {
+            object[key].innerText = this.list[pokemonName][key];
+            console.log('Log inside loop in show info: ',key);
+            //console.log(`${property}: ${object[property]}`);    
+        }
+        
     },
 
     createImg: function(parent){
@@ -107,6 +123,7 @@ const pokemons = {
 
         if(response){
             this.addImage(input,display);
+            this.showInfo(input)    ;
         }
 
     }
