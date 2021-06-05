@@ -27,6 +27,8 @@ const pokemons = {
 
                     pkl.weight = pokemonJson.weight;
                     pkl.height = pokemonJson.height;
+                    
+                    console.log('log inside createPokemon: ', this.list.pokemonName.image);
 
                 fetcher = await fetch('https://pokeapi.co/api/v2/pokemon-species/'+pokemonName);
                
@@ -72,16 +74,15 @@ const pokemons = {
         let imgElement = this.createImg(parent);
 
         let pkl = this.list;
-
-        console.log('indise addimage pkl : ', pkl);
-        console.log(pokemonName.value);
-
-        let pkn = pokemonName.value;
-
+        console.log('Log inside addImage - this.list : ', pkl);
+        
         try{
-            console.log(this.list);
-            console.log(this.list[0]);
-            imgElement.src = this.list.pkn.image;
+            console.log('Log inside addimage - pokemonName: ', pokemonName);
+            console.log('Log inside addimage - this.list[pokemonName].type:',this.list[pokemonName].type);
+            console.log('Log inside addimage - this.list.pokemonName.type:',this.list.pokemonName.type);
+            
+            imgElement.src = this.list[pokemonName].type;
+
         }catch(error){
             console.log('Error found: ' + error)
         }
@@ -90,11 +91,10 @@ const pokemons = {
     newSubmition: async function(input, display){
 
         let response = await this.createPokemon(input.value);
-        console.log(response);
+        console.log('Log inside newSubmition - createPokemon response: ', response);
+
         if(response){
-            console.log(response +' sss ');
-            console.log(response);
-            this.addImage(input,display);
+            this.addImage(input.value,display);
         }
 
         input.value = '';
@@ -122,5 +122,25 @@ input.addEventListener('keydown', (e)=>{
 });
 
 
-pokemons.addImage('pikachu', display);
+//pokemons.addImage('pikachu', display);
+
+
+
+
+let obj0 = {value: 0}
+let obj1 = {value: 1}
+let obj2 = {value: 2}
+let obj3 = {value: 'tag',value2: 'tag2',value3: 'tag3',}
+
+let objArray = [];
+
+objArray[0]=obj0;
+objArray[1]=obj1;
+objArray[2]=obj2;
+objArray['tag']=obj3;
+
+let tagvar = 'tag'
+
+console.log(objArray[tag]);
+
 
