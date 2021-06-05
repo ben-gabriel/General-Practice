@@ -24,11 +24,11 @@ const pokemons = {
                     
                     // info
                     pkl.type = pokemonJson.types[0].type.name;
-
+                    pkl.name = pokemonJson.name
                     pkl.weight = pokemonJson.weight;
                     pkl.height = pokemonJson.height;
                     
-                    console.log('log inside createPokemon: ', this.list.pokemonName.image);
+                    console.log('log inside createPokemon: ', pkl.name);
 
                 fetcher = await fetch('https://pokeapi.co/api/v2/pokemon-species/'+pokemonName);
                
@@ -45,7 +45,7 @@ const pokemons = {
                     }else{
                         pkl.evFrom = 'none';
                     }    
-                return await((await fetch('https://pokeapi.co/api/v2/pokemon/'+pokemonName)).json())
+                return true
 
             }else{
                 //to do: trigger non existent pokemon actions
@@ -70,7 +70,7 @@ const pokemons = {
         return newImage;
     },
 
-    addImage: async function( pokemonName, parent){
+    addImage: async function(pokemonName, parent){
         let imgElement = this.createImg(parent);
 
         let pkl = this.list;
@@ -79,9 +79,9 @@ const pokemons = {
         try{
             console.log('Log inside addimage - pokemonName: ', pokemonName);
             console.log('Log inside addimage - this.list[pokemonName].type:',this.list[pokemonName].type);
-            console.log('Log inside addimage - this.list.pokemonName.type:',this.list.pokemonName.type);
+            //console.log('Log inside addimage - this.list.pokemonName.type:',this.list.pokemonName.type);
             
-            imgElement.src = this.list[pokemonName].type;
+            imgElement.src = this.list[pokemonName].image;
 
         }catch(error){
             console.log('Error found: ' + error)
@@ -90,15 +90,13 @@ const pokemons = {
 
     newSubmition: async function(input, display){
 
-        let response = await this.createPokemon(input.value);
+        let response = await this.createPokemon(input);
         console.log('Log inside newSubmition - createPokemon response: ', response);
 
         if(response){
-            this.addImage(input.value,display);
+            this.addImage(input,display);
         }
 
-        input.value = '';
-        input.focus();
     }
 
 }
@@ -117,30 +115,11 @@ submit.addEventListener('click', () => {
 
 input.addEventListener('keydown', (e)=>{
     if(e.key== 'Enter'){
-        pokemons.newSubmition(input,display);
+        pokemons.newSubmition(input.value,display);
+        input.value = '';
+        input.focus();
     }
 });
 
 
-//pokemons.addImage('pikachu', display);
-
-
-
-
-let obj0 = {value: 0}
-let obj1 = {value: 1}
-let obj2 = {value: 2}
-let obj3 = {value: 'tag',value2: 'tag2',value3: 'tag3',}
-
-let objArray = [];
-
-objArray[0]=obj0;
-objArray[1]=obj1;
-objArray[2]=obj2;
-objArray['tag']=obj3;
-
-let tagvar = 'tag'
-
-console.log(objArray[tag]);
-
-
+pokemons.newSubmition('pikachu',display)
