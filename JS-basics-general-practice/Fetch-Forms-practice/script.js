@@ -22,13 +22,14 @@ const pokemons = {
             
             if(fetcher.ok === true){
                 //checks if the fetching was successful
-                console.log('pokemon found');
-
+                console.log('createPokemon: Fetch Done');
+                
                 this.list[pokemonName] = this.list[pokemonName] || [];
                 // shorthand
                 let pkl = this.list[pokemonName];
-
+                
                 let pokemonJson = await((fetcher).json());  
+                console.log('createPokemon: Initial Json = ', pokemonJson);
                     // Artwork
                     pkl.image = pokemonJson.sprites.other['official-artwork'].front_default;
                     pkl.imageAlt = pokemonJson.sprites.other.dream_world.front_default;
@@ -99,10 +100,9 @@ const pokemons = {
     },
 
     addImage: async function(pokemonName, parent){
-        let imgElement = this.createImg(parent);
+        console.log('Log inside addImage - this.list : ', this.list);
 
-        let pkl = this.list;
-        console.log('Log inside addImage - this.list : ', pkl);
+        let imgElement = this.createImg(parent);
         
         try{
             console.log('Log inside addimage - pokemonName: ', pokemonName);
@@ -121,7 +121,7 @@ const pokemons = {
         let response = await this.createPokemon(input);
         console.log('Log inside newSubmition - createPokemon response: ', response);
 
-        if(response){
+        if(response && response != (-1) ){
             this.addImage(input,display);
             this.showInfo(input)    ;
         }
@@ -135,8 +135,7 @@ const pokemons = {
 
 const display = document.getElementById('imgDisplay');
 const submit = document.getElementById('submitBtn');
-const input = document.getElementById('textField');
-const infoText = document.getElementById('infoText');
+const input = document.getElementById('inputField');
 
 submit.addEventListener('click', () => {
     //pokemons.newSubmition(input,display);
@@ -153,3 +152,7 @@ input.addEventListener('keydown', (e)=>{
 
 
 pokemons.newSubmition('pikachu',display)
+
+//To do: investigate fetch of:
+//https://pokeapi.co/api/v2/pokemon/
+//https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20

@@ -77,9 +77,14 @@ body{
         hsl(184, 43%, 90%)75%,
         hsl(184, 43%, 85%) 
     );
-    position: sticky;
+    /* position: sticky; */
     padding: 0.5em;
     border: hsl(0, 0%, 20%) solid 2px;
+}
+
+.apiLink {
+    color: whitesmoke;
+    background:none;
 }
 
 .imgGrid{
@@ -90,11 +95,12 @@ body{
     justify-content: center;
 }
 
-img{
+.imgGrid img{
     width: 100%;
     max-width: 350px;
     background-image: url('https://pngimg.com/uploads/pokeball/pokeball_PNG27.png');
     background-position: center;
     background-size: cover;
 }
+
 
