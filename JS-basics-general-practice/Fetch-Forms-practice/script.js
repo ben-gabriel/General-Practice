@@ -2,6 +2,18 @@
 
 const pokemons = {
     list:[],
+    
+    html:{
+        name :document.getElementById('name'),
+        type :document.getElementById('type'),
+        color :document.getElementById('color'),    
+        shape :document.getElementById('shape'),   
+        height :document.getElementById('height'),    
+        weight :document.getElementById('weight'),   
+        habitat :document.getElementById('habitat'),   
+        growth :document.getElementById('growth'), 
+        evs :document.getElementById('evs')
+    },
 
     createPokemon: async function(pokemonName){
         try{
@@ -98,6 +110,7 @@ const pokemons = {
         }
 
     }
+
 
 }
 
