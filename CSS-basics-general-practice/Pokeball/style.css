@@ -9,7 +9,7 @@ body{
 body{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax( 200px ,50vh ));
-    gap: 1em;
+    gap: 2em;
     justify-content: center;
     align-content: center;
 }
@@ -31,6 +31,11 @@ body{
 
     border-radius: 100%;
     border: black  solid;
+    
+    z-index: 0;
+    --degrees: 90deg;
+    --seconds: 1s;
+    transition: transform var(--seconds), z-index 0s;
 }
 
 .pokeball.body{
@@ -38,14 +43,13 @@ body{
     box-sizing: border-box;
     border-width: 0.3em;
 
-    --val: 0deg;
 
     background: linear-gradient(
-        var(--val),
-        white 45%,
+        0deg,
+        white 44.8%,
         black 45%,
         black 55%,
-        red 55%
+        red 55.2%
     );
 
 
@@ -73,4 +77,10 @@ body{
 
 img{
     width: 40vh;
+}
+
+/* Rotation */
+.pokeball.body:hover{
+    z-index: 1;
+    transform: rotate(var(--degrees)) scale(2);
 }
