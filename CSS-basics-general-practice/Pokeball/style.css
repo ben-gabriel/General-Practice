@@ -1,15 +1,22 @@
 body{
-    display: flex;
+    /* display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: center; */
+    min-height: 100vh;
+}
+
+body{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax( 200px ,50vh ));
+    gap: 1em;
+    justify-content: center;
+    align-content: center;
 }
 
 .container{
-    background: hsl(195, 100%, 90%, 30%);
-    height: 90vh;
-    width: 90vh;
+    height: 50vh;
+    width: 50vh;
     /* border: black 2px solid; */
     
 }
@@ -22,7 +29,7 @@ body{
     height: 100%;
     width: 100%;
 
-    border-radius: 50%;
+    border-radius: 100%;
     border: black  solid;
 }
 
