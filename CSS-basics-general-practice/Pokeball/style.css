@@ -1,35 +1,65 @@
-*{
-    margin: 0;
-    padding: 0;
-}
 body{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    width: 100vw;
+    height: 100vh;
 }
 
 .container{
-    background: hsl(195, 100%, 90%);
-    height: 50vh;
-    width: 50vh;
-    border: black 2px solid;
+    background: hsl(195, 100%, 90%, 30%);
+    height: 90vh;
+    width: 90vh;
+    /* border: black 2px solid; */
+    
 }
 
 .pokeball{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    
     height: 100%;
     width: 100%;
 
-    background: linear-gradient(
-        red 47%,
-        black 45%,
-        black 55%,
-        white 55%
-    );
+    border-radius: 50%;
+    border: black  solid;
 }
 
+.pokeball.body{
+    box-sizing: border-box;
+    border-width: 0.3em;
+
+    background: linear-gradient(
+        0deg,
+        white 45%,
+        black 45%,
+        black 55%,
+        red 55%
+    );
+
+
+}
+
+.pokeball.center{
+    justify-self: center;
+    align-self: center;
+    height: 25%;
+    width: 25%;
+    /* border-width: 0.7em; */
+    border: none;
+
+    background: radial-gradient(
+        white 0%,
+        white 30%,
+        black 31%,
+        black 40%,
+        white 41%,
+        white 55%, 
+        black 56%,
+        black 
+    );
+}
 
 img{
     width: 40vh;
