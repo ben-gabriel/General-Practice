@@ -34,11 +34,14 @@ body{
 }
 
 .pokeball.body{
+
     box-sizing: border-box;
     border-width: 0.3em;
 
+    --val: 0deg;
+
     background: linear-gradient(
-        0deg,
+        var(--val),
         white 45%,
         black 45%,
         black 55%,
