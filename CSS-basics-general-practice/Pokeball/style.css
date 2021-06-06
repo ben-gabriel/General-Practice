@@ -1,9 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 body{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+.container{
+    background: hsl(195, 100%, 90%);
+    height: 50vh;
+    width: 50vh;
+    border: black 2px solid;
 }
 
 .pokeball{
-    background-color: red;
+    height: 100%;
+    width: 100%;
+
+    background: linear-gradient(
+        red 47%,
+        black 45%,
+        black 55%,
+        white 55%
+    );
+}
+
+
+img{
+    width: 40vh;
 }
