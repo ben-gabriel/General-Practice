@@ -9,9 +9,10 @@ body{
 body{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax( 200px ,50vh ));
-    gap: 2em;
+    gap: 10vh;
     justify-content: center;
     align-content: center;
+    overflow: hidden;
 }
 
 .container{
@@ -31,12 +32,11 @@ body{
 
     border-radius: 100%;
     border: black  solid;
-    z-index: -1;
     
     --degrees: 360deg;
     --scale: 1.5;
     --seconds: 1.5s;
-    transition: transform var(--seconds) ease-in-out, z-index 0.1s;
+    transition: transform var(--seconds) ease-in-out;
 }
 
 .pokeball.body{
@@ -77,12 +77,23 @@ body{
     );
 }
 
-img{
-    width: 40vh;
+.input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    transform: scale(2);
+}
+h1{
+    padding: 0;
+    margin: 0;
+}
+input{
+    text-align: center;
 }
 
 /* Rotation */
 .pokeball:hover{
-    z-index: 2;
     transform: rotate(var(--degrees)) scale(var(--scale));
 }
