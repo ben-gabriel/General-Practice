@@ -7,36 +7,33 @@
 
 body{
     position: relative;
-
     /* background: linear-gradient(0deg,
     hsl(0, 0%, 100%) 50%,
     hsl(0, 0%, 0%) 50%,
     hsl(0, 0%, 0%) 52%,
     hsl(0, 100%, 50%) 52%
     ); */
-
 }
 
 .container{
+    position: relative;
     min-height: 90vh;
     display: grid;
     grid-template: 
-        'header header' 5vh
-        'input  images' auto
-        'footer footer' 5vh
-        /1fr 4fr
+        '. input .  images' 
+        '. . . images' auto
+        /1em 1fr 1em 4fr
     ;
+    align-content: center;
 }
 
 .sidebar{
     position: sticky;
     width: 100%;
     height: 5vh;
-
+    z-index: 2;
     box-shadow: 0 0 5px 1px hsl(0, 0%, 20%);
-    
-}
-.s1{
+}.s1{
     top: 0;
     background: linear-gradient(45deg,
     hsl(0, 0%, 20%) 0%,
@@ -47,8 +44,7 @@ body{
     hsl(0, 100%, 40%) 100%
     ); 
     border-bottom: hsl(0, 0%, 20%) solid 5px;
-}
-.s2{
+}.s2{
     bottom: 0;
     background: linear-gradient(45deg,
     hsl(0, 100%, 40%) 0%,
@@ -62,25 +58,30 @@ body{
 }
 
 .inputContainer{
+    --top-space: 12.5vh;
+
     position: absolute;
+    overflow: hidden;
+    min-height: fit-content;
     height: 75vh;
     width: 100%;
     background: hsl(0, 100%, 40%);
     position: sticky;
-    margin: 1em;
-    top: 12.5vh;
     grid-area: input;
-    padding: 1em;
     border: hsl(0, 0%, 20%) solid 5px;
     border-radius: 10px;
     box-shadow: 0 0 2px 1px hsl(0, 0%, 20%);
     display: flex;
-    flex-direction:column;
+    flex-direction:column; 
+    top: var(--top-space);
+      
 }.inputContainer>*{
     margin-bottom: 1em;
 }
 
 .about{
+    min-height: min-content;
+    /* height: 30%; */
     /* width: 100%; */
     display: grid;
     grid-template: 
@@ -88,6 +89,7 @@ body{
         'info   sprite' 1fr
         /2fr max-content
     ;
+
 }.about>h1{
     grid-area: header;
     text-align: center;
@@ -108,16 +110,23 @@ body{
     text-align: center;
 }
 
+.altImg{
+    height: 25%;
+}
+
 .apiLink {
-    height: 100%;
+    height: 25%;
+    width: 50%;
     color: whitesmoke;
     display: flex;
     flex-flow: column;
     align-self: center;
+    justify-self: flex-end;
     justify-content: flex-end;
-}
-.apiLink > *{
+}.apiLink h2{
     text-align: center; 
+}.apiLink img{
+    width: 100%;
 }
 
 .lightBlue{
@@ -139,7 +148,6 @@ body{
     gap: 1.5em;
     justify-content: center;
 }
-
 .imgGrid img{
     width: 100%;
     max-width: 350px;
