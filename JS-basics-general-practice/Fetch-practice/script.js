@@ -12,7 +12,10 @@ const pokemons = {
         weight :document.getElementById('weight'),   
         habitat :document.getElementById('habitat'),   
         growth :document.getElementById('growth'), 
-        evFrom :document.getElementById('evFrom')
+        evFrom :document.getElementById('evFrom'),
+        
+        sprite: document.getElementById('sprite'),
+        altImg: document.getElementById('altImg')
     },
 
     createPokemon: async function(pokemonName){
@@ -32,8 +35,8 @@ const pokemons = {
                 console.log('createPokemon: Initial Json = ', pokemonJson);
                     // Artwork
                     pkl.image = pokemonJson.sprites.other['official-artwork'].front_default;
-                    pkl.imageAlt = pokemonJson.sprites.other.dream_world.front_default;
-                    pkl.imagePixel = pokemonJson.sprites.front_default;
+                    pkl.altImg = pokemonJson.sprites.other.dream_world.front_default;
+                    pkl.sprite = pokemonJson.sprites.front_default;
                     
                     // info
                     pkl.type = pokemonJson.types[0].type.name;
@@ -81,16 +84,28 @@ const pokemons = {
 
     showInfo: function(pokemonName){
         
-        console.log('Log inside show info: '+ pokemonName.value);
+        console.log('Log inside show info: '+ pokemonName);
 
         let object = this.html;
+        let imageElement = object.sprite;
 
         for (const key in object) {
             object[key].innerText = this.list[pokemonName][key];
             console.log('Log inside loop in show info: ',key);
-            //console.log(`${property}: ${object[property]}`);    
+
+            if(object[key].tagName === "IMG"){
+                object[key].src = this.list[pokemonName][key];
+                console.log('Log inside if in showInfo');
+            }
+
+            console.log(`${key}: ${object[key]}`);    
         }
         
+    },
+
+    loadAboutImgs: function(pokemonName){
+        this.sprite.src = this.list[pokemonName].sprite;
+        this.altImg.src = this.list[pokemonName].altImg;
     },
 
     createImg: function(parent){
@@ -116,14 +131,14 @@ const pokemons = {
         }
     },
 
-    newSubmition: async function(input, display){
+    newSubmition: async function(pokemonName, display){
 
-        let response = await this.createPokemon(input);
+        let response = await this.createPokemon(pokemonName);
         console.log('Log inside newSubmition - createPokemon response: ', response);
 
         if(response && response != (-1) ){
-            this.addImage(input,display);
-            this.showInfo(input)    ;
+            this.addImage(pokemonName,display);
+            this.showInfo(pokemonName);
         }
 
     }
@@ -136,6 +151,7 @@ const pokemons = {
 const display = document.getElementById('imgDisplay');
 const submit = document.getElementById('submitBtn');
 const input = document.getElementById('inputField');
+
 
 submit.addEventListener('click', () => {
     //pokemons.newSubmition(input,display);
@@ -153,6 +169,6 @@ input.addEventListener('keydown', (e)=>{
 
 pokemons.newSubmition('pikachu',display)
 
-//To do: investigate fetch of:
+//To do: in order to random investigate fetch of:
 //https://pokeapi.co/api/v2/pokemon/
 //https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20

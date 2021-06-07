@@ -24,7 +24,7 @@ body{
         'header header' 5vh
         'input  images' auto
         'footer footer' 5vh
-        /max-content 3fr
+        /1fr 4fr
     ;
 }
 
@@ -86,7 +86,7 @@ body{
     grid-template: 
         'header header' max-content
         'info   sprite' 1fr
-        /max-content max-content
+        /2fr max-content
     ;
 }.about>h1{
     grid-area: header;
@@ -97,7 +97,7 @@ body{
     grid-area: sprite;
     align-self: center;
     justify-self: center;
-    height: 100%;
+    height: max-content;
 }
 
 .input{
