@@ -32,6 +32,8 @@ body{
     position: sticky;
     width: 100%;
     height: 5vh;
+
+    box-shadow: 0 0 10px 1px hsl(0, 0%, 60%);
     
 }
 .s1{
