@@ -31,11 +31,12 @@ body{
 
     border-radius: 100%;
     border: black  solid;
+    z-index: -1;
     
-    z-index: 0;
-    --degrees: 90deg;
-    --seconds: 1s;
-    transition: transform var(--seconds), z-index 0s;
+    --degrees: 360deg;
+    --scale: 1.5;
+    --seconds: 1.5s;
+    transition: transform var(--seconds) ease-in-out, z-index 0.1s;
 }
 
 .pokeball.body{
@@ -62,6 +63,7 @@ body{
     width: 25%;
     /* border-width: 0.7em; */
     border: none;
+    z-index: 0;
 
     background: radial-gradient(
         white 0%,
@@ -80,7 +82,7 @@ img{
 }
 
 /* Rotation */
-.pokeball.body:hover{
-    z-index: 1;
-    transform: rotate(var(--degrees)) scale(2);
+.pokeball:hover{
+    z-index: 2;
+    transform: rotate(var(--degrees)) scale(var(--scale));
 }
