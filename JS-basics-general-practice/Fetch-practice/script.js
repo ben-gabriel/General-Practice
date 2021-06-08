@@ -150,23 +150,45 @@ const pokemons = {
         if((response !== false) && (response !== (-1))){
             this.addImage(response,display);
             this.showInfo(response);
+            return 'success'
         }
+    },
+
+    getRandomPokemon: async function( display){
+        let response = '';
+        let randomId = 0;
+        
+        do{
+            randomId = getRandomNumber(898);
+            response = await pokemons.newSubmition(randomId, display);
+        }while(response !== 'success');
+    
     }
 
+}
 
+function getRandomNumber(top){
+    return Math.floor((Math.random() * top) + 1);
 }
 
 //----main----
 
 const display = document.getElementById('imgDisplay');
-const submit = document.getElementById('submitBtn');
 const input = document.getElementById('inputField');
+const submitBtn = document.getElementById('submitBtn');
+const randomBtn = document.getElementById('randomBtn');
 
 
-submit.addEventListener('click', () => {
+submitBtn.addEventListener('click', () => {
     //pokemons.newSubmition(input,display);
     console.log(pokemons.list);
 });
+
+randomBtn.addEventListener('click', () => {
+    console.log('RandomBtn Click: Getting random pokemon');
+    pokemons.getRandomPokemon(display);
+});
+
 
 input.addEventListener('keydown', (e)=>{
     if(e.key== 'Enter'){
