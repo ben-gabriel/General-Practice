@@ -11,8 +11,8 @@ const pokemons = {
         height :document.getElementById('height'),    
         weight :document.getElementById('weight'),   
         habitat :document.getElementById('habitat'),   
-        growth :document.getElementById('growth'), 
-        evFrom :document.getElementById('evFrom'),
+        growth_rate :document.getElementById('growth_rate'), 
+        evolves_from_species :document.getElementById('evolves_from_species'),
         
         sprite: document.getElementById('sprite'),
         altImg: document.getElementById('altImg')
@@ -33,36 +33,44 @@ const pokemons = {
                 
                 let pokemonJson = await((fetcher).json());  
                 console.log('createPokemon: Initial Json = ', pokemonJson);
+                
+                    // Function to check if data is available
+                    function loadList(tagName, dimention){
+                        console.log('createPokemon.loadList: tag name = ', pokemonJson[tagName]);
+                        if(pokemonJson[tagName]){
+                            if(dimention === 2){
+                                pkl[tagName] = pokemonJson[tagName].name;
+                            }else{
+                                pkl[tagName] = pokemonJson[tagName];
+                            }
+                        }else{
+                            pkl[tagName] = 'not found';
+                        }
+                    }
+
                     // Artwork
                     pkl.image = pokemonJson.sprites.other['official-artwork'].front_default;
                     pkl.altImg = pokemonJson.sprites.other.dream_world.front_default;
                     pkl.sprite = pokemonJson.sprites.front_default;
                     
-                    // info
+                    // // info
                     pkl.type = pokemonJson.types[0].type.name;
-                    pkl.name = pokemonJson.name
-                    pkl.weight = pokemonJson.weight;
-                    pkl.height = pokemonJson.height;
-                    
-                    console.log('log inside createPokemon: ', pokemonJson);
+                    loadList('name');
+                    loadList('weight');
+                    loadList('height');
 
                 fetcher = await fetch('https://pokeapi.co/api/v2/pokemon-species/'+pokemonName);
-               
                 pokemonJson = await(fetcher).json(); 
                     
-                    console.log('log inside createPokemon: ', pokemonJson);
+                    console.log('createPokemon: Second Jason = ', pokemonJson);
  
                     // info
-                    pkl.color =  pokemonJson.color.name;
-                    pkl.shape = pokemonJson.shape.name;
-                    pkl.habitat = pokemonJson.habitat.name;
-                    pkl.growth = pokemonJson.growth_rate.name;
-                    
-                    if(pokemonJson.evolves_from_species !== null){
-                        pkl.evFrom = pokemonJson.evolves_from_species.name;
-                    }else{
-                        pkl.evFrom = 'none';
-                    }    
+                    loadList('color', 2);
+                    loadList('shape', 2);
+                    loadList('habitat', 2);
+                    loadList('growth_rate', 2)
+                    loadList('evolves_from_species', 2);
+
                 return true
 
             }else{
@@ -81,6 +89,7 @@ const pokemons = {
 
         return true;    
     },
+
 
     showInfo: function(pokemonName){
         
@@ -167,7 +176,7 @@ input.addEventListener('keydown', (e)=>{
 });
 
 
-pokemons.newSubmition('pikachu',display)
+pokemons.newSubmition('444',display)
 
 //To do: in order to random investigate fetch of:
 //https://pokeapi.co/api/v2/pokemon/
