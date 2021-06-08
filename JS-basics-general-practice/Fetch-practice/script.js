@@ -74,7 +74,8 @@ const pokemons = {
                     loadList('habitat', 2);
                     loadList('growth_rate', 2)
                     loadList('evolves_from_species', 2, 'none');
-
+                
+                // in case of success returns the pokemons name
                 return pokemonJson.name;
 
             }else{
@@ -150,7 +151,6 @@ const pokemons = {
             this.addImage(response,display);
             this.showInfo(response);
         }
-
     }
 
 
