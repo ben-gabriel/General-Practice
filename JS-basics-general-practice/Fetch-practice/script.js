@@ -26,17 +26,17 @@ const pokemons = {
             if(fetcher.ok === true){
                 //checks if the fetching was successful
                 console.log('createPokemon: Fetch Done');
-                
+                let pokemonJson = await((fetcher).json());  
+                pokemonName = pokemonJson.name;
+
                 this.list[pokemonName] = this.list[pokemonName] || [];
                 // shorthand
                 let pkl = this.list[pokemonName];
                 
-                let pokemonJson = await((fetcher).json());  
                 console.log('createPokemon: Initial Json = ', pokemonJson);
-                
+
                     // Function to check if data is available
-                    function loadList(tagName, dimention){
-                        console.log('createPokemon.loadList: tag name = ', pokemonJson[tagName]);
+                    function loadList(tagName, dimention, message){
                         if(pokemonJson[tagName]){
                             if(dimention === 2){
                                 pkl[tagName] = pokemonJson[tagName].name;
@@ -44,7 +44,11 @@ const pokemons = {
                                 pkl[tagName] = pokemonJson[tagName];
                             }
                         }else{
-                            pkl[tagName] = 'not found';
+                            if(message){
+                                pkl[tagName] = message;    
+                            }else{
+                                pkl[tagName] = 'no data';
+                            }
                         }
                     }
 
@@ -69,9 +73,9 @@ const pokemons = {
                     loadList('shape', 2);
                     loadList('habitat', 2);
                     loadList('growth_rate', 2)
-                    loadList('evolves_from_species', 2);
+                    loadList('evolves_from_species', 2, 'none');
 
-                return true
+                return pokemonJson.name;
 
             }else{
                 //to do: trigger non existent pokemon actions
@@ -93,21 +97,19 @@ const pokemons = {
 
     showInfo: function(pokemonName){
         
-        console.log('Log inside show info: '+ pokemonName);
+        console.log('showInfo: pokemonName = ' + pokemonName);
 
         let object = this.html;
-        let imageElement = object.sprite;
-
         for (const key in object) {
             object[key].innerText = this.list[pokemonName][key];
-            console.log('Log inside loop in show info: ',key);
+            //console.log('showInfo: key = ',key);
 
             if(object[key].tagName === "IMG"){
                 object[key].src = this.list[pokemonName][key];
-                console.log('Log inside if in showInfo');
+                //console.log('showInfo: if = True');
             }
 
-            console.log(`${key}: ${object[key]}`);    
+            // console.log(`${key}: ${object[key]}`);    
         }
         
     },
@@ -124,30 +126,29 @@ const pokemons = {
     },
 
     addImage: async function(pokemonName, parent){
-        console.log('Log inside addImage - this.list : ', this.list);
+        console.log('addImage: this.list = ', this.list);
 
         let imgElement = this.createImg(parent);
         
         try{
-            console.log('Log inside addimage - pokemonName: ', pokemonName);
-            console.log('Log inside addimage - this.list[pokemonName].type:',this.list[pokemonName].type);
-            //console.log('Log inside addimage - this.list.pokemonName.type:',this.list.pokemonName.type);
+            console.log('addimage: pokemonName = ', pokemonName);
+            console.log('addimage: this.list[pokemonName].type = ',this.list[pokemonName].type);
             
             imgElement.src = this.list[pokemonName].image;
 
         }catch(error){
-            console.log('Error found: ' + error)
+            console.log('addImage: Error found - ' + error)
         }
     },
 
     newSubmition: async function(pokemonName, display){
 
         let response = await this.createPokemon(pokemonName);
-        console.log('Log inside newSubmition - createPokemon response: ', response);
+        console.log('newSubmition: createPokemon response = ', response);
 
-        if(response && response != (-1) ){
-            this.addImage(pokemonName,display);
-            this.showInfo(pokemonName);
+        if((response !== false) && (response !== (-1))){
+            this.addImage(response,display);
+            this.showInfo(response);
         }
 
     }
