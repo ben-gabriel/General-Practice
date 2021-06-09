@@ -160,6 +160,7 @@ body{
     align-items: center;
     justify-content: center;
 }.altImg{
+    visibility: hidden;
     height: 65%;
 }
 
@@ -285,8 +286,8 @@ body{
     z-index: 0;
 
     background: radial-gradient(
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0) 30%,
+        rgb(243, 192, 192) 0%,
+        rgb(243, 192, 192) 30%,
         black 31%,
         black 40%,
         rgb(243, 192, 192) 41%,

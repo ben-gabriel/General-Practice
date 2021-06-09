@@ -54,7 +54,14 @@ const pokemons = {
 
                     // Artwork
                     pkl.image = pokemonJson.sprites.other['official-artwork'].front_default;
-                    pkl.altImg = pokemonJson.sprites.other.dream_world.front_default;
+                    
+                    if(pokemonJson.sprites.other.dream_world.front_default){
+                        pkl.altImg = pokemonJson.sprites.other.dream_world.front_default;
+                    }
+                    else{
+                        pkl.altImg = pokemonJson.sprites.other['official-artwork'].front_default;
+                    }
+
                     pkl.sprite = pokemonJson.sprites.front_default;
                     
                     // // info
@@ -112,7 +119,7 @@ const pokemons = {
 
             // console.log(`${key}: ${object[key]}`);    
         }
-        
+        this.html.altImg.style.visibility= 'visible';
     },
 
     loadAboutImgs: function(pokemonName){
