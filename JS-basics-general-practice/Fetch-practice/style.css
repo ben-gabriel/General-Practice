@@ -48,7 +48,8 @@ body{
     z-index: 2;
     box-shadow: 0 0 5px 1px hsl(0, 0%, 20%);
 }.s1{
-    top: 0;
+    z-index: 1;
+    top: -5px;
     background: linear-gradient(45deg,
     hsl(0, 0%, 20%) 0%,
     hsl(0, 0%, 10%) 29%,
@@ -59,7 +60,8 @@ body{
     ); 
     border-bottom: hsl(0, 0%, 20%) solid 5px;
 }.s2{
-    bottom: 0;
+    z-index: 3;
+    bottom: -5px;
     background: linear-gradient(45deg,
     hsl(0, 100%, 40%) 0%,
     hsl(0, 100%, 45%) 55%,
@@ -185,15 +187,19 @@ body{
     grid-template-columns: repeat(auto-fit, minmax(250px, 20vw));
     gap: 1.5em;
     justify-content: center;
-}
-.imgGrid img{
+}.imgGrid img{
     width: 100%;
     max-width: 350px;
     background-image: url('https://pngimg.com/uploads/pokeball/pokeball_PNG27.png');
     background-position: center;
     background-size: cover;
+    overflow: hidden;
+    transform:scale(1);
+    transition: transform 1.5s, z-index 0s;
+}.imgGrid img:hover{
+    z-index: 2;
+    transform: scale(1.2);
 }
-
 
 /* POKEBALL */
 
