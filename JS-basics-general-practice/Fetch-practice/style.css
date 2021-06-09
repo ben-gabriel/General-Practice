@@ -125,6 +125,11 @@ body{
     border-radius: 100%;
 }
 
+.separator{
+    height: 1em;
+    background: hsl(0, 0%, 20%);
+}
+
 .altImgContainer{
     height: 100%;
     display: flex;

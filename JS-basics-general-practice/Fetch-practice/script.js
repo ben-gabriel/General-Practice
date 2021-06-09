@@ -133,9 +133,13 @@ const pokemons = {
         
         try{
             console.log('addimage: pokemonName = ', pokemonName);
-            console.log('addimage: this.list[pokemonName].type = ',this.list[pokemonName].type);
+            console.log('addimage: this.list[pokemonName].type = ', this.list[pokemonName].type);
             
             imgElement.src = this.list[pokemonName].image;
+            imgElement.className = this.list[pokemonName].name;
+            imgElement.addEventListener('click', ()=>{
+                this.showInfo(pokemonName);
+            });
 
         }catch(error){
             console.log('addImage: Error found - ' + error)
@@ -178,7 +182,6 @@ const inputField = document.getElementById('inputField');
 const submitBtn = document.getElementById('submitBtn');
 const randomBtn = document.getElementById('randomBtn');
 
-
 submitBtn.addEventListener('click', () => {
     //pokemons.newSubmition(input,display);
     console.log(pokemons.list);
@@ -197,6 +200,7 @@ inputField.addEventListener('keydown', (e)=>{
         inputField.focus();
     }
 });
+
 
 
 //pokemons.newSubmition('444',display)
