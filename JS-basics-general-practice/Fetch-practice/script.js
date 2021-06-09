@@ -174,7 +174,7 @@ function getRandomNumber(top){
 //----main----
 
 const display = document.getElementById('imgDisplay');
-const input = document.getElementById('inputField');
+const inputField = document.getElementById('inputField');
 const submitBtn = document.getElementById('submitBtn');
 const randomBtn = document.getElementById('randomBtn');
 
@@ -190,16 +190,16 @@ randomBtn.addEventListener('click', () => {
 });
 
 
-input.addEventListener('keydown', (e)=>{
+inputField.addEventListener('keydown', (e)=>{
     if(e.key== 'Enter'){
-        pokemons.newSubmition(input.value,display);
-        input.value = '';
-        input.focus();
+        pokemons.newSubmition(inputField.value,display);
+        inputField.value = '';
+        inputField.focus();
     }
 });
 
 
-pokemons.newSubmition('444',display)
+//pokemons.newSubmition('444',display)
 
 //To do: in order to random investigate fetch of:
 //https://pokeapi.co/api/v2/pokemon/
