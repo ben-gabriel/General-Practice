@@ -116,18 +116,40 @@ body{
 }
 
 .searchContainer{
+    position: relative;
     display: flex;
-    justify-content: center;
-    align-content: center; 
+    align-content:center; 
+    justify-content: space-around;
 }.searchContainer button{
-    width: 20%;
-    height: 20%;
+    /* justify-items: right; */
+    width: 3em;
+    height: 3em;
     border-radius: 100%;
+    background: radial-gradient(
+        white 0%,
+        white 28%,
+        black 31%,
+        black 40%,
+        white 43%,
+        white 55%, 
+        black 58%,
+        black 
+    );
+}.searchContainer p{
+    color: hsl(184, 43%, 85%);
+}.inputField{
+    text-align: center;
+    margin-left:0 ;
+}.searchDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .separator{
-    height: 1em;
+    height: 0.5em;
     background: hsl(0, 0%, 20%);
+    box-shadow: 0 0 2px 1px hsl(0, 0%, 20%);
 }
 
 .altImgContainer{
@@ -194,7 +216,6 @@ body{
 }
 
 .pokeball.body.pokeball{
-
     box-sizing: border-box;
     border-width: 0.3em;
 
