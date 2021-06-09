@@ -73,12 +73,13 @@ body{
     border-top: hsl(0, 0%, 20%) solid 5px;
 }
 
+/* --- Sticky interface --- */
 .interface{
     --top-space: 12.5vh;
 
-    position: absolute;
+    position: relative;
     overflow: hidden;
-    min-height: fit-content;
+    /* min-height: fit-content; */
     height: 75vh;
     width: 100%;
     background: hsl(0, 100%, 40%);
@@ -94,9 +95,12 @@ body{
 }.interface>*{
     margin-bottom: 1em;
 }
-
+/* :root{
+    --about
+} */
 .about{
-    min-height: min-content;
+
+    /* min-height: min-content; */
     /* height: 30%; */
     /* width: 100%; */
     display: grid;
@@ -155,13 +159,13 @@ body{
 }
 
 .altImgContainer{
-    height: 100%;
+    height: 35vh;
     display: flex;
     align-items: center;
     justify-content: center;
 }.altImg{
     visibility: hidden;
-    height: 65%;
+    height: 75%;
 }
 
 .apiLink {
