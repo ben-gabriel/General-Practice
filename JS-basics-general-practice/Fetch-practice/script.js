@@ -153,7 +153,13 @@ const pokemons = {
         }
     },
 
-    newSubmition: async function(pokemonName, display){
+    newSubmition: async function(input, display){
+
+        if(isNaN(input)){
+            pokemonName = input.toLowerCase();
+        }else{
+            pokemonName = input;
+        }
 
         let response = await this.createPokemon(pokemonName);
         console.log('newSubmition: createPokemon response = ', response);
@@ -210,5 +216,8 @@ inputField.addEventListener('keydown', (e)=>{
 });
 
 
-
-//pokemons.newSubmition('444',display)
+// Loop to start with content
+for (let index = 0; index < 13; index++) {
+    pokemons.getRandomPokemon(display);
+    
+}
