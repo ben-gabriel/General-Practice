@@ -190,8 +190,9 @@ const submitBtn = document.getElementById('submitBtn');
 const randomBtn = document.getElementById('randomBtn');
 
 submitBtn.addEventListener('click', () => {
-    //pokemons.newSubmition(input,display);
-    console.log(pokemons.list);
+    pokemons.newSubmition(inputField.value,display);
+    inputField.value = '';
+    inputField.focus();
 });
 
 randomBtn.addEventListener('click', () => {
@@ -211,7 +212,3 @@ inputField.addEventListener('keydown', (e)=>{
 
 
 //pokemons.newSubmition('444',display)
-
-//To do: in order to random investigate fetch of:
-//https://pokeapi.co/api/v2/pokemon/
-//https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20
