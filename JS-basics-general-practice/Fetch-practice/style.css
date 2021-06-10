@@ -7,6 +7,7 @@
 
 body{
     position: relative;
+    overflow-x: hidden;
     /* background: linear-gradient(0deg,
     hsl(0, 0%, 100%) 50%,
     hsl(0, 0%, 0%) 50%,
@@ -34,9 +35,8 @@ body{
     min-height: 90vh;
     display: grid;
     grid-template: 
-        '. input .  images' 
-        '. . . images' auto
-        /1em minmax(340px,18vw) 1em 4fr
+        '. input .  images' auto
+        /1em minmax(340px,18vw) 1em 1fr
     ;
     align-content: center;
 }
@@ -73,8 +73,8 @@ body{
     border-top: hsl(0, 0%, 20%) solid 5px;
 }
 
+/*------------------------------------------------------------------------*/
 /* --- Sticky interface --- */
-
 :root{
     /* Sticky UI container height based on vh, has to amount to 100vh */
     --top-space: 12.5vh; /* half of 25vh */
@@ -91,17 +91,12 @@ body{
     --border-radius: 10px;
 }
 
-body{background: chocolate;}
-
 @media (max-height: 840px){
-    body{background: chartreuse;}
     
     :root{
-        /* Sticky UI container height based on vh, has to amount to 100vh */
-        --top-space: 5vh; /* half of 25vh */
+        --top-space: 5vh; 
         --interface: 90vh;
         
-        /* Sticky UI elements height based on vh, by default amounts to 75vh */
         --about-vh: min-content;
         --searchContainer-vh: min-content;
         --separator-vh: 0.3em;
@@ -124,14 +119,11 @@ body{background: chocolate;}
 
 
 @media (max-height: 610px){
-    body{background:lightgray;}
     
     :root{
-        /* Sticky UI container height based on vh, has to amount to 100vh */
-        --top-space: 5vh; /* half of 25vh */
+        --top-space: 5vh; 
         --interface: 90vh;
         
-        /* Sticky UI elements height based on vh, by default amounts to 75vh */
         --about-vh: min-content;
         --searchContainer-vh: min-content;
         --separator-vh: 0.3em;
@@ -149,7 +141,6 @@ body{background: chocolate;}
 }
 
 @media (max-height: 410px){
-    body{background:magenta;}
     
     .apiLink *{
         display: none;
@@ -158,11 +149,9 @@ body{background: chocolate;}
     }
  
     :root{
-        /* Sticky UI container height based on vh, has to amount to 100vh */
-        --top-space: 5vh; /* half of 25vh */
+        --top-space: 5vh; 
         --interface: 90vh;
         
-        /* Sticky UI elements height based on vh, by default amounts to 75vh */
         --about-vh: min-content;
         --searchContainer-vh: min-content;
         --separator-vh: 0.3em;
@@ -192,6 +181,7 @@ body{background: chocolate;}
 
     justify-content: space-between;
 
+    transition: ease all .5s;
 }
 
 
@@ -280,14 +270,27 @@ body{background: chocolate;}
     align-self: center;
 }
 
+/*------------------------------------------------------------------------*/
 /* --- Image grid collage ---*/
+
+@media (min-width:800px){
+    .imgGrid{
+        grid-template-columns: repeat(auto-fit, minmax(200px, 20vw));
+        transition: ease all .5s;
+    }    
+}
+
 .imgGrid{
     grid-area: images;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 20vw));
+    grid-template-columns: repeat(auto-fit, minmax(auto-fit, 20vw));
     gap: 1.5em;
     justify-content: center;
-}.imgGrid img{
+    
+    transition: ease all .5s;
+}
+
+.imgGrid img{
     width: 100%;
     max-width: 350px;
     background-image: url('https://pngimg.com/uploads/pokeball/pokeball_PNG27.png');
@@ -296,13 +299,15 @@ body{background: chocolate;}
     overflow: hidden;
     transform:scale(1);
     transition: transform 1.5s, z-index 0s;
-}.imgGrid img:hover{
+}
+
+.imgGrid img:hover{
     z-index: 2;
     transform: scale(1.2);
 }
 
+/*------------------------------------------------------------------------*/
 /* POKEBALL */
-
 .pokeball{
     position: absolute;
     display: flex;
@@ -358,13 +363,13 @@ body{background: chocolate;}
     );
 }
 
-/* transparent*/
-.pokeball.transparent{
+/* pink*/
+.pokeball.pink{
     z-index: -1;    
     height: 30vh;
     width: 30vh;
 }
-.pokeball.body.pokeball.transparent{
+.pokeball.body.pokeball.pink{
     background: linear-gradient(
         0deg,
         rgb(243, 192, 192) 44.8%,
