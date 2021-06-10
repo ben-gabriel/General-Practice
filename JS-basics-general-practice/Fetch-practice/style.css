@@ -49,7 +49,7 @@ body{
     box-shadow: 0 0 5px 1px hsl(0, 0%, 20%);
 }.s1{
     z-index: 1;
-    top: -5px;
+    top: 0px;
     background: linear-gradient(45deg,
     hsl(0, 0%, 20%) 0%,
     hsl(0, 0%, 10%) 29%,
@@ -61,7 +61,7 @@ body{
     border-bottom: hsl(0, 0%, 20%) solid 5px;
 }.s2{
     z-index: 3;
-    bottom: -5px;
+    bottom: 0px;
     background: linear-gradient(45deg,
     hsl(0, 100%, 40%) 0%,
     hsl(0, 100%, 45%) 55%,
@@ -74,35 +74,129 @@ body{
 }
 
 /* --- Sticky interface --- */
-.interface{
-    --top-space: 12.5vh;
 
+:root{
+    /* Sticky UI container height based on vh, has to amount to 100vh */
+    --top-space: 12.5vh; /* half of 25vh */
+    --interface: 75vh;
+    
+    /* Sticky UI elements height based on vh, by default amounts to 75vh */
+    --about-vh: min-content;
+    --searchContainer-vh: min-content;
+    --separator-vh: 0.3em;
+    --altImgContainer-vh: 30vh; 
+     --apiLink-vh: 1fr;
+    
+    /*extra*/
+    --border-radius: 10px;
+}
+
+body{background: chocolate;}
+
+@media (max-height: 840px){
+    body{background: chartreuse;}
+    
+    :root{
+        /* Sticky UI container height based on vh, has to amount to 100vh */
+        --top-space: 5vh; /* half of 25vh */
+        --interface: 90vh;
+        
+        /* Sticky UI elements height based on vh, by default amounts to 75vh */
+        --about-vh: min-content;
+        --searchContainer-vh: min-content;
+        --separator-vh: 0.3em;
+        --altImgContainer-vh: 30vh; 
+        --apiLink-vh: 1fr;    
+        --border-radius: 0px;
+    }
+
+    .container{
+        grid-template: 
+            '. input .  images' 
+            '. . . images' auto
+            /0em minmax(340px,18vw) 1em 4fr
+        ;
+    }
+
+
+
+}
+
+
+@media (max-height: 610px){
+    body{background:lightgray;}
+    
+    :root{
+        /* Sticky UI container height based on vh, has to amount to 100vh */
+        --top-space: 5vh; /* half of 25vh */
+        --interface: 90vh;
+        
+        /* Sticky UI elements height based on vh, by default amounts to 75vh */
+        --about-vh: min-content;
+        --searchContainer-vh: min-content;
+        --separator-vh: 0.3em;
+        --altImgContainer-vh: 30vh; 
+         --apiLink-vh: 1fr;
+        
+    }
+
+    .altImgContainer *{
+        display: none;
+        background: none;
+        visibility: hidden;
+    }
+
+}
+
+@media (max-height: 410px){
+    body{background:magenta;}
+    
+    .apiLink *{
+        display: none;
+        background: none;
+        visibility: hidden;
+    }
+ 
+    :root{
+        /* Sticky UI container height based on vh, has to amount to 100vh */
+        --top-space: 5vh; /* half of 25vh */
+        --interface: 90vh;
+        
+        /* Sticky UI elements height based on vh, by default amounts to 75vh */
+        --about-vh: min-content;
+        --searchContainer-vh: min-content;
+        --separator-vh: 0.3em;
+        --altImgContainer-vh: 30vh; 
+         --apiLink-vh: 0px;
+        
+    }
+}
+
+
+.interface{
+    z-index: 4;
     position: relative;
     overflow: hidden;
     /* min-height: fit-content; */
-    height: 75vh;
+    height: var(--interface);
     width: 100%;
     background: hsl(0, 100%, 40%);
     position: sticky;
     grid-area: input;
     border: hsl(0, 0%, 20%) solid 5px;
-    border-radius: 10px;
+    border-radius: var(--border-radius);
     box-shadow: 0 0 2px 1px hsl(0, 0%, 20%);
     display: flex;
     flex-direction:column; 
     top: var(--top-space);
 
-}.interface>*{
-    margin-bottom: 1em;
-}
-/* :root{
-    --about
-} */
-.about{
+    justify-content: space-between;
 
-    /* min-height: min-content; */
-    /* height: 30%; */
-    /* width: 100%; */
+}
+
+
+.about{
+    height: var(--about-vh);
     display: grid;
     grid-template: 
         'header header' max-content
@@ -122,6 +216,7 @@ body{
 }
 
 .searchContainer{
+    height: var(--searchContainer-vh);
     position: relative;
     display: flex;
     align-content:center; 
@@ -153,13 +248,14 @@ body{
 }
 
 .separator{
-    height: 0.5em;
+    height: var(--separator-vh);
+    margin-top: 0.5em;
     background: hsl(0, 0%, 20%);
     box-shadow: 0 0 2px 1px hsl(0, 0%, 20%);
 }
 
 .altImgContainer{
-    height: 35vh;
+    height: var(--altImgContainer-vh);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -169,14 +265,12 @@ body{
 }
 
 .apiLink {
-    height: 15%;
+    height: var(--apiLink-vh);
     width: 40%;
     color: whitesmoke;
     display: flex;
     flex-flow: column;
     align-self: center;
-    justify-self: flex-end;
-    justify-content: flex-end;
     padding: 0;
     margin: 0;
 }.apiLink h2{
@@ -186,6 +280,7 @@ body{
     align-self: center;
 }
 
+/* --- Image grid collage ---*/
 .imgGrid{
     grid-area: images;
     display: grid;
