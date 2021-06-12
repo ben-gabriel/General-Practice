@@ -1,0 +1,103 @@
+body{
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.btnContainer{
+    background: rgba(255, 248, 220, 0);
+    height: fit-content;
+    width: 65em;
+    margin: 2em;
+    
+    display: flex;
+    
+    flex-flow: wrap;
+    
+    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    gap: 5em;
+}
+
+button{
+    height: 5em;   
+    width: 20em; 
+}
+
+
+/* ---3--- */
+.btn3{    
+    background:
+    linear-gradient(35deg,    
+        hsl(0, 0%, 10%) 0%,
+        hsl(0, 0%, 20%) 40%,
+        hsl(0, 0%, 25%) 100%
+    );
+
+    border: hsl(0, 0%, 5%) 0.2em solid;
+    box-shadow: -7px 7px 5px 0px hsl(0,0%,20%);
+    /* transform: translate(10px, -7px) */
+    
+    font-family: MuseoModerno;
+    font-weight: bolder;
+    color: hsl(0, 0%, 75%);
+
+    transition: all 0.25s;
+}
+.btn3:hover{
+    box-shadow: -5px 5px 2px 1px hsl(0,0%,15%);
+    transform: scale(0.99);
+    transition: all 0.25s;
+    color: hsl(0, 0%, 95%);
+}
+.btn3:active{
+    background:
+    linear-gradient(35deg,    
+        hsl(0, 0%, 10%) 0%,
+        hsl(0, 0%, 20%) 100%
+    );
+    box-shadow: 0px 0px 0px 0px hsl(0,0%,15%);
+    transform: translate(-5px, 5px) scale(0.99);  
+}
+
+/* ---5--- */
+.btn5{    
+    height: 7em;
+    width: 7em;
+
+    background:
+    linear-gradient(35deg,
+        hsl(39, 100%, 70%) 0%,
+        hsl(59, 100%, 83%) 100%
+    );
+
+    border: hsl(39, 100%, 70%) 5px solid;
+    border-right: hsl(39, 100%, 70%) 2px solid;;
+    border-top: hsl(39, 100%, 70%) 2px solid;;
+    border-radius: 7em;
+    box-shadow: -5px 5px 1px 1px hsl(20,100%,50%);
+    /* transform: translate(10px, -7px) */
+    
+    font-family: Rubik;
+    color: hsl(35, 100%, 50%);
+
+    transition: all 0.25s;
+}
+.btn5:hover{
+    color: hsl(20, 100%, 50%);
+    transition: all 0.25s;
+}
+.btn5:active{
+    background:
+    linear-gradient(35deg,
+        hsl(39, 100%, 60%) 0%,
+        hsl(59, 100%, 83%) 100%
+    );
+    border: hsl(39, 100%, 50%) 0.2em solid;
+    box-shadow: -3px 3px 1px 3px hsl(20,100%,50%);
+    transform: translate(-2px, 2px) scale(0.99);  
+}
