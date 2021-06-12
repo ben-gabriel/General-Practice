@@ -1,6 +1,6 @@
 body{
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,14 +8,14 @@ body{
 }
 
 .btnContainer{
-    background: rgba(255, 248, 220, 0);
+    background: var(--background);
     height: fit-content;
     width: 65em;
     margin: 2em;
     
     display: flex;
     
-    flex-flow: wrap;
+    flex-flow:wrap;
     
     justify-content: space-around;
     justify-content: center;
@@ -24,8 +24,53 @@ body{
 }
 
 button{
-    height: 5em;   
-    width: 20em; 
+
+    --btn-5: 7em;
+
+    height: 5em;
+    width: 20em;
+
+    font-size: 1.5em;
+    transition: all 0.5s ease-in-out;
+
+}
+
+@media (max-width:1400px){
+    button{
+        --btn-5: 7em;
+        
+        height: 5em;
+        width: 20em;
+        
+        font-size: 1em;
+    }
+
+    .btn5{
+        order: 1;
+    }
+
+    .btn4{
+        order: 2;
+    }
+}
+
+@media (max-width:975px){
+    button{
+        --btn-5: 7em;
+        
+        height: 5em;
+        width: 20em;
+        
+        font-size: 1em;
+    }
+
+    .btn5{
+        order: 2;
+    }
+
+    .btn4{
+        order: 1;
+    }
 }
 
 /* ---1--- */
@@ -50,8 +95,10 @@ button{
     transition: all 0.25s;
 }
 .btn1:hover{
-    box-shadow: 
-        -6px 6px 2px 1px hsl(0, 79%, 85%);
+    box-shadow: -6px 6px 2px 1px hsl(0, 79%, 85%);
+    
+    transform: translate(6px, -6px);
+
     transition: all 0.25s;
 }
 .btn1:active{
@@ -60,8 +107,8 @@ button{
         hsl(0, 79%, 75%) 35%,
         hsl(0, 79%, 77%) 60%
     );
+    transform: translate(0px, 0px);  
     box-shadow: 0px 0px 0px 0px rgb(255, 255, 255);
-    transform: translate(-5px, 5px);  
 }
 
 /* ---2--- */
@@ -69,8 +116,8 @@ button{
     background: hsl(0, 0%, 100%);
 
     border: hsl(0, 0%, 90%) 3px solid;
-    border-radius: 2em;
-    box-shadow: 0px 3px 0px 0px hsl(0, 0%, 90%);
+    border-radius: 1.75em;
+    box-shadow: 0px 4px 0px 0px hsl(0, 0%, 90%);
     /* transform: translate(10px, -7px) */
     
     font-family: 'Varela Round';
@@ -124,8 +171,8 @@ button{
 
 /* ---5--- */
 .btn5{    
-    height: 7em;
-    width: 7em;
+    height: var(--btn-5);
+    width: var(--btn-5);
 
     background:
     linear-gradient(35deg,
