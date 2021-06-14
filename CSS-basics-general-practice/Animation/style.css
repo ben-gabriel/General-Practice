@@ -1,5 +1,5 @@
 .square{
-    height: 20vw;
+    height:20vw;
     width: 20vw;
     margin: 1em;
     position: relative;
@@ -12,7 +12,7 @@
 
 /* Moving animation */
 .moves{
-    animation: movement 4s alternate infinite;
+    animation: movement 4s cubic-bezier(0.25, 1.25, 0.75, -0.25) alternate infinite;
 }
 
 @keyframes movement{
