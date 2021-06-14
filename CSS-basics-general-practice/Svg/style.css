@@ -1,0 +1,9 @@
+body{
+    height: 95vh;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+.undraw{
+    width: 95vw;
+}
