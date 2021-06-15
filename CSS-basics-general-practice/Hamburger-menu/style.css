@@ -105,6 +105,13 @@ nav a{
 
         border-radius: 100px;
         box-shadow: 0 0 1px 1px hsl(243, 100%, 25%);
+
+        transition: background-color 0.25s;
+    }
+
+    .hamburger:hover > .line{
+        background: hsl(213, 52%, 100%);
+        box-shadow: 0 0 2px 1px hsl(243, 100%, 25%);
     }
 
     /* --- Nav --- */
@@ -131,11 +138,13 @@ nav a{
         );
 
         clip-path: circle(0% at 93.5% 5% );
-        transition: clip-path 0.75s ease-in-out;
+        -webkit-clip-path: circle(0% at 93.5% 5% );
+        
+        transition: clip-path 0.5s ease-in-out;
 
     }
 
-    nav:hover  ul{
+    .open{
         clip-path: circle(150% at 93.5% 5% );
 
     }
