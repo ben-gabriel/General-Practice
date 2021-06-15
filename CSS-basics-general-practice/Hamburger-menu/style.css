@@ -8,33 +8,47 @@
 /* --- nav bar --- */
 nav{
     height: 10vh;
-    background: 
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    background:
     linear-gradient(
         20deg,
         hsl(243, 100%, 15%) 10%,
         hsl(243, 100%, 69%)
     );
 
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+    box-shadow: 0 0 1px 1px hsl(243, 100%, 15%, 100%);
+
 }
 nav ul{
-
+    display: flex;
+    position: relative;
+    right: 4em;
+    list-style: none;
+}
+nav a{
+    margin: 1em;
+    text-decoration: none;
+    color: #cfdef0;
+    /* color: #d4dfec; */
 }
 
-/* color: #d4dfec; */
-
 /* --- content --- */
-.container{
+.content{
     height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    color: hsl(243, 100%, 25%);
 }
 
-.container img{
+.content img{
     max-height: 65vh;
     max-width: 75vw;
+    margin: 2em;
 }
