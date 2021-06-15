@@ -7,6 +7,7 @@
 
 /* --- nav bar --- */
 nav{
+    position: relative;
     height: 10vh;
 
     display: flex;
@@ -32,8 +33,11 @@ nav ul{
 nav a{
     margin: 1em;
     text-decoration: none;
-    color: #cfdef0;
+    color: hsl(213, 52%, 88%);
     /* color: #d4dfec; */
+}
+.hamburger, .hamburger>*{
+    display: none;
 }
 
 /* --- content --- */
@@ -45,10 +49,69 @@ nav a{
     align-items: center;
 
     color: hsl(243, 100%, 25%);
+    background:
+    linear-gradient(
+        45deg,
+        hsl(213, 52%, 95%) 10%,
+        hsl(213, 52%, 96%) 
+        
+    ); 
 }
 
 .content img{
     max-height: 65vh;
     max-width: 75vw;
     margin: 2em;
+}
+
+/* --- Small Screen --- */
+
+@media (max-width: 900px){
+    
+    .content{
+        background:violet; 
+    }
+
+    /* --- Hamburger --- */
+    .hamburger, .hamburger>*{
+        display:block;
+    }
+
+    .hamburger{
+        cursor: pointer;
+        position: absolute;
+        right: 2em;
+
+        background:none ;
+        height: 30%;
+        width: 5vh;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .line{
+        background: hsl(213, 52%, 88%);
+
+        height: 25%;
+        width: 100%;
+
+        border-radius: 100px;
+    }
+
+    /* --- Nav --- */
+    nav ul{
+        display: block;
+    }
+    nav ul{
+        position: absolute;
+        height: 100vh;
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
 }
