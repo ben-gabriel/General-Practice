@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: content-box;
+    font-family: Spartan;
+}
+
+/* --- nav bar --- */
+nav{
+    height: 10vh;
+    background: 
+    linear-gradient(
+        20deg,
+        hsl(243, 100%, 15%) 10%,
+        hsl(243, 100%, 69%)
+    );
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+nav ul{
+
+}
+
+/* color: #d4dfec; */
+
+/* --- content --- */
+.container{
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.container img{
+    max-height: 65vh;
+    max-width: 75vw;
+}
