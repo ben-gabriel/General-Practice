@@ -8,6 +8,8 @@
     width: 20vw;
     position: relative;
     margin: 1em;
+
+    border-radius: 50%;
     background:linear-gradient(
         45deg,
         hsl(0, 0%,10%),
@@ -31,11 +33,12 @@
 
 /* Changing color */
 .changesColor{
-    animation: changeColor 4s alternate infinite;
+    animation: changeColor 2s alternate infinite;
 }
 
 @keyframes changeColor{
     0%{
+        border-radius:0 ;
         background: hsl(50, 100%, 50%);
     }
     25%{
@@ -52,6 +55,7 @@
     }
     100%{
         
+        border-radius: 50%;
         background: hsl(400, 100%, 50%);
     }
 }
@@ -72,8 +76,9 @@ body{
     background-position: left;
 
     transition: all 2s ease-in-out; */
-    animation: bodyAnimation 5s  infinite;
+    animation: bodyAnimation 6s cubic-bezier(0.6, -0.28, 0.735, 0.045)  infinite;
 }
+
 
 @keyframes bodyAnimation {
     0%{
