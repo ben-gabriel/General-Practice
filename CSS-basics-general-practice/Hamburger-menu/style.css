@@ -12,7 +12,7 @@
 nav{
     position: relative;
     height: 10vh;
-    width: 100vw;
+    width: 100%;
 
     display: flex;
     justify-content: flex-end;
@@ -35,6 +35,7 @@ nav ul{
     list-style: none;
 }
 nav a{
+    font-size:xx-large;
     margin: 1em;
     text-decoration: none;
     color: hsl(213, 52%, 88%);
@@ -45,14 +46,8 @@ nav a{
 }
 
 /* --- content --- */
-.content{
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    color: hsl(243, 100%, 25%);
+.container{
+    height: fit-content;
     background:
     linear-gradient(
         45deg,
@@ -60,6 +55,18 @@ nav a{
         hsl(213, 52%, 96%) 
         
     ); 
+}
+
+.content{
+    min-height: 90vh;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: hsl(243, 100%, 25%);
+
 }
 
 .content img{
@@ -70,12 +77,8 @@ nav a{
 
 /* --- Small Screen --- */
 
-@media (max-width: 900px){
+@media (max-width: 900px), (max-height: 375px){
     
-    .content{
-        /* background:violet;  */
-    }
-
     /* --- Hamburger --- */
     .hamburger, .hamburger>*{
         visibility: visible;
