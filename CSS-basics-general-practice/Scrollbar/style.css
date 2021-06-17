@@ -30,6 +30,7 @@
     transform: scale(1.2);
     box-shadow:  0px 0px 0px 0px hsl(0, 0%, 0%);
 }.section:hover .overflow{
+    min-height: 100%;
     box-shadow: inset 0px 0px 5px 0px hsl(0, 0%, 0%, 15%);
 }
 
