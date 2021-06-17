@@ -4,28 +4,19 @@
     box-sizing: content-box;
 }
 
+/* --- General Style --- */
 .container{
     min-height: 100vh;
-
     display: flex;
-     justify-content: space-evenly;
-     align-items: center;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 .section{
-    min-height: 300px;
     height: 60vh;
-    width: 150px;
-    margin: 1em;
-    
-    background: 
-    linear-gradient(
-        50deg,
-        hsl(0, 0%, 20%),
-        hsl(0, 0%, 50%)
-    );
-    
-    box-shadow: 0 0 1px 1px hsl(0, 0%, 0%);
+    width: 20vw;
+
+    box-shadow: 1px 1px 3px 0px hsl(0, 0%, 0%);
 
     overflow-y: scroll;
     overflow-x: hidden;
@@ -36,10 +27,133 @@
 }
 
 
+
+/* --- Item 1 ---*/
+.n1{
+    background:
+    linear-gradient(
+        180deg,
+        rgb(4, 24, 65),
+        hsl(210, 100%, 9%)
+    );
+}
+
 .n1::-webkit-scrollbar{
-    width: 10px;
+    background: none;
+    width: 15px;
 }
+
 .n1::-webkit-scrollbar-track{
-    background: black;
+    border-radius: 100px;
 }
-    
+
+
+.n1::-webkit-scrollbar-thumb{
+    background: transparent;
+    border-radius: 100px;
+    border:  2px transparent solid;
+    box-shadow: inset 0 0 0px 100px gray;
+}
+
+.n1::-webkit-scrollbar-button{
+    display: none;
+}
+
+
+/* --- Item 2 ---*/
+.n2{
+    background:
+    linear-gradient(
+        180deg,
+        hsl(220, 75%, 78%) ,
+        hsl(210, 97%, 77%)
+    );
+}
+
+.n2::-webkit-scrollbar{
+    background: transparent;
+    width: 15px;
+
+}
+
+.n2::-webkit-scrollbar-track{
+    border-radius: 100px;
+    border:  3px transparent solid;  
+    box-shadow: inset 0px 0px 2px 1px  hsl(230, 100%, 0%, 50%);
+}
+
+.n2::-webkit-scrollbar-thumb{
+    border-radius: 100px;
+    border:  3px transparent solid;
+    box-shadow: inset 0 0 0px 100px rgba(1, 47, 255, 0.25);
+}
+
+.n2::-webkit-scrollbar-button{
+    background: transparent;
+} 
+
+/* --- Item 3 ---*/
+.n3{
+    background:
+    linear-gradient(
+        45deg,
+        hsl(14, 84%, 53%) ,
+        hsl(39, 80%, 60%)
+    );
+}
+
+.n3::-webkit-scrollbar{
+    background: transparent;
+    width: 15px;
+
+}
+
+.n3::-webkit-scrollbar-track{
+    background: hsla(15, 50%, 50%, 0.05);
+    border:  3px transparent solid;  
+    box-shadow: -1px 0px 1px 0px  hsl(14, 100%, 0%, 50%);
+}
+
+.n3::-webkit-scrollbar-thumb{
+    border:  3px transparent solid;
+    box-shadow: inset 0 0 0px 100px rgb(0, 0, 0, .35);
+}
+
+.n3::-webkit-scrollbar-button{
+    background: transparent;
+} 
+
+/* --- Item 4 ---*/
+.n4{
+    background:
+    linear-gradient(
+        -45deg,
+        hsl(352, 79%, 70%) ,
+        hsl(351, 83%, 80%)
+    );
+}
+
+.n4::-webkit-scrollbar{
+    background: transparent;
+    width: 15px;
+}
+
+.n4::-webkit-scrollbar-track{
+    border:  3px transparent solid;  
+    border-radius: 1000px;
+
+}
+
+.n4::-webkit-scrollbar-thumb{
+    border-radius: 100px;
+    border:  2px transparent solid;
+    box-shadow: inset 0 0 0px 100px pink;
+}
+
+.n4::-webkit-scrollbar-button{
+    height: 15px;
+    border-radius: 100px;
+    border: 2px transparent solid;
+    box-shadow: inset 0 0 0px 100px pink;
+
+} 
