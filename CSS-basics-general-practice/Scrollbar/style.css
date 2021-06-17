@@ -19,7 +19,7 @@ body{
     justify-content: space-evenly;
     align-items: center;
 
-    background: url(./curve.svg);
+    background: url(https://raw.githubusercontent.com/ben-gabriel/General-Practice/c43b648185e41faf0282df5344c80c601a3ad573/CSS-basics-general-practice/Scrollbar/curve.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
