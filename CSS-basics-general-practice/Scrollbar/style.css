@@ -52,8 +52,12 @@
     background: transparent;
     border-radius: 100px;
     border:  2px transparent solid;
-    box-shadow: inset 0 0 0px 100px gray;
+    box-shadow: inset 0 0 0px 100px hsl(0, 0%, 50%);
 }
+
+.n1::-webkit-scrollbar-thumb:hover{
+    box-shadow: inset 0 0 0px 100px hsl(0,0%, 65%);
+} 
 
 .n1::-webkit-scrollbar-button{
     display: none;
@@ -88,6 +92,11 @@
     box-shadow: inset 0 0 0px 100px rgba(1, 47, 255, 0.25);
 }
 
+.n2::-webkit-scrollbar-thumb:hover{
+    box-shadow: inset 0 0 0px 100px rgb(68, 96, 221);
+}
+
+
 .n2::-webkit-scrollbar-button{
     background: transparent;
 } 
@@ -116,8 +125,12 @@
 
 .n3::-webkit-scrollbar-thumb{
     border:  3px transparent solid;
-    box-shadow: inset 0 0 0px 100px rgb(0, 0, 0, .35);
+    box-shadow: inset 0 0 0px 100px hsla(0, 0%, 0%, 0.35);
 }
+
+.n3::-webkit-scrollbar-thumb:hover{
+    box-shadow: inset 0 0 0px 100px hsl(14, 66%, 55%);
+} 
 
 .n3::-webkit-scrollbar-button{
     background: transparent;
@@ -156,4 +169,10 @@
     border: 2px transparent solid;
     box-shadow: inset 0 0 0px 100px pink;
 
+} 
+.n4::-webkit-scrollbar-button:hover{
+    box-shadow: inset 0 0 0px 100px rgb(248, 205, 212);
+} 
+.n4::-webkit-scrollbar-thumb:hover{
+    box-shadow: inset 0 0 0px 100px rgb(248, 205, 212);
 } 
