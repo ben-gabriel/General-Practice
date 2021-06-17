@@ -20,6 +20,17 @@
 
     overflow-y: auto;
     overflow-x: hidden;
+
+    border-radius: 2px;
+
+    transition: all 0.25s;
+}
+.section:hover{
+    border-radius: 0px;
+    transform: scale(1.2);
+    box-shadow:  0px 0px 0px 0px hsl(0, 0%, 0%);
+}.section:hover .overflow{
+    box-shadow: inset 0px 0px 5px 0px hsl(0, 0%, 0%, 15%);
 }
 
 .overflow{
