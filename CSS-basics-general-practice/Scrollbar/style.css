@@ -4,13 +4,16 @@
     box-sizing: border-box;
 }
 
-/* --- General Style --- */
+/*----------------------------------------------*/
+/* --- Background Style --- */
 body{
     background: linear-gradient(
         208deg,
         hsl(280deg 100% 50% / 54%),
         hsl(28deg 100% 50% / 33%)
     );
+
+    overflow: hidden;
 }
 
 .container{
@@ -21,12 +24,37 @@ body{
 
     background: url(https://raw.githubusercontent.com/ben-gabriel/General-Practice/c43b648185e41faf0282df5344c80c601a3ad573/CSS-basics-general-practice/Scrollbar/curve.svg);
     background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100%;
+    background-position: bottom;
+    background-size: 110%;
+    animation: cloud 150s infinite alternate;
+
 }
 
+.container::before{
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: url(https://raw.githubusercontent.com/ben-gabriel/General-Practice/c43b648185e41faf0282df5344c80c601a3ad573/CSS-basics-general-practice/Scrollbar/curve.svg);
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: 200%;
 
+    opacity: 50%;
+    animation: cloud 400s infinite alternate;
+}
 
+@keyframes cloud{
+    from{
+        background-position: bottom left;
+    }
+    to{
+        background-position: bottom right;
+    }
+}
+
+/*----------------------------------------------*/
+/* --- General Item Style --- */
 .section{
     position: relative;
     height: 60vh;
@@ -41,11 +69,13 @@ body{
 
     transition: all 0.25s;
 }
+
 .section:hover{
     border-radius: 0px;
     transform: scale(1.2);
     box-shadow:  0px 0px 0px 0px hsl(0, 0%, 0%);
 }
+
 .section:hover .overflow{
     box-shadow: inset 0px 0px 5px 0px hsl(0, 0%, 0%, 15%);
 }
@@ -56,8 +86,6 @@ body{
     flex-direction: column;
     align-items: center;
 }
-
-
 
 img{
     width: 15vw;
@@ -71,6 +99,7 @@ img{
     box-shadow: -1px 2px 0.5em hsla(212, 87%, 18%, 0.25);
 }
 
+/*----------------------------------------------*/
 /* --- Item 1 ---*/
 .n1{
     background:
