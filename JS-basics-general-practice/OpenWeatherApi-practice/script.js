@@ -1,30 +1,31 @@
-console.log('script: Starting');
+console.log('-- script: Starting');
 
-function logs(message){
-    let fName = logs.caller.name;
-    console.log(`-+ ${fName}(): ${message}`);
+function fLog(message, arg1 = ''){
+    // arguments.callee.caller.name is deprecated, use with caution
+    let fName = fLog.caller.name;
+    console.log(`-+ ${fName}(): ${message}`, arg1);
+    console.log('');
 }
-
-function getFuncName() {
-    return getFuncName.caller.name
-}
-
 
 async function exceedCalls(cityName){
-    // console.log('exceedCalls: Starting');
-    logs('test');
-
-    // exceedCalls('london');
-
-    console.log(this);
+    fLog('Starting');
 
     try{
-//        let fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=cb8c7a9fae36fb84f17d0b6074bf16b2`)
-        //console.log('exceedCalls: fetcher = ', fetcher);
-
-        if(fetcher.ok === true){
+        for (let index = 0; index < 100; index++) {
+            let fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=cb8c7a9fae36fb84f17d0b6074bf16b2`);
             
+            fLog('fetcher = ', fetcher);
+            
+            if(fetcher.ok === true){
+                fLog('fetcher ok status = true');
+            }
+            else{
+                fLog('fetcher ok status = false');
+            }
+            
+            fLog('for() index =', index);
         }
+        
 
     }
     catch{
@@ -32,5 +33,5 @@ async function exceedCalls(cityName){
     }
 }
 
-// logs('test');
 exceedCalls('london');
+
