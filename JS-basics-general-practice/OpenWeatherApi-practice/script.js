@@ -39,13 +39,42 @@ async function exceedCalls(cityName, amount){
 // By: city name, city ID, ZIP code, geographic coordinates
 const weather={
 
+    html:{
+        name: document.getElementById('name'),
+        country: document.getElementById('country'),
+        main: document.getElementById('main'),
+        description: document.getElementById('description'),
+        visibility: document.getElementById('visibility'),
+        temp: document.getElementById('temp'),
+        feels_like: document.getElementById('feels_like'),
+        humidity: document.getElementById('humidity'),
+        lat: document.getElementById('lat'),
+        lon: document.getElementById('lon')
+    },
+
+    data:{
+
+    },
+
     currentWeather: async function (input, country = '', type){
         fLog('Starting');
         
         try {
             
             let fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${input},${country}&appid=cb8c7a9fae36fb84f17d0b6074bf16b2`);
-            const currentJson = await fetcher.json();
+            
+            if(fetcher.ok === true){
+                const currentJson = await fetcher.json();
+                fLog('Fetch done, Json created.');
+
+
+
+
+            }
+            else{
+                // to do: catch errors
+            }
+
 
         } catch (error) {
             fLog('Error found = ', error);
@@ -54,6 +83,8 @@ const weather={
         fLog('Ending');
     }
 
+
+    
 }
 
 
@@ -62,4 +93,5 @@ const weather={
 // https://openweathermap.org/api/geocoding-api
 
 /* Main */
+
 //exceedCalls('banfield',1);
