@@ -49,7 +49,8 @@ const weather={
         feels_like: document.getElementById('feels_like'),
         humidity: document.getElementById('humidity'),
         lat: document.getElementById('lat'),
-        lon: document.getElementById('lon')
+        lon: document.getElementById('lon'),
+        icon: document.getElementById('icon')
     },
 
     data:{
@@ -64,11 +65,26 @@ const weather={
             let fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${input},${country}&appid=cb8c7a9fae36fb84f17d0b6074bf16b2`);
             
             if(fetcher.ok === true){
-                const currentJson = await fetcher.json();
+                const weatherJson = await fetcher.json();
                 fLog('Fetch done, Json created.');
 
+                // shorthand
+                let tag = this.html;
 
-
+                // Display info
+                tag.name.innerText = weatherJson.name;
+                tag.country.innerText = weatherJson.sys.country;
+                tag.main.innerText = weatherJson.weather[0].main;
+                tag.description.innerText = weatherJson.weather[0].description;
+                tag.visibility.innerText = weatherJson.visibility;
+                tag.temp.innerText = weatherJson.main.temp;
+                tag.feels_like.innerText = weatherJson.main.feels_like;
+                tag.humidity.innerText = weatherJson.main.humidity;
+                tag.lat.innerText = weatherJson.coord.lat;
+                tag.lon.innerText = weatherJson.coord.lon;
+                
+                let iconId = weatherJson.weather[0].icon;
+                tag.icon.src =`http://openweathermap.org/img/wn/${iconId}@2x.png`;
 
             }
             else{
@@ -94,4 +110,6 @@ const weather={
 
 /* Main */
 
-//exceedCalls('banfield',1);
+exceedCalls('banfield',1);
+
+weather.currentWeather('banfield');
