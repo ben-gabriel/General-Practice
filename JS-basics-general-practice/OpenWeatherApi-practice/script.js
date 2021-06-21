@@ -108,6 +108,11 @@ const weather={
     
 }
 
+function submitUserInput(userInput){
+    weather.currentWeather(userInput.value);
+    userInput.value = '';
+    userInput.focus();
+}
 
 // http://openweathermap.org/img/wn/10d@2x.png
 
@@ -119,11 +124,17 @@ const weather={
 
 // weather.currentWeather('lanús', 'ar');
 
-const userInput = document.getElementById('userInput');
+const userInputField = document.getElementById('userInputField');
 const userInputBtn = document.getElementById('userInputBtn');
 
+
+
 userInputBtn.addEventListener('click', ()=>{
-    weather.currentWeather(userInput.value);
-    userInput.value = '';
-    userInput.focus;
+    submitUserInput(userInputField);
+});
+
+userInputField.addEventListener('keydown', (e)=>{
+    if(e.key == 'Enter'){
+        submitUserInput(userInputField);
+    }
 });
