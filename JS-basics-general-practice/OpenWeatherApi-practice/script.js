@@ -68,23 +68,9 @@ const weather={
                 const weatherJson = await fetcher.json();
                 fLog('Fetch done, Json created.');
 
-                // shorthand
-                let tag = this.html;
-
                 // Display info
-                tag.name.innerText = weatherJson.name;
-                tag.country.innerText = weatherJson.sys.country;
-                tag.main.innerText = weatherJson.weather[0].main;
-                tag.description.innerText = weatherJson.weather[0].description;
-                tag.visibility.innerText = weatherJson.visibility;
-                tag.temp.innerText = weatherJson.main.temp;
-                tag.feels_like.innerText = weatherJson.main.feels_like;
-                tag.humidity.innerText = weatherJson.main.humidity;
-                tag.lat.innerText = weatherJson.coord.lat;
-                tag.lon.innerText = weatherJson.coord.lon;
-                
-                let iconId = weatherJson.weather[0].icon;
-                tag.icon.src =`http://openweathermap.org/img/wn/${iconId}@2x.png`;
+                this.showInfo(weatherJson);
+
 
             }
             else{
@@ -97,9 +83,28 @@ const weather={
         }
 
         fLog('Ending');
+    },
+
+    showInfo: function(weatherJson){
+        // shorthand
+        let tag = this.html;
+
+        tag.name.innerText = weatherJson.name;
+        tag.country.innerText = weatherJson.sys.country;
+        tag.main.innerText = weatherJson.weather[0].main;
+        tag.description.innerText = weatherJson.weather[0].description;
+        tag.visibility.innerText = weatherJson.visibility;
+        tag.temp.innerText = weatherJson.main.temp;
+        tag.feels_like.innerText = weatherJson.main.feels_like;
+        tag.humidity.innerText = weatherJson.main.humidity;
+        tag.lat.innerText = weatherJson.coord.lat;
+        tag.lon.innerText = weatherJson.coord.lon;
+        
+        let iconId = weatherJson.weather[0].icon;
+        tag.icon.src =`http://openweathermap.org/img/wn/${iconId}@2x.png`;
+        
+        fLog('Info displayed');
     }
-
-
     
 }
 
@@ -110,6 +115,15 @@ const weather={
 
 /* Main */
 
-exceedCalls('banfield',1);
+// exceedCalls('banfield',1);
 
-weather.currentWeather('banfield');
+// weather.currentWeather('lanús', 'ar');
+
+const userInput = document.getElementById('userInput');
+const userInputBtn = document.getElementById('userInputBtn');
+
+userInputBtn.addEventListener('click', ()=>{
+    weather.currentWeather(userInput.value);
+    userInput.value = '';
+    userInput.focus;
+});
