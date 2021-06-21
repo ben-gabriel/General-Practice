@@ -53,10 +53,6 @@ const weather={
         icon: document.getElementById('icon')
     },
 
-    data:{
-
-    },
-
     currentWeather: async function (input, country = '', type){
         fLog('Starting');
         
@@ -103,11 +99,33 @@ const weather={
         let iconId = weatherJson.weather[0].icon;
         tag.icon.src =`http://openweathermap.org/img/wn/${iconId}@2x.png`;
         
+        country.showFlag(tag.country.innerText);
+        
         fLog('Info displayed');
     }
     
 }
 
+// https://restcountries.eu/rest/v2/alpha/co
+const country={
+
+    html:{
+        flag: document.getElementById('flag')
+    },
+
+    showFlag: async function(code, element){
+        let fetcher = await fetch(`https://restcountries.eu/rest/v2/alpha/${code}?fields=flag`);
+        let flagJson = await fetcher.json();
+
+        this.html.flag.src = flagJson.flag;
+
+        // element.src = flagJson.flag;
+    }
+
+}
+
+
+// User Input
 function submitUserInput(userInput){
     weather.currentWeather(userInput.value);
     userInput.value = '';
@@ -120,7 +138,7 @@ function submitUserInput(userInput){
 
 /* Main */
 
-// exceedCalls('banfield',1);
+exceedCalls('banfield',1);
 
 // weather.currentWeather('lanús', 'ar');
 
