@@ -95,7 +95,8 @@ const weather={
         tag.lon.innerText = weatherJson.coord.lon;
         
         let iconId = weatherJson.weather[0].icon;
-        tag.icon.src =`http://openweathermap.org/img/wn/${iconId}@2x.png`;
+        tag.icon.src =`http://openweathermap.org/img/wn/${iconId}@4x.png`;
+        tag.icon.style.visibility = 'visible';
         
         country.showInfo(weatherJson.sys.country);
         
@@ -112,24 +113,19 @@ const country={
         country: document.getElementById('country'),
     },
 
-    showFlag: async function(code){
-        let fetcher = await fetch(`https://restcountries.eu/rest/v2/alpha/${code}?fields=flag`);
-        let flagJson = await fetcher.json();
-
-        this.html.flag.src = flagJson.flag;
-    },
-
     showInfo: async function(code){
 
-        let fetcher = await fetch(`https://restcountries.eu/rest/v2/alpha/${code}`);
+        // let fetcher = await fetch(`https://restcountries.eu/rest/v2/alpha/${code}`);
+        // let countryJson = await fetcher.json();
+        // fLog('countryjson = ', countryJson);
+
+        let fetcher = await fetch(`https://restcountries.eu/rest/v2/alpha/${code}?fields=flag;name`);
         let countryJson = await fetcher.json();
-        fLog('countryjson = ', countryJson);
 
-        fetcher = await fetch(`https://restcountries.eu/rest/v2/alpha/${code}?fields=flag;name`);
-        countryJson = await fetcher.json();
-
-        this.html.flag.src = countryJson.flag;
         this.html.country.innerText = countryJson.name;
+        this.html.flag.src = countryJson.flag;
+        this.html.flag.style.visibility = 'visible';
+        
     }
 
 }
