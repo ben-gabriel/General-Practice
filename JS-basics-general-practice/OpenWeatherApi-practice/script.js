@@ -132,18 +132,29 @@ const geoLocation={
         
     },
 
+    
+    delaySatus: false,
+    delayStart: function(ms){
+        this.delaySatus = true;
+        fLog(`Delaying for ${ms} ms`);
+        
+        setTimeout(()=>{
+            this.delaySatus = false;
+            fLog('End of delay');
+        },ms);
+    },
+    
+    
     // https://openweathermap.org/api/geocoding-api
-    
-    delaySuggestion: false,
-    
     getSuggestion: async function(input){
 
         if(isNaN(input)){
             // pokemonName = input.toLowerCase();
             let fetcher = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=10&appid=${apiKey}`);
-            if(fetcher.ok === true){
 
+            if(fetcher.ok === true){
                 fLog('.Ok = true');
+                this.delayStart(500);
             }
             else{
                 fLog('.OK = false');
