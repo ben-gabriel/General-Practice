@@ -54,12 +54,18 @@ const weather={
         icon: document.getElementById('icon')
     },
 
-    getCurrent: async function (input, country = '', type){
+    getCurrent: async function (input, lat='', lon='', inputType='byName'){
         fLog('Starting');
         
         try {
-            
-            let fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${input},${country}&appid=${apiKey}`);
+
+            let fetcher;
+            if(inputType === 'byName'){
+                fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${input},${country}&appid=${apiKey}`);
+            }
+            else if(inputType === 'byCoord'){
+                fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`);
+            }
             
             if(fetcher.ok === true){
                 const weatherJson = await fetcher.json();
@@ -141,11 +147,16 @@ const geoLocation={
             let fetcher = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=10&appid=${apiKey}`);
             
             let suggestionsJson = await fetcher.json();
-            
-            
+             
             if( (typeof suggestionsJson[0]) !== 'undefined'){
+                
                 fLog('TRUE suggestionsJson = ', suggestionsJson); 
-                this.showSuggestions(suggestionsJson[0]);               
+                this.clearSuggestions();
+                
+                suggestionsJson.forEach(element => {
+                    this.showSuggestion(element);      
+                });
+
             }
             else{
                 fLog('FALSE suggestionsJson = ', suggestionsJson);                
@@ -159,8 +170,7 @@ const geoLocation={
 
     },
 
-    showSuggestions: async function(suggestion){
-        this.clearSuggestions();
+    showSuggestion: async function(suggestion){
         fLog('starting');
 
         let fetcher = await fetch(`https://restcountries.eu/rest/v2/alpha/${suggestion.country}?fields=flag;name`);
@@ -170,12 +180,17 @@ const geoLocation={
 
         let suggestionsUl = this.html.suggestions;
         let newListItem = document.createElement('li');
-        
-        fLog('flagJson = ', flagJson);
-
         newListItem.id = suggestion.name;
+        newListItem.addEventListener('click', ()=>{
+            weather.getCurrent('',suggestion.lat,suggestion.lon, 'byCoord');
+            // change to coordinates
+        });
 
-        newListItem.innerText = suggestion.name + ' ';
+        if(suggestion.country === 'US'){
+            newListItem.innerText = `${suggestion.name}, ${suggestion.state} ${suggestion.lat},${suggestion.lon}`;
+        }else{
+            newListItem.innerText = `${suggestion.name}, ${suggestion.country} ${suggestion.lat}, ${suggestion.lon}`;
+        }
         
         newListItem.insertBefore(newImg, newListItem.firstChild);
         suggestionsUl.insertBefore(newListItem, suggestionsUl.firstChild);
@@ -186,6 +201,9 @@ const geoLocation={
         // check if suggestion is inside string 
         // whit string.includes(searchvalue, start)
         //and delete if not
+
+        this.html.suggestions.innerHTML = '';
+
     }
 
 }
@@ -238,7 +256,7 @@ userInputField.addEventListener('focusin', ()=>{
             console.log('Interval in effect');
         }
 
-    }, 1000);
+    }, 500);
 
 });
 
