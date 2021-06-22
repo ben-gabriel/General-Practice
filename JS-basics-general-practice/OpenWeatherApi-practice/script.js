@@ -114,6 +114,7 @@ const geoLocation={
     html:{
         flag: document.getElementById('flag'),
         country: document.getElementById('country'),
+        suggestions: document.getElementById('suggestions')
     },
 
     // https://restcountries.eu/rest/v2/alpha/ country code
@@ -143,7 +144,8 @@ const geoLocation={
             
             
             if( (typeof suggestionsJson[0]) !== 'undefined'){
-                fLog('TRUE suggestionsJson = ', suggestionsJson);                
+                fLog('TRUE suggestionsJson = ', suggestionsJson); 
+                this.showSuggestions(suggestionsJson[0]);               
             }
             else{
                 fLog('FALSE suggestionsJson = ', suggestionsJson);                
@@ -157,17 +159,34 @@ const geoLocation={
 
     },
 
-    showSuggestions: function(){
+    showSuggestions: async function(suggestion){
+        this.clearSuggestions();
+        fLog('starting');
 
-        if(this.delaySatus === false){
+        let fetcher = await fetch(`https://restcountries.eu/rest/v2/alpha/${suggestion.country}?fields=flag;name`);
+        let flagJson = await fetcher.json();
+        let newImg = document.createElement('img');
+        newImg.src = flagJson.flag;
 
-        }
-        else{
-            
-        }
+        let suggestionsUl = this.html.suggestions;
+        let newListItem = document.createElement('li');
+        
+        fLog('flagJson = ', flagJson);
 
+        newListItem.id = suggestion.name;
+
+        newListItem.innerText = suggestion.name + ' ';
+        
+        newListItem.insertBefore(newImg, newListItem.firstChild);
+        suggestionsUl.insertBefore(newListItem, suggestionsUl.firstChild);
+
+    },
+
+    clearSuggestions: function(){
+        // check if suggestion is inside string 
+        // whit string.includes(searchvalue, start)
+        //and delete if not
     }
-
 
 }
 
@@ -219,7 +238,7 @@ userInputField.addEventListener('focusin', ()=>{
             console.log('Interval in effect');
         }
 
-    }, delay);
+    }, 1000);
 
 });
 
