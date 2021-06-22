@@ -134,7 +134,7 @@ const geoLocation={
 
     
     delaySatus: false,
-    delayStart: function(ms){
+    startDelay: function(ms){
         this.delaySatus = true;
         fLog(`Delaying for ${ms} ms`);
         
@@ -151,14 +151,18 @@ const geoLocation={
         if(isNaN(input)){
             // pokemonName = input.toLowerCase();
             let fetcher = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=10&appid=${apiKey}`);
-
-            if(fetcher.ok === true){
-                fLog('.Ok = true');
-                this.delayStart(500);
+            
+            let suggestionJson = await fetcher.json();
+            
+            
+            if( (typeof suggestionJson[0]) !== 'undefined'){
+                fLog('TRUE suggestionJson = ', suggestionJson);                
             }
             else{
-                fLog('.OK = false');
+                fLog('FALSE suggestionJson = ', suggestionJson);                
             }
+
+            this.startDelay(1000);
             
         }else{
             // search by coordinates
@@ -209,12 +213,11 @@ userInputField.addEventListener('keyup', ()=>{
     
     if(userInputField.value.length > 3){
         
-        if(geoLocation.delaySuggestion === false){
+        if(geoLocation.delaySatus === false){
             geoLocation.getSuggestion(userInputField.value);
-            geoLocation.delaySuggestion = true;
         }
         else{
-            
+            console.log('Delay in effect');
         }
 
     }
