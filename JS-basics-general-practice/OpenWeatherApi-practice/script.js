@@ -1,5 +1,7 @@
 console.log('-- script: Starting');
 
+const apiKey = 'cb8c7a9fae36fb84f17d0b6074bf16b2';
+
 function fLog(message, arg1 = ''){
     // arguments.callee.caller.name is deprecated, use with caution
     let fName = fLog.caller.name;
@@ -13,7 +15,7 @@ async function exceedCalls(cityName, amount){
     try{
         for (let index = 0; index < amount; index++) {
            
-            const fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=cb8c7a9fae36fb84f17d0b6074bf16b2`);
+            const fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`);
             const weatherJson = await fetcher.json();
 
             fLog('weatherJson = ', weatherJson);
@@ -52,12 +54,12 @@ const weather={
         icon: document.getElementById('icon')
     },
 
-    currentWeather: async function (input, country = '', type){
+    getCurrent: async function (input, country = '', type){
         fLog('Starting');
         
         try {
             
-            let fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${input},${country}&appid=cb8c7a9fae36fb84f17d0b6074bf16b2`);
+            let fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${input},${country}&appid=${apiKey}`);
             
             if(fetcher.ok === true){
                 const weatherJson = await fetcher.json();
@@ -80,6 +82,7 @@ const weather={
         fLog('Ending');
     },
 
+
     showInfo: function(weatherJson){
         // shorthand
         let tag = this.html;
@@ -98,21 +101,22 @@ const weather={
         tag.icon.src =`http://openweathermap.org/img/wn/${iconId}@4x.png`;
         tag.icon.style.visibility = 'visible';
         
-        country.showInfo(weatherJson.sys.country);
+        geoLocation.showInfo(weatherJson.sys.country);
         
         fLog('Info displayed');
     }
     
 }
 
-// https://restcountries.eu/rest/v2/alpha/co
-const country={
+
+const geoLocation={
 
     html:{
         flag: document.getElementById('flag'),
         country: document.getElementById('country'),
     },
 
+    // https://restcountries.eu/rest/v2/alpha/ country code
     showInfo: async function(code){
 
         // let fetcher = await fetch(`https://restcountries.eu/rest/v2/alpha/${code}`);
@@ -126,25 +130,51 @@ const country={
         this.html.flag.src = countryJson.flag;
         this.html.flag.style.visibility = 'visible';
         
+    },
+
+    // https://openweathermap.org/api/geocoding-api
+    
+    delaySuggestion: false,
+    
+    getSuggestion: async function(input){
+
+        if(isNaN(input)){
+            // pokemonName = input.toLowerCase();
+            let fetcher = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=10&appid=${apiKey}`);
+            if(fetcher.ok === true){
+
+                fLog('.Ok = true');
+            }
+            else{
+                fLog('.OK = false');
+            }
+            
+        }else{
+            // search by coordinates
+            let fetcher = await fetch()
+
+        }
+
     }
+
+
 
 }
 
 
 // User Input
 function submitUserInput(userInput){
-    weather.currentWeather(userInput.value);
+    weather.getCurrent(userInput.value);
     userInput.value = '';
     userInput.focus();
 }
 
 // http://openweathermap.org/img/wn/10d@2x.png
 
-// https://openweathermap.org/api/geocoding-api
 
 /* Main */
 
-exceedCalls('banfield',1);
+// exceedCalls('banfield',1);
 
 // weather.currentWeather('lanús', 'ar');
 
@@ -161,4 +191,21 @@ userInputField.addEventListener('keydown', (e)=>{
     if(e.key == 'Enter'){
         submitUserInput(userInputField);
     }
+});
+
+userInputField.addEventListener('keyup', ()=>{
+
+    
+    if(userInputField.value.length > 3){
+        
+        if(geoLocation.delaySuggestion === false){
+            geoLocation.getSuggestion(userInputField.value);
+            geoLocation.delaySuggestion = true;
+        }
+        else{
+            
+        }
+
+    }
+
 });
