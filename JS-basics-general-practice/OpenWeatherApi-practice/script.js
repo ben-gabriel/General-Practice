@@ -130,48 +130,43 @@ const geoLocation={
         this.html.flag.src = countryJson.flag;
         this.html.flag.style.visibility = 'visible';
         
-    },
-
-    
-    delaySatus: false,
-    startDelay: function(ms){
-        this.delaySatus = true;
-        fLog(`Delaying for ${ms} ms`);
-        
-        setTimeout(()=>{
-            this.delaySatus = false;
-            fLog('End of delay');
-        },ms);
-    },
-    
+    },  
     
     // https://openweathermap.org/api/geocoding-api
-    getSuggestion: async function(input){
+    getSuggestions: async function(input){
 
         if(isNaN(input)){
             // pokemonName = input.toLowerCase();
             let fetcher = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=10&appid=${apiKey}`);
             
-            let suggestionJson = await fetcher.json();
+            let suggestionsJson = await fetcher.json();
             
             
-            if( (typeof suggestionJson[0]) !== 'undefined'){
-                fLog('TRUE suggestionJson = ', suggestionJson);                
+            if( (typeof suggestionsJson[0]) !== 'undefined'){
+                fLog('TRUE suggestionsJson = ', suggestionsJson);                
             }
             else{
-                fLog('FALSE suggestionJson = ', suggestionJson);                
+                fLog('FALSE suggestionsJson = ', suggestionsJson);                
             }
-
-            this.startDelay(1000);
             
         }else{
             // search by coordinates
-            let fetcher = await fetch()
+          //  let fetcher = await fetch()
 
         }
 
-    }
+    },
 
+    showSuggestions: function(){
+
+        if(this.delaySatus === false){
+
+        }
+        else{
+            
+        }
+
+    }
 
 
 }
@@ -208,18 +203,28 @@ userInputField.addEventListener('keydown', (e)=>{
     }
 });
 
-userInputField.addEventListener('keyup', ()=>{
 
-    
-    if(userInputField.value.length > 3){
-        
-        if(geoLocation.delaySatus === false){
-            geoLocation.getSuggestion(userInputField.value);
+
+let lastInput = '';
+let suggestionInterval;
+
+userInputField.addEventListener('focusin', ()=>{
+
+    suggestionInterval = setInterval(()=>{
+        if(userInputField.value !== '' && userInputField.value !== lastInput){
+            lastInput = userInputField.value;
+            geoLocation.getSuggestions(userInputField.value);
         }
         else{
-            console.log('Delay in effect');
+            console.log('Interval in effect');
         }
 
-    }
+    }, delay);
 
+});
+
+userInputField.addEventListener('focusout', ()=>{
+    clearInterval(suggestionInterval);
+    
+    console.log('Interval Ended');
 });
