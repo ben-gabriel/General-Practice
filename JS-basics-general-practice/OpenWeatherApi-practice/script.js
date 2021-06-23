@@ -3,6 +3,8 @@ console.log('-- script: Starting');
 const apiKey = 'cb8c7a9fae36fb84f17d0b6074bf16b2';
 let units = 'metric';
 let unitLetter = '°C';
+let lastLon = 0;
+let lastLat = 0;
 
 // Function to console.log specifying the parent function name.
 function fLog(message, arg1 = ''){
@@ -53,7 +55,8 @@ const weather={
                     weather.getForecast(weatherJson.coord.lat, weatherJson.coord.lon);
                 }
 
-
+                lastLat = weatherJson.coord.lat;
+                lastLon = weatherJson.coord.lon;
             }
             else{
                 // to do: catch errors
@@ -265,7 +268,6 @@ const geoLocation={
 function submitUserInput(userInput){
     weather.getCurrent(userInput.value);
     userInput.value = '';
-    userInput.focus();
 }
 
 
@@ -328,6 +330,10 @@ unitsBtn.addEventListener('click', ()=>{
     }else{
         units = 'metric'
         unitLetter= '°C';
+    }
+
+    if((lastLat !== 0) && (lastLon !== 0)){
+        weather.getCurrent('',lastLat,lastLon,'byCoord');
     }
 
 });
