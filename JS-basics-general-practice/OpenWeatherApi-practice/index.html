@@ -10,55 +10,46 @@
     <script src="./script.js" defer></script>
     <title>OpenWeatherApi Practice</title>
 </head>
-    
-    <input id="userInputField" type="text">
-    <button id='userInputBtn' type="button">Submit</button>
-    <ul id="suggestions"></ul>
 
-    <br>
-    <br>
-    
-    <p > City Name:     <span id="name"> </span></p>
-    <p > Country:       <span id="country"></span></p>
-    <img src="" alt="Country Flag" id="flag">
-    
-    <br>
-    <br>
-
-    <section id="weatherForecast">
-    <!-- 
-        <div class="daily">
-
-            <p>Weather: </p>
-            <img src="" alt="Weather Icon">
-            <p>Description: </p>
-
-            <p>Precipitation: </p>
-            <p>Humidity: </p>
-            <p>Cloudiness: </p>
-            <p>Min: </p>
-            <p>Max: </p>
-
-        </div> 
-    -->
+    <section class="inputSection">        
+        <input id="userInputField" type="text">
+        <button id='userInputBtn' type="button">Submit</button>
+        
+        <input type="radio" id="metric" value="metric" name='units'>
+        <input type="radio" id="imperial" value="imperial" name='units'>
+        
+        <ul id="suggestions"></ul>
     </section>
 
+    <br>
+    <br>
+
+    <section class="currentCountryInfo">
+        <img src="" alt="Country Flag" id="flag">
+        <p > City Name:     <span id="name"> </span></p>
+        <p > Country:       <span id="country"></span></p>
+        <p > Latitude:      <span id="lat"> </span></p>
+        <p > Longitud:      <span id="lon"> </span></p>
+    </section>
+    
     <br>
     <br>
     
     <section id="weatherCurrent">
-        <p > Weather:       <span id="main"> </span></p>
         <img src="" alt="Weather Icon" id="icon">
+        <p > Weather:       <span id="main"> </span></p>
         <p > Description:   <span id="description"> </span></p>
         <p > Visibility:    <span id="visibility"> </span></p>
-    
         <p > Temperature:   <span id="temp"> </span></p>
         <p > Feels Like:    <span id="feels_like"> </span></p>
-        <p > Humidity:      <span id="humidity"> </span></p>
-    
-        <p > Latitude:      <span id="lat"> </span></p>
-        <p > Longitud:      <span id="lon"> </span></p>
+        <p > Humidity:      <span id="humidity"> </span></p>    
     </section>
+
+    <br>
+    <br>
+
+    <section id="weatherForecast"></section>
+
     
 </body>
 </html>
