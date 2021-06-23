@@ -65,6 +65,29 @@ const weather={
         fLog('Ending');
     },
 
+    showCurrent: function(weatherJson){
+        // shorthand
+        let tag = this.html;
+
+        tag.name.innerText = weatherJson.name;
+        tag.main.innerText = weatherJson.weather[0].main;
+        tag.description.innerText = weatherJson.weather[0].description;
+        tag.visibility.innerText = weatherJson.visibility;
+        tag.temp.innerText = weatherJson.main.temp;
+        tag.feels_like.innerText = weatherJson.main.feels_like;
+        tag.humidity.innerText = weatherJson.main.humidity;
+        tag.lat.innerText = weatherJson.coord.lat;
+        tag.lon.innerText = weatherJson.coord.lon;
+        
+        let iconId = weatherJson.weather[0].icon;
+        tag.icon.src =`http://openweathermap.org/img/wn/${iconId}@4x.png`;
+        tag.icon.style.visibility = 'visible';
+        
+        geoLocation.showInfo(weatherJson.sys.country);
+        
+        fLog('Info displayed');
+    },
+
     //https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
     getForecast: async function( lat, lon){
 
@@ -79,6 +102,7 @@ const weather={
                 fLog('Fetch done, Json created.');
                 fLog('forecastJson = ', forecastJson);
 
+                this.clearforecast();
                 for (let index = 0; index < forecastJson.daily.length; index++) {
                     this.showForecast(forecastJson.daily[index], index);      
                 }
@@ -99,6 +123,7 @@ const weather={
     showForecast: function(nDayForecast, nDay){
 
         let section = document.getElementById('weatherForecast');
+        
         let newDiv = document.createElement('div');
 
         let day;
@@ -131,47 +156,10 @@ const weather={
         section.appendChild(newDiv);
 
     },
-    
-    /*
-    <div class="daily">
-    
-        <p>+ hs </p>
 
-        <p>Weather: </p>
-        <img src="" alt="Weather Icon">
-        <p>Description: </p>
-
-        <p>Precipitation: </p>
-        <p>Humidity: </p>
-        <p>Cloudiness: </p>
-        <p>Min: </p>
-        <p>Max: </p>
-
-    </div> 
-    */
-
-
-    showCurrent: function(weatherJson){
-        // shorthand
-        let tag = this.html;
-
-        tag.name.innerText = weatherJson.name;
-        tag.main.innerText = weatherJson.weather[0].main;
-        tag.description.innerText = weatherJson.weather[0].description;
-        tag.visibility.innerText = weatherJson.visibility;
-        tag.temp.innerText = weatherJson.main.temp;
-        tag.feels_like.innerText = weatherJson.main.feels_like;
-        tag.humidity.innerText = weatherJson.main.humidity;
-        tag.lat.innerText = weatherJson.coord.lat;
-        tag.lon.innerText = weatherJson.coord.lon;
-        
-        let iconId = weatherJson.weather[0].icon;
-        tag.icon.src =`http://openweathermap.org/img/wn/${iconId}@4x.png`;
-        tag.icon.style.visibility = 'visible';
-        
-        geoLocation.showInfo(weatherJson.sys.country);
-        
-        fLog('Info displayed');
+    clearforecast: function(){
+        let section = document.getElementById('weatherForecast');
+        section.innerHTML = '';
     }
     
 }
