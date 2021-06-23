@@ -35,7 +35,7 @@ const weather={
 
             let fetcher;
             if(inputType === 'byName'){
-                fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${input},${country}&appid=${apiKey}`);
+                fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}`);
             }
             else if(inputType === 'byCoord'){
                 fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`);
@@ -46,7 +46,7 @@ const weather={
                 fLog('Fetch done, Json created.');
 
                 // Display info
-                this.showInfo(weatherJson);
+                this.showCurrent(weatherJson);
 
 
             }
@@ -62,8 +62,60 @@ const weather={
         fLog('Ending');
     },
 
+    //https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+    getForecast: async function( lat, lon){
 
-    showInfo: function(weatherJson){
+        fLog('Starting');
+        
+        try {
+
+            let fetcher = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude='current,minutely,hourly,alerts'&appid=${apiKey}`);
+            
+            if(fetcher.ok === true){
+                const forecastJson = await fetcher.json();
+                fLog('Fetch done, Json created.');
+                fLog('forecastJson = ', forecastJson);
+
+            }
+            else{
+                // to do: catch errors
+            }
+
+
+        } catch (error) {
+            fLog('Error found = ', error);
+        }
+
+        fLog('Ending');
+    },
+
+    showForecast: function(nDayForecast){
+        let section = document.getElementById('weatherForecast');
+
+        section.appendChild
+
+    },
+    
+    /*
+    <div class="daily">
+    
+        <p>+ hs </p>
+
+        <p>Weather: </p>
+        <img src="" alt="Weather Icon">
+        <p>Description: </p>
+
+        <p>Precipitation: </p>
+        <p>Humidity: </p>
+        <p>Cloudiness: </p>
+        <p>Min: </p>
+        <p>Max: </p>
+
+    </div> 
+    */
+
+
+    showCurrent: function(weatherJson){
         // shorthand
         let tag = this.html;
 
@@ -81,7 +133,7 @@ const weather={
         tag.icon.src =`http://openweathermap.org/img/wn/${iconId}@4x.png`;
         tag.icon.style.visibility = 'visible';
         
-        geoLocation.showInfo(weatherJson.sys.country);
+        geoLocation.showCurrent(weatherJson.sys.country);
         
         fLog('Info displayed');
     }
@@ -117,7 +169,7 @@ const geoLocation={
     getSuggestions: async function(input){
 
         if(isNaN(input)){
-            // pokemonName = input.toLowerCase();
+            // variable = input.toLowerCase();
             let fetcher = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=10&appid=${apiKey}`);
             
             let suggestionsJson = await fetcher.json();
@@ -154,14 +206,15 @@ const geoLocation={
 
         let suggestionsUl = this.html.suggestions;
         let newListItem = document.createElement('li');
+
         newListItem.id = suggestion.name;
         newListItem.addEventListener('click', ()=>{
-            weather.getCurrent('',suggestion.lat,suggestion.lon, 'byCoord');
-            // change to coordinates
+            // weather.getCurrent('',suggestion.lat,suggestion.lon, 'byCoord');
+            weather.getForecast(suggestion.lat, suggestion.lon);
         });
 
         if(suggestion.country === 'US'){
-            newListItem.innerText = `${suggestion.name}, ${suggestion.state} ${suggestion.lat},${suggestion.lon}`;
+            newListItem.innerText = `${suggestion.name}, ${suggestion.state} ${suggestion.lat}, ${suggestion.lon}`;
         }else{
             newListItem.innerText = `${suggestion.name}, ${suggestion.country} ${suggestion.lat}, ${suggestion.lon}`;
         }
@@ -189,7 +242,8 @@ function submitUserInput(userInput){
     userInput.focus();
 }
 
-/* Main */
+
+/* ---- Main ---- */
 
 const userInputField = document.getElementById('userInputField');
 const userInputBtn = document.getElementById('userInputBtn');
