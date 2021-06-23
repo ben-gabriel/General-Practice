@@ -47,6 +47,9 @@ const weather={
 
                 // Display info
                 this.showCurrent(weatherJson);
+                if(inputType === 'byName'){
+                    weather.getForecast(weatherJson.coord.lat, weatherJson.coord.lon);
+                }
 
 
             }
@@ -76,6 +79,10 @@ const weather={
                 fLog('Fetch done, Json created.');
                 fLog('forecastJson = ', forecastJson);
 
+                for (let index = 0; index < forecastJson.daily.length; index++) {
+                    this.showForecast(forecastJson.daily[index], index);      
+                }
+
             }
             else{
                 // to do: catch errors
@@ -89,10 +96,39 @@ const weather={
         fLog('Ending');
     },
 
-    showForecast: function(nDayForecast){
-        let section = document.getElementById('weatherForecast');
+    showForecast: function(nDayForecast, nDay){
 
-        section.appendChild
+        let section = document.getElementById('weatherForecast');
+        let newDiv = document.createElement('div');
+
+        let day;
+        if(nDay === 0){
+            day = 'Today'
+        }
+        else{
+            day = '+'+(nDay * 24)+'hs';
+        }
+
+        newDiv.innerHTML = `
+            <div id="day${nDay}">
+            
+                <p>${day}</p>
+
+                <p>Weather: ${nDayForecast.weather[0].main}</p>
+                <img src="http://openweathermap.org/img/wn/${nDayForecast.weather[0].icon}@4x.png" alt="Weather Icon">
+                <p>Description: ${nDayForecast.weather[0].description}</p>
+
+                <p>Precipitation: ${(nDayForecast.pop)*100}%</p>
+                <p>Rain: ${nDayForecast.rain}mm</p>
+                <p>Humidity: ${nDayForecast.humidity}%</p>
+                <p>Cloudiness: ${nDayForecast.clouds}%</p>
+                <p>Min: ${nDayForecast.temp.min}</p>
+                <p>Max: ${nDayForecast.temp.max}</p>
+
+            </div> 
+        `;
+
+        section.appendChild(newDiv);
 
     },
     
@@ -133,7 +169,7 @@ const weather={
         tag.icon.src =`http://openweathermap.org/img/wn/${iconId}@4x.png`;
         tag.icon.style.visibility = 'visible';
         
-        geoLocation.showCurrent(weatherJson.sys.country);
+        geoLocation.showInfo(weatherJson.sys.country);
         
         fLog('Info displayed');
     }
@@ -209,7 +245,7 @@ const geoLocation={
 
         newListItem.id = suggestion.name;
         newListItem.addEventListener('click', ()=>{
-            // weather.getCurrent('',suggestion.lat,suggestion.lon, 'byCoord');
+            weather.getCurrent('',suggestion.lat,suggestion.lon, 'byCoord');
             weather.getForecast(suggestion.lat, suggestion.lon);
         });
 

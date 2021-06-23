@@ -28,3 +28,8 @@ li img{
     visibility: hidden;
     width: 150px;
 }
+
+#weatherForecast{
+    display: flex;
+    gap: 2em;
+}
