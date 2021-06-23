@@ -1,6 +1,8 @@
 console.log('-- script: Starting');
 
 const apiKey = 'cb8c7a9fae36fb84f17d0b6074bf16b2';
+let units = 'metric';
+let unitLetter = '°C';
 
 // Function to console.log specifying the parent function name.
 function fLog(message, arg1 = ''){
@@ -35,10 +37,10 @@ const weather={
 
             let fetcher;
             if(inputType === 'byName'){
-                fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}`);
+                fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${input}&units=${units}&appid=${apiKey}`);
             }
             else if(inputType === 'byCoord'){
-                fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`);
+                fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`);
             }
             
             if(fetcher.ok === true){
@@ -73,9 +75,9 @@ const weather={
         tag.main.innerText = weatherJson.weather[0].main;
         tag.description.innerText = weatherJson.weather[0].description;
         tag.visibility.innerText = weatherJson.visibility;
-        tag.temp.innerText = weatherJson.main.temp;
-        tag.feels_like.innerText = weatherJson.main.feels_like;
-        tag.humidity.innerText = weatherJson.main.humidity;
+        tag.temp.innerText = weatherJson.main.temp+unitLetter;
+        tag.feels_like.innerText = weatherJson.main.feels_like+unitLetter;
+        tag.humidity.innerText = weatherJson.main.humidity+'%';
         tag.lat.innerText = weatherJson.coord.lat;
         tag.lon.innerText = weatherJson.coord.lon;
         
@@ -95,7 +97,7 @@ const weather={
         
         try {
 
-            let fetcher = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude='current,minutely,hourly,alerts'&appid=${apiKey}`);
+            let fetcher = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude='current,minutely,hourly,alerts'&units=${units}&appid=${apiKey}`);
             
             if(fetcher.ok === true){
                 const forecastJson = await fetcher.json();
@@ -147,8 +149,8 @@ const weather={
                 <p>Rain: ${nDayForecast.rain}mm</p>
                 <p>Humidity: ${nDayForecast.humidity}%</p>
                 <p>Cloudiness: ${nDayForecast.clouds}%</p>
-                <p>Min: ${nDayForecast.temp.min}</p>
-                <p>Max: ${nDayForecast.temp.max}</p>
+                <p>Min: ${nDayForecast.temp.min}${unitLetter}</p>
+                <p>Max: ${nDayForecast.temp.max}${unitLetter}</p>
 
             </div> 
         `;
@@ -271,6 +273,8 @@ function submitUserInput(userInput){
 
 const userInputField = document.getElementById('userInputField');
 const userInputBtn = document.getElementById('userInputBtn');
+const unitsBtn = document.getElementById('unitsBtn');
+const imperialBtn = document.getElementById('imperial');
 
 userInputBtn.addEventListener('click', ()=>{
     submitUserInput(userInputField);
@@ -308,3 +312,17 @@ userInputField.addEventListener('keydown', (e)=>{
         console.log('-- Interval Ended');
     });
 }
+
+unitsBtn.addEventListener('click', ()=>{
+
+    unitsBtn.classList.toggle('imperial');
+    
+    if(units === 'metric'){
+        units = 'imperial';
+        unitLetter= '°F';
+    }else{
+        units = 'metric'
+        unitLetter= '°C';
+    }
+
+});
