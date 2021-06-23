@@ -37,3 +37,8 @@ li img{
 .imperial{
     background: red;
 }
+
+.hidden{
+    visibility: hidden;
+    position: absolute;
+}

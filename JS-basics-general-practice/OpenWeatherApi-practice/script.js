@@ -274,7 +274,6 @@ function submitUserInput(userInput){
 const userInputField = document.getElementById('userInputField');
 const userInputBtn = document.getElementById('userInputBtn');
 const unitsBtn = document.getElementById('unitsBtn');
-const imperialBtn = document.getElementById('imperial');
 
 userInputBtn.addEventListener('click', ()=>{
     submitUserInput(userInputField);
@@ -284,8 +283,11 @@ userInputField.addEventListener('keydown', (e)=>{
     if(e.key == 'Enter'){submitUserInput(userInputField);}
 });
 
-{    // This piece of code has the purpose of fetching location suggestions
+{   
+    // This piece of code has the purpose of fetching location suggestions
     // every [interval] ms, only when the input field is on focus, with new text.
+    
+    const suggestions = document.getElementById('suggestions');
 
     let inverval = 500; //ms
     let lastInput = '';
@@ -304,12 +306,15 @@ userInputField.addEventListener('keydown', (e)=>{
             }
             
         }, inverval);
-        
+
+        suggestions.classList.toggle('hidden');
     });
     
     userInputField.addEventListener('focusout', ()=>{
         clearInterval(suggestionInterval);
         console.log('-- Interval Ended');
+        
+        suggestions.classList.toggle('hidden');
     });
 }
 
