@@ -2,6 +2,7 @@ console.log('-- script: Starting');
 
 const apiKey = 'cb8c7a9fae36fb84f17d0b6074bf16b2';
 
+// Function to console.log specifying the parent function name.
 function fLog(message, arg1 = ''){
     // arguments.callee.caller.name is deprecated, use with caution
     let fName = fLog.caller.name;
@@ -9,35 +10,8 @@ function fLog(message, arg1 = ''){
     console.log('');
 }
 
-async function exceedCalls(cityName, amount){
-    fLog('Starting');
-
-    try{
-        for (let index = 0; index < amount; index++) {
-           
-            const fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`);
-            const weatherJson = await fetcher.json();
-
-            fLog('weatherJson = ', weatherJson);
-            
-            if(fetcher.ok === true){
-                fLog('fetcher ok status = true');
-            }
-            else{
-                fLog('fetcher ok status = false');
-            }
-            
-            //fLog('for() index =', index);
-        }
-        
-    }
-    catch(error){
-        fLog('Error found = ', error);
-    }
-}
-
-// https://openweathermap.org/current
-// Call current weather data for one location
+// Docs: https://openweathermap.org/current
+// Can call current weather data for one location
 // By: city name, city ID, ZIP code, geographic coordinates
 const weather={
 
@@ -208,7 +182,6 @@ const geoLocation={
 
 }
 
-
 // User Input
 function submitUserInput(userInput){
     weather.getCurrent(userInput.value);
@@ -216,52 +189,44 @@ function submitUserInput(userInput){
     userInput.focus();
 }
 
-// http://openweathermap.org/img/wn/10d@2x.png
-
-
 /* Main */
-
-// exceedCalls('banfield',1);
-
-// weather.currentWeather('lanús', 'ar');
 
 const userInputField = document.getElementById('userInputField');
 const userInputBtn = document.getElementById('userInputBtn');
-
-
 
 userInputBtn.addEventListener('click', ()=>{
     submitUserInput(userInputField);
 });
 
 userInputField.addEventListener('keydown', (e)=>{
-    if(e.key == 'Enter'){
-        submitUserInput(userInputField);
-    }
+    if(e.key == 'Enter'){submitUserInput(userInputField);}
 });
 
+{    // This piece of code has the purpose of fetching location suggestions
+    // every [interval] ms, only when the input field is on focus, with new text.
 
-
-let lastInput = '';
-let suggestionInterval;
-
-userInputField.addEventListener('focusin', ()=>{
-
-    suggestionInterval = setInterval(()=>{
-        if(userInputField.value !== '' && userInputField.value !== lastInput){
-            lastInput = userInputField.value;
-            geoLocation.getSuggestions(userInputField.value);
-        }
-        else{
-            console.log('Interval in effect');
-        }
-
-    }, 500);
-
-});
-
-userInputField.addEventListener('focusout', ()=>{
-    clearInterval(suggestionInterval);
+    let inverval = 500; //ms
+    let lastInput = '';
+    let suggestionInterval;
     
-    console.log('Interval Ended');
-});
+    userInputField.addEventListener('focusin', ()=>{
+        
+        suggestionInterval = setInterval(()=>{
+
+            if(userInputField.value !== '' && userInputField.value !== lastInput){
+                lastInput = userInputField.value;
+                geoLocation.getSuggestions(userInputField.value);
+            }
+            else{
+                console.log('-- Interval in effect');
+            }
+            
+        }, inverval);
+        
+    });
+    
+    userInputField.addEventListener('focusout', ()=>{
+        clearInterval(suggestionInterval);
+        console.log('-- Interval Ended');
+    });
+}
