@@ -11,6 +11,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 120%;
 }
 
 
@@ -69,21 +70,23 @@ body{
 .suggestions{
     position: absolute;
     min-width: max-content;
-    width: 75%;
-    left: 12.5%;
+    width: 75vw;
+    left: 10vw;
     background-color: whitesmoke;
     display: flex;
     flex-direction: column;
 
-    font-size: 75%;
+    font-size: 90%;
     border-radius: 10px;
     padding: 0.5em 1em 0.5em 1em;
 
+    transition: all 1s;
 }
 
 .hidden{
+    visibility: hidden;
     opacity: 0;
-    transition: all 1s;
+    transition: all 0.5s;
 }
 
 .suggestions li{
@@ -121,7 +124,7 @@ body{
     font-size: 1em;
 }
 .coordinates{
-    font-size: 75%;
+    font-size: 90%;
     align-self: center;
 }
 
@@ -150,7 +153,7 @@ body{
     flex-wrap: wrap;
 }
 .currentData > *{
-    font-size: 75%;
+    font-size: 90%;
     padding: 0.5em;
 }
 
@@ -164,18 +167,23 @@ body{
 }
 
 .day{
+    max-width: 100vw;
     padding: 0.5em;
     display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
     background: white;
     border-radius: 10px;
     margin: 1em;
+
     border: gray 1px solid;
+    box-shadow: 0 0 2px 0px gray;
+
     transition: all 0.5s;
 }
 .day:hover{
-    
+
 }
 
 .day > *{
@@ -212,7 +220,7 @@ body{
     justify-content: center;
     width: fit-content;
     gap: 1em;
-    font-size: 75%;
+    font-size: 90%;
 }
 
 .dayIcon{

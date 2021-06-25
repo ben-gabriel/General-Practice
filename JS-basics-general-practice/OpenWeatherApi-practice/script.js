@@ -138,6 +138,14 @@ const weather={
             day = '+'+(nDay * 24)+'hs';
         }
 
+        let rain;
+        if(nDayForecast.rain){
+            rain = nDayForecast.rain+'mm';
+        }
+        else{
+            rain = 'no data';
+        }
+
         newDiv.classList.add('day');
         newDiv.innerHTML = `
         
@@ -157,7 +165,7 @@ const weather={
             
             <div class="forecastData">
                 <p>Precipitation: ${(nDayForecast.pop)*100}%</p>
-                <p>Rain: ${nDayForecast.rain}mm</p>
+                <p>Rain: ${rain}</p>
                 <p>Humidity: ${nDayForecast.humidity}%</p>
                 <p>Cloudiness: ${nDayForecast.clouds}%</p>
             </div>
