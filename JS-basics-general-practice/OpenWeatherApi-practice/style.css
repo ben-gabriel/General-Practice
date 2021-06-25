@@ -12,6 +12,8 @@ body{
     flex-direction: column;
     align-items: center;
     font-size: 120%;
+    max-width: 500px;
+    position: relative;
 }
 
 
@@ -69,8 +71,8 @@ body{
 
 .suggestions{
     position: absolute;
-    width: 75vw;
-    left: 10vw;
+    width: 75%;
+    left: 12.5%;
     background-color: whitesmoke;
     display: flex;
     flex-direction: column;
