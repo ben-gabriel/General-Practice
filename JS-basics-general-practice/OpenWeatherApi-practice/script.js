@@ -67,6 +67,9 @@ const weather={
             fLog('Error found = ', error);
         }
 
+        document.getElementById('weatherCurrent').style.visibility = 'visible';
+
+
         fLog('Ending');
     },
 
@@ -74,7 +77,7 @@ const weather={
         // shorthand
         let tag = this.html;
 
-        tag.name.innerText = weatherJson.name;
+        tag.name.innerText = weatherJson.name+', ';
         tag.description.innerText = weatherJson.weather[0].description;
         tag.visibility.innerText = (weatherJson.visibility)/1000;
         tag.temp.innerText = weatherJson.main.temp+unitLetter;
@@ -331,7 +334,7 @@ userInputField.addEventListener('keydown', (e)=>{
         console.log('-- Interval Ended');
         setTimeout(()=>{
             suggestions.classList.toggle('hidden');
-        },1000);
+        },250);
     });
 }
 

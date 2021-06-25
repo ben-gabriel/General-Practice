@@ -16,7 +16,7 @@ body{
 
 
 
-#flag, #icon{
+#flag, #icon, #weatherCurrent{
     /*Just at first load*/
     visibility: hidden;
 }
