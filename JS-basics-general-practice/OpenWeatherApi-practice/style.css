@@ -69,7 +69,6 @@ body{
 
 .suggestions{
     position: absolute;
-    min-width: max-content;
     width: 75vw;
     left: 10vw;
     background-color: whitesmoke;
@@ -91,20 +90,31 @@ body{
 
 .suggestions li{
     background-color: whitesmoke;
-    width: fit-content;
+    width: 100%;
     display: flex;
+    align-items: center;
     border-radius: 5px;
     list-style: none;
     padding: 0.5em;
     transition: all 0.5s;
 }
+
 .suggestions li:hover{
     background-color: rgb(228, 222, 222);
     align-self: center;
     transform: scale(1.2);
 }
+
 .suggestions li img{
-    width: 25px;
+    height: 1.5em;
+    width: 2.25em;
+}
+
+.suggestions li div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
 }
 
 /* Current Country Info */
@@ -122,10 +132,12 @@ body{
 }
 .location{
     font-size: 1em;
+    text-align: center;
 }
 .coordinates{
     font-size: 90%;
     align-self: center;
+    text-align: center;
 }
 
 /* weather current */
@@ -138,6 +150,7 @@ body{
 
 .currentMain{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     
@@ -151,6 +164,7 @@ body{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    text-align: center;
 }
 .currentData > *{
     font-size: 90%;
@@ -196,11 +210,11 @@ body{
 
 .forecastMain{
     display: flex;
-    width: max-content;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 1em;
     padding: 0.5em;
 }
-
 .weatherDescription{
     display: flex;
     align-items: center;

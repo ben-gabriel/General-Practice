@@ -260,9 +260,27 @@ const geoLocation={
         });
 
         if(suggestion.country === 'US'){
-            newListItem.innerText = `${suggestion.name}, ${suggestion.state}. @ ${suggestion.lat}, ${suggestion.lon}`;
+            newListItem.innerHTML = `
+                <div>
+                    <p>
+                        ${suggestion.name}, ${suggestion.state}. 
+                    </p>    
+                    <p>
+                        ${suggestion.lat}, ${suggestion.lon}.
+                    </p>    
+                </div>
+            `;
         }else{
-            newListItem.innerText = `${suggestion.name}, ${suggestion.country}. @ ${suggestion.lat}, ${suggestion.lon}`;
+            newListItem.innerHTML = `
+                <div>
+                    <p>
+                        ${suggestion.name}, ${suggestion.country}. 
+                    </p>    
+                    <p>
+                        ${suggestion.lat}, ${suggestion.lon}.
+                    </p>    
+                </div>
+            `;
         }
         
         newListItem.insertBefore(newImg, newListItem.firstChild);
