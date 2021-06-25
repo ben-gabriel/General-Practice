@@ -139,23 +139,34 @@ const weather={
             day = '+'+(nDay * 24)+'hs';
         }
 
+        newDiv.classList.add('day');
         newDiv.innerHTML = `
-            <div id="day${nDay}">
             
-                <p>${day}</p>
+            <div class="day">
+            
+                <p class="date">${day}</p>
 
-                <p>Weather: ${nDayForecast.weather[0].main}</p>
-                <img src="http://openweathermap.org/img/wn/${nDayForecast.weather[0].icon}@4x.png" alt="Weather Icon">
-                <p>Description: ${nDayForecast.weather[0].description}</p>
-
-                <p>Precipitation: ${(nDayForecast.pop)*100}%</p>
-                <p>Rain: ${nDayForecast.rain}mm</p>
-                <p>Humidity: ${nDayForecast.humidity}%</p>
-                <p>Cloudiness: ${nDayForecast.clouds}%</p>
-                <p>Min: ${nDayForecast.temp.min}${unitLetter}</p>
-                <p>Max: ${nDayForecast.temp.max}${unitLetter}</p>
+                <div class="forecastMain">
+                    <p class="weatherDescription">
+                        <img class ='dayIcon' src="http://openweathermap.org/img/wn/${nDayForecast.weather[0].icon}@4x.png" alt="Weather Icon">
+                        ${nDayForecast.weather[0].description}
+                    </p>
+                    
+                    <div class="minMax">
+                        <p>Min - Max</p>
+                        <p>${nDayForecast.temp.min} / ${nDayForecast.temp.max} ${unitLetter}</p>
+                    </div>
+                </div>
+                
+                <div class="forecastData">
+                    <p>Precipitation: ${(nDayForecast.pop)*100}%</p>
+                    <p>Rain: ${nDayForecast.rain}mm</p>
+                    <p>Humidity: ${nDayForecast.humidity}%</p>
+                    <p>Cloudiness: ${nDayForecast.clouds}%</p>
+                </div>
 
             </div> 
+
         `;
 
         section.appendChild(newDiv);
