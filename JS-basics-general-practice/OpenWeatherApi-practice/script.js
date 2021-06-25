@@ -75,7 +75,6 @@ const weather={
         let tag = this.html;
 
         tag.name.innerText = weatherJson.name;
-        tag.main.innerText = weatherJson.weather[0].main;
         tag.description.innerText = weatherJson.weather[0].description;
         tag.visibility.innerText = (weatherJson.visibility)/1000;
         tag.temp.innerText = weatherJson.main.temp+unitLetter;
@@ -141,31 +140,27 @@ const weather={
 
         newDiv.classList.add('day');
         newDiv.innerHTML = `
-            
-            <div class="day">
-            
-                <p class="date">${day}</p>
+        
+            <p class="date">${day}</p>
 
-                <div class="forecastMain">
-                    <p class="weatherDescription">
-                        <img class ='dayIcon' src="http://openweathermap.org/img/wn/${nDayForecast.weather[0].icon}@4x.png" alt="Weather Icon">
-                        ${nDayForecast.weather[0].description}
-                    </p>
-                    
-                    <div class="minMax">
-                        <p>Min - Max</p>
-                        <p>${nDayForecast.temp.min} / ${nDayForecast.temp.max} ${unitLetter}</p>
-                    </div>
-                </div>
+            <div class="forecastMain">
+                <p class="weatherDescription">
+                    <img class ='dayIcon' src="http://openweathermap.org/img/wn/${nDayForecast.weather[0].icon}@4x.png" alt="Weather Icon">
+                    ${nDayForecast.weather[0].description}
+                </p>
                 
-                <div class="forecastData">
-                    <p>Precipitation: ${(nDayForecast.pop)*100}%</p>
-                    <p>Rain: ${nDayForecast.rain}mm</p>
-                    <p>Humidity: ${nDayForecast.humidity}%</p>
-                    <p>Cloudiness: ${nDayForecast.clouds}%</p>
+                <div class="minMax">
+                    <p>Min - Max</p>
+                    <p>${nDayForecast.temp.min} / ${nDayForecast.temp.max} ${unitLetter}</p>
                 </div>
-
-            </div> 
+            </div>
+            
+            <div class="forecastData">
+                <p>Precipitation: ${(nDayForecast.pop)*100}%</p>
+                <p>Rain: ${nDayForecast.rain}mm</p>
+                <p>Humidity: ${nDayForecast.humidity}%</p>
+                <p>Cloudiness: ${nDayForecast.clouds}%</p>
+            </div>
 
         `;
 

@@ -10,275 +10,48 @@
     <script src="./script.js" defer></script>
     <title>OpenWeatherApi Practice</title>
 </head>
+
 <body>
-    
+
     <section class="inputSection">   
         <div class="searchBar">
             <input class='inputField' id="userInputField" type="text">
             <button class="unitsBtn" id="unitsBtn">°C</button>
             <button class="inputBtn" id="userInputBtn" type="button">O</button>
         </div>     
-        <ul id="suggestions" class="hidden suggestions"><li id="Banfield"><img src="https://restcountries.eu/data/arg.svg">Banfield, AR -34.7447, -58.4041</li></ul>
+        <ul id="suggestions" class="hidden suggestions"></ul>
     </section>
 
+    
     <section class="currentCountryInfo">
         <p class="location">
-            <img src="https://restcountries.eu/data/arg.svg" alt="Country Flag" id="flag" style="visibility: visible;">
-            <span id="name">Banfield</span>,
-            <span id="country">Argentina</span> 
+            <img src="https://restcountries.eu/data/arg.svg" alt="Country Flag" id="flag" >
+            <span id="name"></span>
+            <span id="country"></span> 
         </p>
         <p class="coordinates">
-            <span id="lat">-34.7447</span>
-            <span id="lon">-58.4041</span>
+            <span id="lat"></span>
+            <span id="lon"></span>
         </p>
     </section>
-    
+
+
     <section id="weatherCurrent">
         <div class="currentMain">
-            <span id="temp">12.77°C</span>
-            <img src="http://openweathermap.org/img/wn/04n@4x.png" alt="Weather Icon" id="icon" style="visibility: visible;">
-            <span class='weatherDescription' id="description">
-                overcast clouds
-            </span>
+            <span id="temp"></span>
+            <img src="" alt="Weather Icon" id="icon">
+            <span class='weatherDescription' id="description"></span>
         </div>
         <div class="currentData">
-            <p> Feels Like:    <span id="feels_like">12.5 °C</span></p>
-            <p> Visibility:    <span id="visibility">10</span> Km</p>
-            <p> Humidity:      <span id="humidity">92%</span></p>    
+            <p> Feels Like:    <span id="feels_like"></span></p>
+            <p> Visibility:    <span id="visibility"></span> Km</p>
+            <p> Humidity:      <span id="humidity"></span></p>    
         </div>
     </section>
-
-    <section id="weatherForecast">
-        <div class="day">
-        
-            <p class="date">Today</p>
-
-            <div class="forecastMain">
-                <p class="weatherDescription">
-                    <img class ='dayIcon' src="http://openweathermap.org/img/wn/10d@4x.png" alt="Weather Icon">
-                    light rain
-                </p>
-                
-                <div class="minMax">
-                    <p>Min - Max</p>
-                    <p>11.85 / 14.52 °C</p>
-                </div>
-            </div>
-            
-            <div class="forecastData">
-                <p>Precipitation: 78%</p>
-                <p>Rain: 2.05mm</p>
-                <p>Humidity: 82%</p>
-                <p>Cloudiness: 87%</p>
-            </div>
-
-        </div> 
-
-        
-        <div class="day">
-        
-            <p class="date">Today</p>
-
-            <div class="forecastMain">
-                <p class="weatherDescription">
-                    <img class ='dayIcon' src="http://openweathermap.org/img/wn/10d@4x.png" alt="Weather Icon">
-                    light rain
-                </p>
-                
-                <div class="minMax">
-                    <p>Min - Max</p>
-                    <p>11.85 / 14.52 °C</p>
-                </div>
-            </div>
-            
-            <div class="forecastData">
-                <p>Precipitation: 78%</p>
-                <p>Rain: 2.05mm</p>
-                <p>Humidity: 82%</p>
-                <p>Cloudiness: 87%</p>
-            </div>
-
-        </div> 
-
-        
-        <div class="day">
-        
-            <p class="date">Today</p>
-
-            <div class="forecastMain">
-                <p class="weatherDescription">
-                    <img class ='dayIcon' src="http://openweathermap.org/img/wn/10d@4x.png" alt="Weather Icon">
-                    light rain
-                </p>
-                
-                <div class="minMax">
-                    <p>Min - Max</p>
-                    <p>11.85 / 14.52 °C</p>
-                </div>
-            </div>
-            
-            <div class="forecastData">
-                <p>Precipitation: 78%</p>
-                <p>Rain: 2.05mm</p>
-                <p>Humidity: 82%</p>
-                <p>Cloudiness: 87%</p>
-            </div>
-
-        </div> 
-
-        
-        <div class="day">
-        
-            <p class="date">Today</p>
-
-            <div class="forecastMain">
-                <p class="weatherDescription">
-                    <img class ='dayIcon' src="http://openweathermap.org/img/wn/10d@4x.png" alt="Weather Icon">
-                    light rain
-                </p>
-                
-                <div class="minMax">
-                    <p>Min - Max</p>
-                    <p>11.85 / 14.52 °C</p>
-                </div>
-            </div>
-            
-            <div class="forecastData">
-                <p>Precipitation: 78%</p>
-                <p>Rain: 2.05mm</p>
-                <p>Humidity: 82%</p>
-                <p>Cloudiness: 87%</p>
-            </div>
-
-        </div> 
-
-        
-        <div class="day">
-        
-            <p class="date">Today</p>
-
-            <div class="forecastMain">
-                <p class="weatherDescription">
-                    <img class ='dayIcon' src="http://openweathermap.org/img/wn/10d@4x.png" alt="Weather Icon">
-                    light rain
-                </p>
-                
-                <div class="minMax">
-                    <p>Min - Max</p>
-                    <p>11.85 / 14.52 °C</p>
-                </div>
-            </div>
-            
-            <div class="forecastData">
-                <p>Precipitation: 78%</p>
-                <p>Rain: 2.05mm</p>
-                <p>Humidity: 82%</p>
-                <p>Cloudiness: 87%</p>
-            </div>
-
-        </div> 
-
-        
-        <div class="day">
-        
-            <p class="date">Today</p>
-
-            <div class="forecastMain">
-                <p class="weatherDescription">
-                    <img class ='dayIcon' src="http://openweathermap.org/img/wn/10d@4x.png" alt="Weather Icon">
-                    light rain
-                </p>
-                
-                <div class="minMax">
-                    <p>Min - Max</p>
-                    <p>11.85 / 14.52 °C</p>
-                </div>
-            </div>
-            
-            <div class="forecastData">
-                <p>Precipitation: 78%</p>
-                <p>Rain: 2.05mm</p>
-                <p>Humidity: 82%</p>
-                <p>Cloudiness: 87%</p>
-            </div>
-
-        </div> 
-
-        
-        <div class="day">
-        
-            <p class="date">Today</p>
-
-            <div class="forecastMain">
-                <p class="weatherDescription">
-                    <img class ='dayIcon' src="http://openweathermap.org/img/wn/10d@4x.png" alt="Weather Icon">
-                    light rain
-                </p>
-                
-                <div class="minMax">
-                    <p>Min - Max</p>
-                    <p>11.85 / 14.52 °C</p>
-                </div>
-            </div>
-            
-            <div class="forecastData">
-                <p>Precipitation: 78%</p>
-                <p>Rain: 2.05mm</p>
-                <p>Humidity: 82%</p>
-                <p>Cloudiness: 87%</p>
-            </div>
-
-        </div> 
-
-        
-    </section>
-
-
-<!-- 
-    
-<body>
-    
-    <section class="inputSection">        
-        <input id="userInputField" type="text">
-        <button id='userInputBtn' type="button">Submit</button>
-    
-        <button id='unitsBtn'>metric</button>
-        
-        <ul id="suggestions" class="hidden"></ul>
-    </section>
-
-    <br>
-    <br>
-
-    <section class="currentCountryInfo">
-        <img src="" alt="Country Flag" id="flag">
-        <p > City Name:     <span id="name"> </span></p>
-        <p > Country:       <span id="country"></span></p>
-        <p > Latitude:      <span id="lat"> </span></p>
-        <p > Longitud:      <span id="lon"> </span></p>
-    </section>
-    
-    <br>
-    <br>
-    
-    <section id="weatherCurrent">
-        <img src="" alt="Weather Icon" id="icon">
-        <p > Weather:       <span id="main"> </span></p>
-        <p > Description:   <span id="description"> </span></p>
-        <p > Visibility:    <span id="visibility"> </span></p>
-        <p > Temperature:   <span id="temp"> </span></p>
-        <p > Feels Like:    <span id="feels_like"> </span></p>
-        <p > Humidity:      <span id="humidity"> </span></p>    
-    </section>
-
-    <br>
-    <br>
 
     <section id="weatherForecast"></section>
 
 </body>
-
--->
 
 </body>
 </html>
