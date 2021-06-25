@@ -1,5 +1,4 @@
 *{
-    text-align: center;
     font-family: spartan;
     padding: 0;
     margin: 0;
@@ -16,12 +15,7 @@ body{
     );
 }
 
-li{
-    list-style: none;
-}
-li img{
-    width: 25px;
-}
+
 
 #flag, #icon{
     /*Just at first load*/
@@ -38,32 +32,75 @@ li img{
     background: red;
 }
 
-.hidden{
-    visibility: hidden;
-    position: absolute;
-}
+
 
 /* Input Section */
+.inputSection{
+    width: 100%;
+    padding-top: 1em;
+}
+
 .searchBar{
-    background-color: none;
-    border-radius: 500px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: red;
+    border-radius: 500px;
+    margin: 0em 1em 0.5em 1em;
 }
 .searchBar > *{
     border: none;
     outline: none;
-    padding: 0.25em 0.5em 0.25em 0.5em;
+    padding: 0.5em;
 }
+
 .inputField{
+    width: 80%;
     border-radius: 500px 0px 0px 500px ;
 }
 .inputBtn{
+    width: 10%;
     border-radius: 0px 500px 500px 0px ;
 }
 .unitsBtn{
+    width: 10%;
     border-radius: 0px;
+}
+
+.suggestions{
+    position: absolute;
+    min-width: max-content;
+    width: 75%;
+    left: 12.5%;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+
+    font-size: 75%;
+    border-radius: 10px;
+    padding: 0.5em 1em 0.5em 1em;
+
+}
+
+.hidden{
+    opacity: 0;
+    transition: all 1s;
+}
+
+.suggestions li{
+    background-color: whitesmoke;
+    width: fit-content;
+    display: flex;
+    border-radius: 5px;
+    list-style: none;
+    padding: 0.5em;
+    transition: all 0.5s;
+}
+.suggestions li:hover{
+    background-color: rgb(228, 222, 222);
+    align-self: center;
+    transform: scale(1.2);
+}
+.suggestions li img{
+    width: 25px;
 }
 
 /* Current Country Info */
@@ -74,6 +111,7 @@ li img{
     justify-content: center;
     align-items:flex-start;
     gap: 1em;
+    margin-top: 1em;
 }
 #flag{
     height: 1em;

@@ -243,9 +243,9 @@ const geoLocation={
         });
 
         if(suggestion.country === 'US'){
-            newListItem.innerText = `${suggestion.name}, ${suggestion.state} ${suggestion.lat}, ${suggestion.lon}`;
+            newListItem.innerText = `${suggestion.name}, ${suggestion.state}. @ ${suggestion.lat}, ${suggestion.lon}`;
         }else{
-            newListItem.innerText = `${suggestion.name}, ${suggestion.country} ${suggestion.lat}, ${suggestion.lon}`;
+            newListItem.innerText = `${suggestion.name}, ${suggestion.country}. @ ${suggestion.lat}, ${suggestion.lon}`;
         }
         
         newListItem.insertBefore(newImg, newListItem.firstChild);
