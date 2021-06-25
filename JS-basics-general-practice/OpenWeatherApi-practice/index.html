@@ -10,7 +10,188 @@
     <script src="./script.js" defer></script>
     <title>OpenWeatherApi Practice</title>
 </head>
+<body>
+    
+    <section class="inputSection">   
+        <div class="searchBar">
+            <input class='inputField' id="userInputField" type="text">
+            <button class="unitsBtn" id="unitsBtn">°C</button>
+            <button class="inputBtn" id="userInputBtn" type="button">Submit</button>
+        </div>     
+        <ul id="suggestions" class="hidden"><li id="Banfield"><img src="https://restcountries.eu/data/arg.svg">Banfield, AR -34.7447, -58.4041</li></ul>
+    </section>
 
+    <section class="currentCountryInfo">
+        <img src="https://restcountries.eu/data/arg.svg" alt="Country Flag" id="flag" style="visibility: visible;">
+        <p class="location">
+            <span id="name">Banfield</span>,
+            <span id="country">Argentina</span> 
+        </p>
+        <p class="coordinates">
+            <span id="lat">-34.7447</span>
+            <span id="lon">-58.4041</span>
+        </p>
+    </section>
+    
+    <section id="weatherCurrent">
+        <p>
+            <span id="temp">12.77°C</span></p>
+            <span id="description">
+                <img src="http://openweathermap.org/img/wn/04n@4x.png" alt="Weather Icon" id="icon" style="visibility: visible;">
+                overcast clouds
+            </span>
+        </p>
+        <p> Visibility:    <span id="visibility">10000</span>m</p>
+        <p> Feels Like:    <span id="feels_like">12.5°C</span></p>
+        <p> Humidity:      <span id="humidity">92%</span></p>    
+    </section>
+
+
+<!--  
+    <section id="weatherForecast">
+        <div>
+            <div id="day0">
+            
+                <p>Today</p>
+
+                <p>Weather: Rain</p>
+                <img src="http://openweathermap.org/img/wn/10d@4x.png" alt="Weather Icon">
+                <p>Description: light rain</p>
+
+                <p>Precipitation: 78%</p>
+                <p>Rain: 2.05mm</p>
+                <p>Humidity: 82%</p>
+                <p>Cloudiness: 87%</p>
+                <p>Min: 11.85°C</p>
+                <p>Max: 14.52°C</p>
+
+            </div> 
+        </div><div>
+            <div id="day1">
+            
+                <p>+24hs</p>
+
+                <p>Weather: Rain</p>
+                <img src="http://openweathermap.org/img/wn/10d@4x.png" alt="Weather Icon">
+                <p>Description: light rain</p>
+
+                <p>Precipitation: 81%</p>
+                <p>Rain: 2.63mm</p>
+                <p>Humidity: 78%</p>
+                <p>Cloudiness: 100%</p>
+                <p>Min: 11.91°C</p>
+                <p>Max: 16.42°C</p>
+
+            </div> 
+        </div><div>
+            <div id="day2">
+            
+                <p>+48hs</p>
+
+                <p>Weather: Clouds</p>
+                <img src="http://openweathermap.org/img/wn/04d@4x.png" alt="Weather Icon">
+                <p>Description: overcast clouds</p>
+
+                <p>Precipitation: 0%</p>
+                <p>Rain: undefinedmm</p>
+                <p>Humidity: 50%</p>
+                <p>Cloudiness: 100%</p>
+                <p>Min: 9.03°C</p>
+                <p>Max: 14.27°C</p>
+
+            </div> 
+        </div><div>
+            <div id="day3">
+            
+                <p>+72hs</p>
+
+                <p>Weather: Clouds</p>
+                <img src="http://openweathermap.org/img/wn/04d@4x.png" alt="Weather Icon">
+                <p>Description: overcast clouds</p>
+
+                <p>Precipitation: 0%</p>
+                <p>Rain: undefinedmm</p>
+                <p>Humidity: 63%</p>
+                <p>Cloudiness: 98%</p>
+                <p>Min: 8.66°C</p>
+                <p>Max: 12.5°C</p>
+
+            </div> 
+        </div><div>
+            <div id="day4">
+            
+                <p>+96hs</p>
+
+                <p>Weather: Clear</p>
+                <img src="http://openweathermap.org/img/wn/01d@4x.png" alt="Weather Icon">
+                <p>Description: clear sky</p>
+
+                <p>Precipitation: 0%</p>
+                <p>Rain: undefinedmm</p>
+                <p>Humidity: 50%</p>
+                <p>Cloudiness: 4%</p>
+                <p>Min: 6.14°C</p>
+                <p>Max: 11.99°C</p>
+
+            </div> 
+        </div><div>
+            <div id="day5">
+            
+                <p>+120hs</p>
+
+                <p>Weather: Clear</p>
+                <img src="http://openweathermap.org/img/wn/01d@4x.png" alt="Weather Icon">
+                <p>Description: clear sky</p>
+
+                <p>Precipitation: 0%</p>
+                <p>Rain: undefinedmm</p>
+                <p>Humidity: 55%</p>
+                <p>Cloudiness: 0%</p>
+                <p>Min: 5.39°C</p>
+                <p>Max: 11.42°C</p>
+
+            </div> 
+        </div><div>
+            <div id="day6">
+            
+                <p>+144hs</p>
+
+                <p>Weather: Clear</p>
+                <img src="http://openweathermap.org/img/wn/01d@4x.png" alt="Weather Icon">
+                <p>Description: clear sky</p>
+
+                <p>Precipitation: 0%</p>
+                <p>Rain: undefinedmm</p>
+                <p>Humidity: 62%</p>
+                <p>Cloudiness: 0%</p>
+                <p>Min: 6.64°C</p>
+                <p>Max: 11.29°C</p>
+
+            </div> 
+        </div><div>
+            <div id="day7">
+            
+                <p>+168hs</p>
+
+                <p>Weather: Clouds</p>
+                <img src="http://openweathermap.org/img/wn/04d@4x.png" alt="Weather Icon">
+                <p>Description: overcast clouds</p>
+
+                <p>Precipitation: 0%</p>
+                <p>Rain: undefinedmm</p>
+                <p>Humidity: 74%</p>
+                <p>Cloudiness: 96%</p>
+                <p>Min: 8.13°C</p>
+                <p>Max: 12.57°C</p>
+
+            </div> 
+        </div></section>
+
+
+<!-- 
+    
+<body>
+    
     <section class="inputSection">        
         <input id="userInputField" type="text">
         <button id='userInputBtn' type="button">Submit</button>
@@ -49,6 +230,9 @@
 
     <section id="weatherForecast"></section>
 
-    
+</body>
+
+-->
+
 </body>
 </html>

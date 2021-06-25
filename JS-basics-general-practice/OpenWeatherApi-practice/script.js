@@ -315,8 +315,9 @@ userInputField.addEventListener('keydown', (e)=>{
     userInputField.addEventListener('focusout', ()=>{
         clearInterval(suggestionInterval);
         console.log('-- Interval Ended');
-        
-        suggestions.classList.toggle('hidden');
+        setTimeout(()=>{
+            suggestions.classList.toggle('hidden');
+        },1000);
     });
 }
 

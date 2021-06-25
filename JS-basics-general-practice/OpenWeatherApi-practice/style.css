@@ -2,12 +2,11 @@
     text-align: center;
     font-family: spartan;
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
 body{
-    margin: 0;
-    padding: 5em;
     min-height: 100vh;
 
     background: linear-gradient(
@@ -25,9 +24,10 @@ li img{
 }
 
 #flag, #icon{
+    /*Just at first load*/
     visibility: hidden;
-    width: 150px;
 }
+
 
 #weatherForecast{
     display: flex;
@@ -41,4 +41,57 @@ li img{
 .hidden{
     visibility: hidden;
     position: absolute;
+}
+
+/* Input Section */
+.searchBar{
+    background-color: none;
+    border-radius: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.searchBar > *{
+    border: none;
+    outline: none;
+    padding: 0.25em 0.5em 0.25em 0.5em;
+}
+.inputField{
+    border-radius: 500px 0px 0px 500px ;
+}
+.inputBtn{
+    border-radius: 0px 500px 500px 0px ;
+}
+.unitsBtn{
+    border-radius: 0px;
+}
+
+/* Current Country Info */
+
+.currentCountryInfo{
+    background: rgb(245, 173, 173);
+    display: flex;
+    justify-content: center;
+    align-items:flex-start;
+    gap: 1em;
+}
+#flag{
+    height: 1em;
+}
+.location{
+    font-size: 1em;
+}
+.coordinates{
+    font-size: 75%;
+    align-self: center;
+}
+
+/* weather current */
+
+#weatherCurrent{
+    background: rgb(177, 177, 240);
+}
+
+#icon{
+    height: 2em;
 }
