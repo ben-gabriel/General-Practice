@@ -167,7 +167,7 @@ const weather={
             </div>
             
             <div class="forecastData">
-                <p>Precipitation: ${(nDayForecast.pop)*100}%</p>
+                <p>Precipitation: ${((nDayForecast.pop)*100).toFixed(0)}%</p>
                 <p>Rain: ${rain}</p>
                 <p>Humidity: ${nDayForecast.humidity}%</p>
                 <p>Cloudiness: ${nDayForecast.clouds}%</p>
