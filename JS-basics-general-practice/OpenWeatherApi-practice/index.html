@@ -22,8 +22,8 @@
     </section>
 
     <section class="currentCountryInfo">
-        <img src="https://restcountries.eu/data/arg.svg" alt="Country Flag" id="flag" style="visibility: visible;">
         <p class="location">
+            <img src="https://restcountries.eu/data/arg.svg" alt="Country Flag" id="flag" style="visibility: visible;">
             <span id="name">Banfield</span>,
             <span id="country">Argentina</span> 
         </p>
@@ -34,20 +34,21 @@
     </section>
     
     <section id="weatherCurrent">
-        <p>
-            <span id="temp">12.77°C</span></p>
+        <div class="currentMain">
+            <span id="temp">12.77°C</span>
+            <img src="http://openweathermap.org/img/wn/04n@4x.png" alt="Weather Icon" id="icon" style="visibility: visible;">
             <span id="description">
-                <img src="http://openweathermap.org/img/wn/04n@4x.png" alt="Weather Icon" id="icon" style="visibility: visible;">
                 overcast clouds
             </span>
-        </p>
-        <p> Visibility:    <span id="visibility">10000</span>m</p>
-        <p> Feels Like:    <span id="feels_like">12.5°C</span></p>
-        <p> Humidity:      <span id="humidity">92%</span></p>    
+        </div>
+        <div class="currentData">
+            <p> Feels Like:    <span id="feels_like">12.5 °C</span></p>
+            <p> Visibility:    <span id="visibility">10</span> Km</p>
+            <p> Humidity:      <span id="humidity">92%</span></p>    
+        </div>
     </section>
 
 
-<!--  
     <section id="weatherForecast">
         <div>
             <div id="day0">

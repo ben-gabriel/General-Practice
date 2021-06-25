@@ -8,11 +8,7 @@
 body{
     min-height: 100vh;
 
-    background: linear-gradient(
-        45deg,
-        rgb(173, 174, 243),
-        rgb(228, 195, 167)
-    );
+    background: gainsboro;
 }
 
 
@@ -106,13 +102,14 @@ body{
 /* Current Country Info */
 
 .currentCountryInfo{
-    background: rgb(245, 173, 173);
+    width: 100vw;
     display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em 1em;
     justify-content: center;
-    align-items:flex-start;
-    gap: 1em;
-    margin-top: 1em;
+    padding: 0.5em 1em 0.5em 1em;
 }
+
 #flag{
     height: 1em;
 }
@@ -127,9 +124,30 @@ body{
 /* weather current */
 
 #weatherCurrent{
-    background: rgb(177, 177, 240);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#weatherCurrent > *{
+}
+
+.currentMain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 #icon{
     height: 2em;
+}
+
+.currentData{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.currentData > *{
+    font-size: 75%;
+    padding: 0.5em;
 }
