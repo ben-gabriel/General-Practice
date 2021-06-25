@@ -39,10 +39,10 @@ const weather={
 
             let fetcher;
             if(inputType === 'byName'){
-                fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${input}&units=${units}&appid=${apiKey}`);
+                fetcher = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input}&units=${units}&appid=${apiKey}`);
             }
             else if(inputType === 'byCoord'){
-                fetcher = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`);
+                fetcher = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`);
             }
             
             if(fetcher.ok === true){
@@ -87,7 +87,7 @@ const weather={
         tag.lon.innerText = weatherJson.coord.lon;
         
         let iconId = weatherJson.weather[0].icon;
-        tag.icon.src =`http://openweathermap.org/img/wn/${iconId}@4x.png`;
+        tag.icon.src =`https://openweathermap.org/img/wn/${iconId}@4x.png`;
         tag.icon.style.visibility = 'visible';
         
         geoLocation.showInfo(weatherJson.sys.country);
@@ -156,7 +156,7 @@ const weather={
 
             <div class="forecastMain">
                 <p class="weatherDescription">
-                    <img class ='dayIcon' src="http://openweathermap.org/img/wn/${nDayForecast.weather[0].icon}@4x.png" alt="Weather Icon">
+                    <img class ='dayIcon' src="https://openweathermap.org/img/wn/${nDayForecast.weather[0].icon}@4x.png" alt="Weather Icon">
                     ${nDayForecast.weather[0].description}
                 </p>
                 
@@ -216,7 +216,7 @@ const geoLocation={
 
         if(isNaN(input)){
             // variable = input.toLowerCase();
-            let fetcher = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=10&appid=${apiKey}`);
+            let fetcher = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=10&appid=${apiKey}`);
             
             let suggestionsJson = await fetcher.json();
              
