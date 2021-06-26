@@ -13,44 +13,47 @@
 
 <body>
 
-    <section class="inputSection">   
-        <div class="searchBar">
-            <input class='inputField' id="userInputField" type="text">
-            <button class="unitsBtn" id="unitsBtn">°C</button>
-            <button class="inputBtn" id="userInputBtn" type="button">O</button>
-        </div>     
-        <ul id="suggestions" class="hidden suggestions"></ul>
-    </section>
+    <div class="mainContainer">
+            
+        <section class="inputSection">   
+            <div class="searchBar">
+                <input class='inputField' id="userInputField" type="text">
+                <button class="unitsBtn" id="unitsBtn">°C</button>
+                <button class="inputBtn" id="userInputBtn" type="button">O</button>
+            </div>     
+            <ul id="suggestions" class="hidden suggestions"></ul>
+        </section>
 
-    
-    <section class="currentCountryInfo">
-        <img src="https://restcountries.eu/data/arg.svg" alt="Country Flag" id="flag" >
-        <p class="location">
-            <span id="name"></span>
-            <span id="country"></span> 
-        </p>
-        <p class="coordinates">
-            <span id="lat"></span>, 
-            <span id="lon"></span>
-        </p>
-    </section>
+        
+        <section class="currentCountryInfo">
+            <img src="https://restcountries.eu/data/arg.svg" alt="Country Flag" id="flag" >
+            <p class="location">
+                <span id="name"></span>
+                <span id="country"></span> 
+            </p>
+            <p class="coordinates">
+                <span id="lat"></span>, 
+                <span id="lon"></span>
+            </p>
+        </section>
 
 
-    <section id="weatherCurrent">
-        <div class="currentMain">
-            <span id="temp"></span>
-            <img src="" alt="Weather Icon" id="icon">
-            <span class='weatherDescription' id="description"></span>
-        </div>
-        <div class="currentData">
-            <p> Feels Like:    <span id="feels_like"></span></p>
-            <p> Visibility:    <span id="visibility"></span> Km</p>
-            <p> Humidity:      <span id="humidity"></span></p>    
-        </div>
-    </section>
+        <section id="weatherCurrent">
+            <div class="currentMain">
+                <span id="temp"></span>
+                <img src="" alt="Weather Icon" id="icon">
+                <span class='weatherDescription' id="description"></span>
+            </div>
+            <div class="currentData">
+                <p> Feels Like:    <span id="feels_like"></span></p>
+                <p> Visibility:    <span id="visibility"></span> Km</p>
+                <p> Humidity:      <span id="humidity"></span></p>    
+            </div>
+        </section>
 
-    <section id="weatherForecast"></section>
-
+        <section id="weatherForecast"></section>
+        
+    </div>
 </body>
 
 </body>

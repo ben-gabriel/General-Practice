@@ -150,6 +150,7 @@ const weather={
         }
 
         newDiv.classList.add('day');
+        newDiv.classList.add(`day${nDay}`);
         newDiv.innerHTML = `
         
             <p class="date">${day}</p>
