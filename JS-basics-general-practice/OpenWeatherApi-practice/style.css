@@ -138,6 +138,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .currentMain{
@@ -154,8 +155,8 @@ body{
 
 .currentData{
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: center;
     text-align: center;
 }
 .currentData > *{
@@ -189,13 +190,16 @@ body{
 
 .day{
 
-    height: 100%;
-    width: 100%;
-    border-radius: 2em;
+    height: 5em;
+    width: 5em;
+    border-radius: 5em;
+    justify-self: center;
+    align-self: center;
 
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+
     align-items: center;
     justify-content: center;
 
@@ -204,25 +208,49 @@ body{
     border: gray 1px solid;
     box-shadow: 0 0 2px 0px gray;
     
-    transition: all 0.5s;
+    
 }
+@keyframes expand {
+    0%{
+        height: 100%;
+        width: 100%;
+        left: 100%;
+    }
+    100%{
+        height: 100%;
+        width: 100%;
 
+        left: 0%;
+        
+        border-radius: 0;
+    }
+}
+@keyframes display {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
 .day:hover{
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 0;
 
-    height: 100%;
-    width: 100%;
-    border-radius: 0;
+    position: absolute;
+
+    animation: expand 1s;
+    animation-fill-mode:both;
+    
+
 }
 
 .day div{
     display: none;
 }
 .day:hover div{
+    
     display: block;
+    animation: display 2s;
+    animation-fill-mode: both;
 }
 
 .day > *{
@@ -286,8 +314,8 @@ body{
     grid-template:
         'input' max-content
         'country' max-content
-        'weather' max-content
-        'forecast' auto
+        'weather' minmax(max-content,auto)
+        'forecast' 50%
         /100%
     ;
 
@@ -313,5 +341,6 @@ body{
         '.   day7   .' 1fr
         /1fr 1fr 1fr
     ;
+
     gap: 0;
 }
