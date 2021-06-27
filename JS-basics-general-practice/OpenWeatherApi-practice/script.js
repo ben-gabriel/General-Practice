@@ -79,11 +79,11 @@ const weather={
 
         tag.name.innerText = weatherJson.name+', ';
         tag.description.innerText = weatherJson.weather[0].description;
-        tag.visibility.innerText = (weatherJson.visibility)/1000;
+        tag.visibility.innerText = 'Visibility: '+(weatherJson.visibility)/1000+'Km';
         tag.temp.innerText = weatherJson.main.temp+unitLetter;
-        tag.feels_like.innerText = weatherJson.main.feels_like+unitLetter;
-        tag.humidity.innerText = weatherJson.main.humidity+'%';
-        tag.lat.innerText = weatherJson.coord.lat;
+        tag.feels_like.innerText = 'Feels Like: '+weatherJson.main.feels_like+unitLetter;
+        tag.humidity.innerText = 'Humidity: '+weatherJson.main.humidity+'%';
+        tag.lat.innerText = weatherJson.coord.lat+', ';
         tag.lon.innerText = weatherJson.coord.lon;
         
         let iconId = weatherJson.weather[0].icon;
@@ -171,10 +171,10 @@ const weather={
             </div>
             
             <div class="forecastData">
-                <p>Precipitation: ${((nDayForecast.pop)*100).toFixed(0)}%</p>
-                <p>Rain: ${rain}</p>
-                <p>Humidity: ${nDayForecast.humidity}%</p>
-                <p>Cloudiness: ${nDayForecast.clouds}%</p>
+                <p>Precipitation ${((nDayForecast.pop)*100).toFixed(0)}%</p>
+                <p>Rain ${rain}</p>
+                <p>Humidity ${nDayForecast.humidity}%</p>
+                <p>Cloudiness ${nDayForecast.clouds}%</p>
             </div>
 
         `;
