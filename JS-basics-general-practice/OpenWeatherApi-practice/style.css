@@ -217,13 +217,13 @@
 
 .expand{
     visibility: visible;
-    animation: expand 1s;
+    animation: expand 1s ease;
     animation-fill-mode: both;
 
 }
 .shrink{
     visibility: visible;
-    animation: shrink 1s, display 1.5s reverse;
+    animation: shrink 1s, display 1.5s reverse ease-in;
     animation-fill-mode: both;
 }
 
@@ -262,7 +262,7 @@
         width: 100%;
 
         left: -100%;
-        border-radius: 0;
+        border-radius: 0px;
 
     }
 }
@@ -320,13 +320,23 @@
 
 /* Grid & Colors */
 
-.mainContainer{
-    position: relative;
-    overflow-x: hidden;
-    height: 100vh;
-    max-width: 500px;
 
-    background: var(none);
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainContainer{
+
+    position: relative;
+    background: white;
+
+    overflow-x: hidden;
+    min-height: 75vh;
+    width: 500px;
+    max-width: 500px;
 
     display: grid;
     grid-template:
@@ -338,8 +348,15 @@
     ;
     align-content:space-between ;
 
+    box-shadow: 0 0 5px 1px #2463AB;
+    transition: all 0.5s;
 }
-
+@media (max-width:501px),(max-height: 700px) {
+    .mainContainer{
+        min-height: 100vh;
+        transition: all 0.5s;
+    }
+}
 .inputSection{
     background: var(--gradient-dark);
 }
