@@ -1,5 +1,6 @@
 *{
     font-family: spartan;
+    font-size:large;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -26,15 +27,12 @@ body{
 
 
 /* Input Section */
-.inputSection{
-    padding-top: 1em;
-}
 
 .searchBar{
     display: flex;
     background-color: red;
     border-radius: 500px;
-    margin: 0em 1em 0.5em 1em;
+    margin: 0.5em 1em 0.5em 1em;
 }
 .searchBar > *{
     border: none;
@@ -63,7 +61,6 @@ body{
     display: flex;
     flex-direction: column;
 
-    font-size: 90%;
     border-radius: 10px;
     padding: 0.5em 1em 0.5em 1em;
 
@@ -119,11 +116,9 @@ body{
     height: 1em;
 }
 .location{
-    font-size: 1em;
     text-align: center;
 }
 .coordinates{
-    font-size: 90%;
     align-self: center;
     text-align: center;
 }
@@ -157,7 +152,6 @@ body{
     text-align: center;
 }
 .currentData > *{
-    font-size: 90%;
     padding: 0.5em;
 }
 
@@ -260,7 +254,7 @@ body{
 }
 
 .day div{
-    display: none;
+    /* display: none; */
 }
 
 @keyframes display {
@@ -312,29 +306,25 @@ body{
     justify-content: center;
     width: fit-content;
     gap: 1em;
-    font-size: 90%;
 }
 
 .dayIcon{
     height: 35px;
-    background: rgb(158, 203, 230);
+    background: var(--color-light);
     border-radius: 50px;
     
 }
 
-/* Sizing */
+/* Grid & Colors */
 
 .mainContainer{
+    position: relative;
     overflow-x: hidden;
     height: 100vh;
-    background: rgb(64, 119, 107);
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
-    font-size: 120%;
     max-width: 500px;
+
+    background: var(none);
     border: black 1px solid;
-    position: relative;
 
     display: grid;
     grid-template:
@@ -344,22 +334,22 @@ body{
         'forecast' 50%
         /100%
     ;
-
     align-content:space-between ;
 
 }
 
 .inputSection{
-    background-color: blueviolet;
+    background: var(--gradient-dark);
 }
 .currentCountryInfo{
-    background-color: burlywood;
+    background-color: none;
 }
 #weatherCurrent{
-    background-color: cadetblue;
-}
+    background-color: none;
+} 
+
 #weatherForecast{
-    background-color: cornflowerblue;
+    background: none;
     
     display: grid;
     grid-template:
@@ -388,5 +378,69 @@ body{
     border-radius: 500px;
 
     padding: 1em;
+
+}
+
+.dayBtn{    
+    background: var(--gradient-dark);
+
+    border: var(--color-mid) 1px solid;
+    border-radius: 10em;
+    box-shadow: 0px 0px 1px 2px var(--color-light);
+    /* transform: translate(10px, -7px) */
+    
+    color: hsl(0, 0%, 100%);
+
+    transition: all 0.25s;
+}
+.dayBtn:hover{
+    box-shadow: -6px 6px 2px 1px var(--color-light);
+    
+    transform: translate(6px, -6px);
+
+    transition: all 0.25s;
+}
+
+.dayBtn:active{
+    background:var(--color-mid);
+    transform: translate(0px, 0px);  
+    box-shadow: 0px 0px 0px 0px var(--color-mid);
+}
+
+
+.day{
+    z-index: 2;
+    background: var(--gradient-dark);
+}
+.day > *{
+    color: whitesmoke;
+    font-size:xx-large;
+}
+
+:root{
+
+    --gradient-light: linear-gradient(
+        -145deg,
+        hsl(204, 100%, 76%),
+        hsl(202, 100%, 80%),
+        hsl(203, 97%, 56%)
+    );
+
+    --gradient-mid: linear-gradient(
+        -145deg,
+        hsl(202, 100%, 80%),
+        hsl(203, 97%, 56%),
+        #2F80DE,
+        #2463AB
+    );
+
+    --gradient-dark: linear-gradient(
+        20deg,
+        hsl(243, 100%, 15%) 10%,
+        hsl(243, 100%, 69%)
+    );
+
+    --color-light:hsl(203, 59%, 76%);
+    --color-mid:hsl(219, 79%, 66%);
 
 }
