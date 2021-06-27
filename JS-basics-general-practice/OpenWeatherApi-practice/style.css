@@ -18,10 +18,6 @@ body{
     text-transform: capitalize;
 }
 
-#weatherForecast{
-    display: flex;
-    gap: 2em;
-}
 
 .imperial{
     background: red;
@@ -139,6 +135,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: max-content;
 }
 
 .currentMain{
@@ -190,9 +187,13 @@ body{
 
 .day{
 
-    height: 5em;
-    width: 5em;
+    position: absolute;
+    visibility: hidden;
+
+    height: 100%;
+    width: 100%;
     border-radius: 5em;
+
     justify-self: center;
     align-self: center;
 
@@ -208,8 +209,19 @@ body{
     border: gray 1px solid;
     box-shadow: 0 0 2px 0px gray;
     
-    
 }
+
+.expand{
+    visibility: visible;
+    animation: expand 1s;
+    animation-fill-mode: both;
+}
+.shrink{
+    visibility: visible;
+    animation: shrink 1s;
+    animation-fill-mode: both;
+}
+
 @keyframes expand {
     0%{
         height: 100%;
@@ -225,6 +237,32 @@ body{
         border-radius: 0;
     }
 }
+@keyframes shrink{
+    0%{
+        position: absolute;
+
+        height: 100%;
+        width: 100%;
+
+        left: 0%;
+        
+        border-radius: 0;
+
+    }
+    100%{
+        position: absolute;
+
+        height: 100%;
+        width: 100%;
+
+        left: -100%;
+    }
+}
+
+.day div{
+    display: none;
+}
+
 @keyframes display {
     0%{
         opacity: 0;
@@ -233,25 +271,12 @@ body{
         opacity: 1;
     }
 }
-.day:hover{
-
-    position: absolute;
-
-    animation: expand 1s;
-    animation-fill-mode:both;
-    
-
-}
-
-.day div{
-    display: none;
-}
-.day:hover div{
+/* .day:hover div{
     
     display: block;
     animation: display 2s;
     animation-fill-mode: both;
-}
+} */
 
 .day > *{
     padding-top: 0.5em;
@@ -300,6 +325,7 @@ body{
 /* Sizing */
 
 .mainContainer{
+    overflow-x: hidden;
     height: 100vh;
     background: rgb(241, 150, 150);
     /* display: flex;
@@ -319,6 +345,8 @@ body{
         /100%
     ;
 
+    align-content:space-between ;
+
 }
 
 .inputSection{
@@ -335,12 +363,30 @@ body{
     
     display: grid;
     grid-template:
-        '.   day0   .' 1fr
-        'day1 day2 day3' 1fr 
-        'day4 day5 day6' 1fr
-        '.   day7   .' 1fr
-        /1fr 1fr 1fr
+        '.   day0   .' max-content
+        'day1 day2 day3' max-content
+        'day4 day5 day6' max-content
+        '.   day7   .' max-content
+        /max-content max-content max-content
     ;
 
-    gap: 0;
+
+
+    justify-content: space-evenly;
+    align-content: space-around;
+
+}
+
+.dayBtn{
+
+    justify-self: center;
+    background-color: whitesmoke;
+
+    height: 100%;
+    width: 100%;
+
+    border-radius: 500px;
+
+    padding: 1em;
+
 }

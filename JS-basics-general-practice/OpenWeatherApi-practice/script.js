@@ -132,6 +132,7 @@ const weather={
         let section = document.getElementById('weatherForecast');
         
         let newDiv = document.createElement('div');
+        let newDivBtn = document.createElement('div');
 
         let day;
         if(nDay === 0){
@@ -150,7 +151,9 @@ const weather={
         }
 
         newDiv.classList.add('day');
-        newDiv.classList.add(`day${nDay}`);
+        newDivBtn.classList.add(`day${nDay}`, 'dayBtn');
+
+
         newDiv.innerHTML = `
         
             <p class="date">${day}</p>
@@ -176,7 +179,25 @@ const weather={
 
         `;
 
+        newDivBtn.innerHTML = `<p>${day}</p>`
+
         section.appendChild(newDiv);
+        section.appendChild(newDivBtn);
+        
+        newDivBtn.addEventListener('click',()=>{
+            newDiv.classList.toggle('expand')
+            newDiv.classList.toggle('shrink')
+            if(newDiv.classList.contains('shrink')){
+                newDiv.classList.toggle('shrink')
+            }
+        });
+        
+        newDiv.addEventListener('click',()=>{
+            if(newDiv.classList.contains('expand')){
+                newDiv.classList.toggle('expand')
+            }
+            newDiv.classList.toggle('shrink')
+        });
 
     },
 
