@@ -150,8 +150,8 @@ const weather={
             rain = 'no data';
         }
 
-        newDiv.classList.add('day');
-        newDivBtn.classList.add(`day${nDay}`, 'dayBtn');
+        newDiv.classList.add('day', 'clickable');
+        newDivBtn.classList.add(`day${nDay}`, 'dayBtn', 'clickable');
 
 
         newDiv.innerHTML = `
@@ -273,9 +273,10 @@ const geoLocation={
         newImg.src = flagJson.flag;
 
         let suggestionsUl = this.html.suggestions;
-        let newListItem = document.createElement('li');
+        let newListItem = document.createElement('li');    
 
-        newListItem.id = suggestion.name;
+
+        newListItem.classList.add('clickable');
         newListItem.addEventListener('click', ()=>{
             weather.getCurrent('',suggestion.lat,suggestion.lon, 'byCoord');
             weather.getForecast(suggestion.lat, suggestion.lon);
@@ -325,6 +326,7 @@ const geoLocation={
 function submitUserInput(userInput){
     weather.getCurrent(userInput.value);
     userInput.value = '';
+    geoLocation.clearSuggestions();
 }
 
 
@@ -360,13 +362,17 @@ userInputField.addEventListener('keydown', (e)=>{
                 lastInput = userInputField.value;
                 geoLocation.getSuggestions(userInputField.value);
             }
+            else if(userInputField.value === ''){
+                geoLocation.clearSuggestions();
+            }
             else{
                 console.log('-- Interval in effect');
             }
-            
+
         }, inverval);
 
         suggestions.classList.toggle('hidden');
+        
     });
     
     userInputField.addEventListener('focusout', ()=>{
@@ -381,17 +387,23 @@ userInputField.addEventListener('keydown', (e)=>{
 unitsBtn.addEventListener('click', ()=>{
 
     unitsBtn.classList.toggle('imperial');
+    userInputBtn.classList.toggle('imperial');
+    unitsBtn.classList.toggle('metric');
+    userInputBtn.classList.toggle('metric');
     
     if(units === 'metric'){
         units = 'imperial';
         unitLetter= '°F';
+        unitsBtn.innerText = '°F';
     }else{
         units = 'metric'
         unitLetter= '°C';
+        unitsBtn.innerText = '°C';
     }
 
     if((lastLat !== 0) && (lastLon !== 0)){
         weather.getCurrent('',lastLat,lastLon,'byCoord');
+        weather.getForecast(lastLat,lastLon);
     }
 
 });
