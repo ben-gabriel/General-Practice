@@ -1,0 +1,64 @@
+body{
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+div{
+    height: 40vh;
+    width: 40vw;
+    box-shadow: 0 0 5px 0px black;
+}
+
+h1, h3{
+    text-align: center;
+}
+
+/* ----------------- */
+
+@media (orientation: portrait){
+    .orientation{
+        background: blue;
+    }
+}
+
+@media (orientation: landscape){
+    .orientation{
+        background: rgb(255, 0, 0);
+    }
+}
+
+
+
+/* ---------------- */
+
+/*
+  |
+  |__  
+*/
+@media (min-aspect-ratio: 1/2){
+    .ratio{
+        background: rgb(0, 47, 255);
+    }
+}
+
+/* |__ */
+@media (aspect-ratio: 1/1){
+    .ratio{
+        content: 'Square!';
+        background: rgb(119, 119, 119);
+    }
+}
+
+/* |__ __ */
+@media (min-aspect-ratio: 2/1){
+    .ratio{
+        background: rgb(255, 0, 0);
+    }
+}
+
+
