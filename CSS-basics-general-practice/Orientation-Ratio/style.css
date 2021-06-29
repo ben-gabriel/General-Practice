@@ -42,24 +42,29 @@ h1, h3{
 /* ---------------- */
 
 /*
-  |
-  |__  
+    |
+    |__  
+    Up to this ratio is blue
 */
-@media (min-aspect-ratio: 1/2){
+@media (max-aspect-ratio: 1/2){
     .ratio{
         background: rgb(0, 47, 255);
     }
 }
 
-/* |__ */
-@media (aspect-ratio: 1/1){
+/*
+    in between
+*/
+@media (min-aspect-ratio: 1/2){
     .ratio{
-        content: 'Square!';
-        background: rgb(119, 119, 119);
+        background: rgb(133, 224, 240);
     }
 }
 
-/* |__ __ */
+/* 
+    |__ __ 
+    Starting at this ratio is red
+*/
 @media (min-aspect-ratio: 2/1){
     .ratio{
         background: rgb(255, 0, 0);
