@@ -355,24 +355,22 @@ body{
     box-shadow: 0 0 5px 1px #2463AB;
     transition: all 0.5s;
 }
-@media (max-width:501px),(max-height: 700px) {
-    .mainContainer{
-        min-height: 100vh;
-        transition: all 0.5s;
-    }
-}
+
 .inputSection{
+    grid-area: input;
     background: var(--gradient-dark);
 }
 .currentCountryInfo{
+    grid-area: country;
     background-color: none;
 }
 #weatherCurrent{
+    grid-area: weather;
     background-color: none;
 } 
 
 #weatherForecast{
-    
+    grid-area: forecast;
     display: grid;
     grid-template:
         '.   day0   .' max-content
@@ -458,5 +456,86 @@ body{
 
     --color-light:hsl(203, 59%, 76%);
     --color-mid:hsl(219, 79%, 66%);
+
+}
+
+/* Queries */
+
+@media (max-width:501px),(max-height: 700px) {
+    .mainContainer{
+        min-height: 100vh;
+        transition: all 0.5s;
+    }
+}
+
+@media (orientation: landscape) and (max-width: 700px){
+    .mainContainer{
+        min-width: 100%;
+        
+        display: grid;
+        grid-template:
+            'input input' max-content
+            'country forecast' max-content
+            'weather forecast' minmax(max-content,auto)
+            '. .' minmax(max-content,auto)
+            /1fr 1fr
+        ;
+        align-content: space-between ;
+    }
+
+    #weatherForecast .dayBtn{
+        padding: 0.5em;
+    }
+
+    .day{
+        max-width: 100vw;
+    }
+
+    .day > *{
+        padding: 0;
+    }
+
+    @keyframes expand {
+        0%{
+            height: 100%;
+            width: 100%;
+            
+            opacity: 0;
+            left: 100%;
+
+            border-radius: 0%;
+        }
+        100%{
+            height: 100%;
+            width: 100%;
+    
+            left: 0%;
+            
+            border-radius: 0;
+        }
+    }
+    @keyframes shrink{
+        0%{
+            position: absolute;
+    
+            height: 100%;
+            width: 100%;
+    
+            left: 0%;
+            
+            border-radius: 0;
+    
+        }
+        100%{
+            position: absolute;
+    
+            height: 100%;
+            width: 100%;
+    
+            left: -100%;
+            border-radius: 0px;
+    
+        }
+    }
 
 }
