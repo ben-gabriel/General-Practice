@@ -62,3 +62,12 @@ h1, h3{
 }
 
 
+/* Input */
+
+.extra{
+    background: whitesmoke;
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    text-align: center;
+}
