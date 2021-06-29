@@ -337,7 +337,8 @@ body{
     background: white;
 
     overflow-x: hidden;
-    min-height: 75vh;
+    max-height: 1100px;
+    height: 75vh;
     width: 500px;
     max-width: 500px;
 
