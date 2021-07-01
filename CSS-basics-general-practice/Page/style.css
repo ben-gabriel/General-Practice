@@ -13,9 +13,36 @@ body{
 
 :root{
     --color-orange: hsl(31, 96%, 54%);
-    --navbar-heigth: 0px;
+    --color-lightblue: hsl(198, 76%, 71%);
+    --navbar-heigth: 2em;
+    --border: black 1px solid;
+
 }
 
+.shadow{
+    box-shadow: 0 0 2px 0px black;
+}
+
+/* --- Nav Bar --- */
+nav{
+    position: fixed;
+    z-index: 5;
+    width: 100%;
+    height: var(--navbar-heigth);
+
+    display: flex;
+    justify-content: space-evenly;
+
+    background: var(--color-orange);
+    border-bottom: var(--border);
+
+}
+a{
+    color: whitesmoke;
+    text-decoration: none;
+}
+
+/* --- Main Page --- */
 #main{
     position: relative;
     height: 100%;
@@ -29,19 +56,24 @@ body{
         'mainImg' 1fr
         /100%
     ;
+    align-content: space-between;
+
 }
 
 #main h1, p{
     color: var(--color-orange);
-    text-align: center;
 }
 
 #main h1{
     grid-area: mainTitle;
+    text-align: center;
+    margin-top: 2em;
 }
 
 #main p{
     grid-area: mainDescription;
+    text-align: justify;
+    padding: 2em;
 }
 
 .mainImg{
@@ -49,14 +81,20 @@ body{
     height: 100%;
     width: 100%;
 
-    background: url(https://images.unsplash.com/photo-1551410224-699683e15636);
-    background-position: center;
-    background-size: contain;
+    background: var(--img-orange2);
     background-repeat: no-repeat;
-    background-position: bottom;
+    background-size: cover;
+    background-position: center;
+
+    border-top: var(--border);
 }
 
 
 
-
+/* --- img src -- */
+:root{
+    --img-orange0: url(https://images.unsplash.com/photo-1583073600538-f219abfb20bc);
+    --img-orange1: url(https://images.unsplash.com/photo-1619241638225-14d56e47ae64);
+    --img-orange2: url(https://images.unsplash.com/photo-1551410224-699683e15636);
+}
 
