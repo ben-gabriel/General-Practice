@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family: Noto Sans JP;
+}
+
+body{
+    height: 100vh;
+    width: 100vw;
+}
+
+:root{
+    --color-orange: hsl(31, 96%, 54%);
+    --navbar-heigth: 0px;
+}
+
+#main{
+    position: relative;
+    height: 100%;
+    width: 100%;
+
+    display: grid;
+    grid-template: 
+        '.' var(--navbar-heigth)
+        'mainTitle' max-content
+        'mainDescription' max-content
+        'mainImg' 1fr
+        /100%
+    ;
+}
+
+#main h1, p{
+    color: var(--color-orange);
+    text-align: center;
+}
+
+#main h1{
+    grid-area: mainTitle;
+}
+
+#main p{
+    grid-area: mainDescription;
+}
+
+.mainImg{
+    grid-area: mainImg;
+    height: 100%;
+    width: 100%;
+
+    background: url(https://images.unsplash.com/photo-1551410224-699683e15636);
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+
+
+
+
