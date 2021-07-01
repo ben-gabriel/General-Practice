@@ -5,19 +5,21 @@
     box-sizing: border-box;
 }
 
+body{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    height: 100vh;
+}
+
 /* --- Container Vertical Snapping */
-.snapContainerY{
-    position: relative;
-    height: 50vh;
-    width: 100vw;
-
-    scroll-behavior: smooth;
-
+.snapY{
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
-
 }
-.snapContainerY nav{
+
+.snapY nav{
     position: sticky;
     height: 0;
     top: 50%;
@@ -30,21 +32,13 @@
 
 
 /* --- Container Vertical Snapping */
-.snapContainerX{
-    position: relative;
-    height: 50vh;
-    width: 100vw;
-
-    scroll-behavior: smooth;
-
+.snapX{
     scroll-snap-type: x mandatory;
     overflow-x: scroll;
-
     display: flex;
-    
 }
 
-.snapContainerX nav{
+.snapX nav{
     position: sticky;
     background: red;
     
@@ -57,6 +51,17 @@
 }
 
 /* --- General --- */ 
+
+.container{
+    position: relative;
+    height: 40vh;
+    width: 95vw;
+    max-width: 750px;
+
+    margin: 1em;
+
+    scroll-behavior: smooth;
+}
 
 
 a{
@@ -113,4 +118,8 @@ section{
 }
 .s4{
     background:teal;
+}
+
+div{
+    box-shadow: 0 0 1px 1px black;
 }
