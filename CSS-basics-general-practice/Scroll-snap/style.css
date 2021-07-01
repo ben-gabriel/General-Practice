@@ -1,0 +1,72 @@
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.snapContainerY{
+    position: relative;
+    height: 50vh;
+    scroll-behavior: smooth;
+
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+}
+
+nav{
+    position:fixed;
+    height: 50vh;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+a{
+    color: rgb(58, 55, 55);
+    background: azure;
+    
+    width: 2em;
+    height: 2em;
+    border-radius: 5em;
+    margin: 0.5em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: larger;
+
+}
+
+section{
+    height: 100%;
+
+    /* text */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: sans-serif;
+        font-size: larger;
+        color: whitesmoke;
+        letter-spacing: 0.3em;
+        word-spacing: 0.5em;
+
+    scroll-snap-align: start;
+}
+
+.s1{
+    background: rgb(228, 128, 82);
+}
+.s2{
+    background:rgb(92, 92, 223);
+}
+.s3{
+    background: rgb(224, 97, 150);
+}
+.s4{
+    background:teal;
+}
