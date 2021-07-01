@@ -8,24 +8,22 @@
 
 body{
     height: 100vh;
-    width: 100vw;
+    width: 100%;
 }
 
 :root{
     --color-orange: hsl(31, 96%, 54%);
     --color-lightblue: hsl(198, 76%, 71%);
+    --color-darkblue: hsl(194, 100%, 27%);
+
     --navbar-heigth: 2em;
-    --border: black 1px solid;
+    --border: black 0px solid;
 
-}
-
-.shadow{
-    box-shadow: 0 0 2px 0px black;
 }
 
 /* --- Nav Bar --- */
 nav{
-    position: fixed;
+    position: sticky;
     z-index: 5;
     width: 100%;
     height: var(--navbar-heigth);
@@ -44,10 +42,6 @@ a{
 
 /* --- Main Page --- */
 #main{
-    position: relative;
-    height: 100%;
-    width: 100%;
-
     display: grid;
     grid-template: 
         '.' var(--navbar-heigth)
@@ -57,26 +51,21 @@ a{
         /100%
     ;
     align-content: space-between;
-
 }
 
-#main h1, p{
+#main :is(h1, p){
     color: var(--color-orange);
 }
 
 #main h1{
     grid-area: mainTitle;
-    text-align: center;
-    margin-top: 2em;
 }
 
 #main p{
     grid-area: mainDescription;
-    text-align: justify;
-    padding: 2em;
 }
 
-.mainImg{
+#main div{
     grid-area: mainImg;
     height: 100%;
     width: 100%;
@@ -86,15 +75,79 @@ a{
     background-size: cover;
     background-position: center;
 
-    border-top: var(--border);
 }
 
+/* --- Description Page --- */
+#description{   
+    position: relative;
+    height: 100%;
+    width: 100%;
 
+    display: grid;
+    grid-template: 
+        '.' var(--navbar-heigth)
+        'descTitle' max-content
+        'descDescription' max-content
+        'descImg' 1fr
+        /100%
+    ;
+    align-content: space-between;
+
+}
+
+#description :is(h1, p){
+    color: var(--color-darkblue);
+}
+
+#description h1{
+    grid-area: descTitle;
+}
+
+#description p{
+    grid-area: descDescription;
+}
+
+.descImg{
+    grid-area: descImg;
+    
+    background: var(--img-mix);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+    
+
+/* --- boilerplate --- */
+section{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+section h1{
+    text-align: center;
+    margin-top: 2em;
+}
+
+section p{
+    text-align: justify;
+    padding: 2em;
+}
+
+section div{
+    height: 100%;
+    width: 100%;
+    border-top: var(--border);
+}
 
 /* --- img src -- */
 :root{
     --img-orange0: url(https://images.unsplash.com/photo-1583073600538-f219abfb20bc);
     --img-orange1: url(https://images.unsplash.com/photo-1619241638225-14d56e47ae64);
     --img-orange2: url(https://images.unsplash.com/photo-1551410224-699683e15636);
+
+    --img-pomelo: url(https://images.unsplash.com/photo-1556804335-2fa563e93aae);
+
+    --img-mix: url(https://images.unsplash.com/photo-1622267224551-8063a2d4fbb4)
 }
 
