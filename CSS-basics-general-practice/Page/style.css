@@ -23,7 +23,7 @@ body{
 
 /* --- Nav Bar --- */
 nav{
-    position: sticky;
+    position: fixed;
     z-index: 5;
     width: 100%;
     height: var(--navbar-heigth);
@@ -31,113 +31,62 @@ nav{
     display: flex;
     justify-content: space-evenly;
 
-    background: var(--color-orange);
-    border-bottom: var(--border);
-
+    background: whitesmoke;
+    box-shadow: 0 0 2px 1px var(--color-orange);
 }
 a{
-    color: whitesmoke;
+    color: var(--color-orange);
     text-decoration: none;
 }
 
 /* --- Main Page --- */
-#main{
-    display: grid;
-    grid-template: 
-        '.' var(--navbar-heigth)
-        'mainTitle' max-content
-        'mainDescription' max-content
-        'mainImg' 1fr
-        /100%
-    ;
-    align-content: space-between;
-}
 
 #main :is(h1, p){
     color: var(--color-orange);
 }
 
-#main h1{
-    grid-area: mainTitle;
+#main text{
+    box-shadow: 0 0 2px 1px var(--color-orange);
 }
 
-#main p{
-    grid-area: mainDescription;
-}
-
-#main div{
-    grid-area: mainImg;
-    height: 100%;
-    width: 100%;
-
+#main .fruitImg{
     background: var(--img-orange2);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-
 }
 
 /* --- Description Page --- */
-#description{   
-    position: relative;
-    height: 100%;
-    width: 100%;
 
-    display: grid;
-    grid-template: 
-        '.' var(--navbar-heigth)
-        'descTitle' max-content
-        'descDescription' max-content
-        'descImg' 1fr
-        /100%
-    ;
-    align-content: space-between;
 
-}
-
-#description :is(h1, p){
-    color: var(--color-darkblue);
-}
-
-#description h1{
-    grid-area: descTitle;
-}
-
-#description p{
-    grid-area: descDescription;
-}
-
-.descImg{
-    grid-area: descImg;
-    
-    background: var(--img-mix);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-}
-    
-
-/* --- boilerplate --- */
+/* section general */
 section{
-    position: relative;
     height: 100%;
     width: 100%;
+
+    display: flex;
+    align-items: center;
 }
 
-section h1{
+.text{
+    background: whitesmoke;
+    margin: 0.5em;
+    padding: 1em 0.5em 1em 0.5em;
+    border-radius: 1em;
+}
+.text h1{
     text-align: center;
-    margin-top: 2em;
 }
-
-section p{
+.text p{
     text-align: justify;
-    padding: 2em;
+    padding: 1em;
 }
 
-section div{
+.fruitImg{
     height: 100%;
     width: 100%;
-    border-top: var(--border);
+    position: absolute;
+    z-index: -1;
 }
 
 /* --- img src -- */
