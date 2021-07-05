@@ -17,6 +17,7 @@ body{
     --color-orange: hsl(31, 96%, 54%);
     --color-lightblue: hsl(198, 76%, 71%);
     --color-darkblue: hsl(194, 100%, 27%);
+    --color-pink: hsl(0, 97%, 75%);
 
     --navbar-heigth: 2em;
     --border: black 0px solid;
@@ -78,6 +79,22 @@ a{
 
 }
 
+/* --- End PAge --- */
+#end :is(h1, p){
+    color: var(--color-pink);
+}
+
+#end .text{
+    box-shadow: 0 0 2px 1px var(--color-pink);
+}
+
+#end .fruitImg{
+    background: var(--img-pomelo);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
 
 /* section general */
 section{
@@ -103,6 +120,9 @@ section{
 .text p{
     text-align: justify;
     padding: 1em;
+}
+.text a{
+    text-decoration: underline;
 }
 
 .fruitImg{
