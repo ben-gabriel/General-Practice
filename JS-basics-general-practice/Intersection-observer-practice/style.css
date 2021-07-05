@@ -21,6 +21,7 @@ body{
     --navbar-heigth: 2em;
     --border: black 0px solid;
 
+    --a-color: var(--color-orange);
 }
 
 /* --- Nav Bar --- */
@@ -35,11 +36,11 @@ nav{
 
     background: var(--color-orange);
     background: whitesmoke;
-    box-shadow: 0 0 1px 1px var(--color-orange);
+    box-shadow: 0 0 1px 1px var(--a-color);
 }
 a{
     color: whitesmoke;
-    color: var(--color-orange);
+    color: var(--a-color);
     text-decoration: none;
 }
 
@@ -73,7 +74,7 @@ a{
     background: var(--img-mix);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position:right;
+    background-position: center;
 
 }
 
