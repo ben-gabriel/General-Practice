@@ -4,15 +4,19 @@ const sections = document.querySelectorAll('section');
 let options = {
     root: null,
     rootMargin: "0px",
-    threshold: 0
+    threshold: 1
 }
 
 const observer = new IntersectionObserver((entries)=>{
     entries.forEach(entry =>{
         console.log(entry);
+        entry.target.classList.toggle('');    
     });
+    
+
 },options);
 
-console.log(sections);
-// observer.observe(sections);
+sections.forEach(section =>{
+    observer.observe(section);
+});
 

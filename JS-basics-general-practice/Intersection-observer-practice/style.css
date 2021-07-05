@@ -33,10 +33,12 @@ nav{
     display: flex;
     justify-content: space-evenly;
 
+    background: var(--color-orange);
     background: whitesmoke;
-    box-shadow: 0 0 2px 1px var(--color-orange);
+    box-shadow: 0 0 1px 1px var(--color-orange);
 }
 a{
+    color: whitesmoke;
     color: var(--color-orange);
     text-decoration: none;
 }
@@ -47,7 +49,7 @@ a{
     color: var(--color-orange);
 }
 
-#main text{
+#main .text{
     box-shadow: 0 0 2px 1px var(--color-orange);
 }
 
@@ -73,16 +75,21 @@ a{
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+
 }
 
 
 /* section general */
 section{
-    height: 100%;
+    position: relative;
+    height: 100vh;
     width: 100%;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
+
+    border: var(--border)
 }
 
 .text{
@@ -102,7 +109,6 @@ section{
 .fruitImg{
     height: 100vh;
     width: 100%;
-    position: absolute;
     z-index: -1;
 }
 
@@ -117,3 +123,6 @@ section{
     --img-mix: url(https://images.unsplash.com/photo-1622267224551-8063a2d4fbb4)
 }
 
+.toggle{
+    background: red;
+}
