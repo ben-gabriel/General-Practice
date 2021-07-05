@@ -143,5 +143,71 @@ section{
 }
 
 .toggle{
+    /* This is a toggle class for testing purposes */
     background: red;
 }
+
+/* --- Media Queries --- */
+
+@media (min-width:1000px){
+    h1, nav{
+        font-size: xx-large;
+    }
+
+    p{
+        font-size: x-large;    
+    }
+
+    #main, #description{
+        display: grid;
+        grid-template: 
+            'left right' 100%
+            /50% 50%
+        ;    
+    }
+
+    .text{
+        padding: 2em;
+        width: 50%;
+        justify-self: center;
+    }
+    
+    #main .text{
+        grid-area: left;
+    }
+    #main .fruitImg{
+        grid-area: right;
+    }
+    
+    #description .text{
+        grid-area: right;
+    }
+    #description .fruitImg{
+        grid-area: left;
+    }
+
+    #end{
+        display: grid;
+        grid-template: 
+            '. text'100%
+            /50% 50%
+        ;
+    }
+
+    #end .text{
+        width: 50%;
+        grid-area: text;
+        justify-self: center;
+    }
+
+    #end .fruitImg{
+        position: absolute;
+    }
+}
+
+
+
+
+
+
+
