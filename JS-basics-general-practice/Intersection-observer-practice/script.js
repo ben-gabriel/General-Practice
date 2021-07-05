@@ -10,7 +10,7 @@ let options = {
 const observer = new IntersectionObserver((entries)=>{
     entries.forEach(entry =>{
         console.log(entry);
-        entry.target.classList.toggle('');    
+        // entry.target.classList.toggle('');    
     });
     
 

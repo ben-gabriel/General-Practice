@@ -67,14 +67,13 @@ a{
 
 #description .text{
     box-shadow: 0 0 2px 1px var(--color-darkblue);
-    border-radius: 0;
 }
 
 #description .fruitImg{
     background: var(--img-mix);
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center;
+    background-position:right;
 
 }
 
@@ -96,7 +95,6 @@ section{
     background: whitesmoke;
     margin: 0.5em;
     padding: 1em 0.5em 1em 0.5em;
-    border-radius: 1em;
 }
 .text h1{
     text-align: center;
