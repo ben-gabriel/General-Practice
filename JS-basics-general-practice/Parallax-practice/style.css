@@ -6,14 +6,35 @@
 
 body{
     height: 100vh;
+    width: 100vw;
+}
+
+.container{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    border: 1px black solid;
+    right: 0;
 }
 
 img {
-    position: relative;
+    position: absolute;
     width: 100%;
-    filter: drop-shadow(0px 0px 1px white);
+    height: 100%;
+
+    opacity: 0.5;
+    object-fit: none;
+    object-fit: fill;
+    object-fit: scale-down;
+    object-fit: cover;
 }
 
-.img1{
-    transform: scale(0.75) ;
+#img5{
+    object-fit: scale-down;
+    object-position: center;
+
+}
+
+#img1{
+    object-fit: fill;
 }
