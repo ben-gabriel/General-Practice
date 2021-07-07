@@ -13,6 +13,7 @@ const img4 = document.getElementById('img4');
 const img3 = document.getElementById('img3');
 const img2 = document.getElementById('img2');
 const img1 = document.getElementById('img1');
+const prompt = document.getElementById('prompt');
 
 
 // Get mainContainer height, updated on resize
@@ -47,6 +48,15 @@ document.addEventListener('scroll', ()=>{
     translateElements(img4,100,percentageScrolled); // person to the center
     translateElements(img3,60,percentageScrolled);  // person to the left
     translateElements(img2,40,percentageScrolled);  // person to the right
+
+
+    // fade prompt
+    if(percentageScrolled > 10){
+        prompt.classList.add('fade');
+    }
+    else{
+        prompt.classList.remove('fade');
+    }
 
     console.log('pixelsScrolled: ', pixelsScrolled);
     console.log('percentageScrolled: ', percentageScrolled);

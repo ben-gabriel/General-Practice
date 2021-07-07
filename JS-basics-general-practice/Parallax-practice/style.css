@@ -4,8 +4,8 @@
     box-sizing: border-box;
 }
 
-body{
-    height: 400vh;
+#mainContainer{
+    height: 500vh;
     width: 100vw;
     overflow-x: hidden;
 }
@@ -26,7 +26,6 @@ img {
     /* filter: brightness(150%); */
     
     top: 100%;
-    transition: all 100ms ease;
 }
 
 #img5{
@@ -52,4 +51,27 @@ img {
     object-fit: fill;
     /* filter: brightness(200%); */
    top: 0%
+}
+
+/* --- Prompt --- */
+.prompt{
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    
+    font-size: xx-large;
+    font-family: spartan;
+    color: rgb(41, 0, 80);
+    transition: all 1s;
+}
+.fade{
+    opacity: 0;
+}
+@media(max-width:600px){
+    .prompt{
+        font-size: x-large;
+    }
 }
