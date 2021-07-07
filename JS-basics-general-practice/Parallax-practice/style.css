@@ -26,14 +26,11 @@ img {
     /* filter: brightness(150%); */
     
     top: 100%;
-    transition: all 0.2s ease;
+    transition: all 100ms ease;
 }
 
 #img5{
     /* filter: brightness(100%); */
-
-    animation: slideImage 5s ease-in-out;
-    animation-fill-mode: both;
 
 }
 
@@ -41,40 +38,18 @@ img {
     object-fit: scale-down;
     object-position: center;
 
-    animation: slideImage 4s ease-in-out;
-    animation-fill-mode: both;
 }
 
 #img3{
 
-    animation: slideImage 3s ease-in-out;
-    animation-fill-mode: both;
 }
 
 #img2{
 
-    animation: slideImage 2s ease-in-out;
-    animation-fill-mode: both;
 }
 
 #img1{
     object-fit: fill;
-    filter: brightness(200%);
-
-    animation: slideImage 1s ease-in-out;
-    animation-fill-mode: both;
-    
-}
-
-@keyframes slideImage{
-    0%{
-        
-    }
-    50%{
-    }
-    100%{
-        /* top: 0%; */
-        /* transform: translateY(-100%); */
-    }
-    
+    /* filter: brightness(200%); */
+   
 }

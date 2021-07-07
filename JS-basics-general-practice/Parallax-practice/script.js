@@ -30,23 +30,17 @@ let pixelsScrolled;
 let percentageScrolled;
 
 document.addEventListener('scroll', ()=>{
-    
-    // Rule of three:
-    //
-    // 10(px) -> 100(%)
-    // 5(px) -> ?
-    //   ? = (5 * 100)/10 = 50(%) 
-    // 
-    // mainContainerHeight -> 100
-    // pixelsScrolled -> percentageScrolled
-    //   percentageScrolled = (pixelsScrolled * 100)/mainContainerHeight 
+
     
     pixelsScrolled = window.scrollY;
 
+    
+    // mainContainerHeight -> 100
+    // pixelsScrolled -> percentageScrolled
     // percentageScrolled = (pixelsScrolled * 100)/mainContainerHeight; 
     // (-window.innerHeight because there is an offset)
     percentageScrolled = Math.round((pixelsScrolled * 100)/(mainContainerHeight-window.innerHeight));
-    
+    percentageScrolled = ruleOfThree((mainContainerHeight-window.innerHeight),100, pixelsScrolled);
 
     // Translate the elements in the DOM
 
@@ -85,3 +79,15 @@ document.addEventListener('scroll', ()=>{
     console.log('percentageScrolled: ', percentageScrolled);
 });
 
+function ruleOfThree(arg1, arg2, arg3){
+    
+    // Rule of three:
+    //
+    // 10(px) -> 100(%)
+    // 5(px) -> ?
+    //   ? = (5 * 100)/10 = 50(%) 
+    // 
+
+    let x = (arg3 * arg2)/arg1
+    return x
+}
