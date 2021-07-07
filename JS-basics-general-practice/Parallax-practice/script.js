@@ -43,8 +43,43 @@ document.addEventListener('scroll', ()=>{
     
     pixelsScrolled = window.scrollY;
 
-    // percentageScrolled = (pixelsScrolled * 100)/mainContainerHeight;
-    percentageScrolled = Math.round((pixelsScrolled * 100)/mainContainerHeight);
+    // percentageScrolled = (pixelsScrolled * 100)/mainContainerHeight; 
+    // (-window.innerHeight because there is an offset)
+    percentageScrolled = Math.round((pixelsScrolled * 100)/(mainContainerHeight-window.innerHeight));
+    
+
+    // Translate the elements in the DOM
+
+    // backgroudn mountain
+    img5.style.transform = `translateY(-${percentageScrolled}%)`
+    
+    // person to the center
+    if(percentageScrolled*2 <= 100){
+        img4.style.transform = `translateY(-${percentageScrolled*2}%)`
+    }else{
+        img4.style.transform = `translateY(-${100}%)`
+    }
+    
+    // person to the left
+    if(percentageScrolled*3 <= 100){
+        img3.style.transform = `translateY(-${percentageScrolled*3}%)`
+    }else{
+        img3.style.transform = `translateY(-${100}%)`
+    }
+
+    // person to the right
+    if(percentageScrolled*4 <= 100){
+        img2.style.transform = `translateY(-${percentageScrolled*4}%)`
+    }else{
+        img2.style.transform = `translateY(-${100}%)`
+    }
+
+    // front ground
+    if(percentageScrolled*5 <= 100){
+        img1.style.transform = `translateY(-${percentageScrolled*5}%)`
+    }else{
+        img1.style.transform = `translateY(-${100}%)`
+    }
 
     console.log('pixelsScrolled: ', pixelsScrolled);
     console.log('percentageScrolled: ', percentageScrolled);

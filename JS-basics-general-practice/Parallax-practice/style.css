@@ -26,6 +26,7 @@ img {
     /* filter: brightness(150%); */
     
     top: 100%;
+    transition: all 0.2s ease;
 }
 
 #img5{
