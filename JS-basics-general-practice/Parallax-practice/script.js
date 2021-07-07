@@ -15,12 +15,13 @@ const img2 = document.getElementById('img2');
 const img1 = document.getElementById('img1');
 
 
-// Get window inner height, updated on resize
-let viewportHeigth = window.innerHeight;
+// Get mainContainer height, updated on resize
+let mainContainer = document.getElementById('mainContainer');
+let mainContainerHeight = mainContainer.scrollHeight;
 
 window.addEventListener('resize', ()=>{
-    viewportHeigth = window.innerHeight;
-    console.log('inner height: ', window.innerHeight);
+    mainContainerHeight = mainContainer.scrollHeight;
+    console.log('mainContainerHeight height: ', mainContainerHeight);
 });
 
 
@@ -36,18 +37,14 @@ document.addEventListener('scroll', ()=>{
     // 5(px) -> ?
     //   ? = (5 * 100)/10 = 50(%) 
     // 
-    // viewportHeight -> 100
+    // mainContainerHeight -> 100
     // pixelsScrolled -> percentageScrolled
-    //   percentageScrolled = (pixelsScrolled * 100)/viewportHeight 
+    //   percentageScrolled = (pixelsScrolled * 100)/mainContainerHeight 
     
     pixelsScrolled = window.scrollY;
 
-    // percentageScrolled = (pixelsScrolled * 100)/viewportHeigth;
-    percentageScrolled = Math.round((pixelsScrolled * 100)/viewportHeigth);
-    
-
-    
-
+    // percentageScrolled = (pixelsScrolled * 100)/mainContainerHeight;
+    percentageScrolled = Math.round((pixelsScrolled * 100)/mainContainerHeight);
 
     console.log('pixelsScrolled: ', pixelsScrolled);
     console.log('percentageScrolled: ', percentageScrolled);
