@@ -23,13 +23,13 @@ img {
     height: 100%;
 
     object-fit: cover;
-    filter: brightness(150%);
+    /* filter: brightness(150%); */
     
     top: 100%;
 }
 
 #img5{
-    filter: brightness(100%);
+    /* filter: brightness(100%); */
 
     animation: slideImage 5s ease-in-out;
     animation-fill-mode: both;
@@ -72,7 +72,8 @@ img {
     50%{
     }
     100%{
-        top: 0%;
+        /* top: 0%; */
+        /* transform: translateY(-100%); */
     }
     
 }
