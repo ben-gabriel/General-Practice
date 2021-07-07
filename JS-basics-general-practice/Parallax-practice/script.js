@@ -39,41 +39,14 @@ document.addEventListener('scroll', ()=>{
     // pixelsScrolled -> percentageScrolled
     // percentageScrolled = (pixelsScrolled * 100)/mainContainerHeight; 
     // (-window.innerHeight because there is an offset)
-    percentageScrolled = Math.round((pixelsScrolled * 100)/(mainContainerHeight-window.innerHeight));
-    percentageScrolled = ruleOfThree((mainContainerHeight-window.innerHeight),100, pixelsScrolled);
+    percentageScrolled = ruleOfThree((mainContainerHeight-window.innerHeight), 100, pixelsScrolled);
 
-    // Translate the elements in the DOM
 
-    // backgroudn mountain
-    img5.style.transform = `translateY(-${percentageScrolled}%)`
-    
-    // person to the center
-    if(percentageScrolled*2 <= 100){
-        img4.style.transform = `translateY(-${percentageScrolled*2}%)`
-    }else{
-        img4.style.transform = `translateY(-${100}%)`
-    }
-    
-    // person to the left
-    if(percentageScrolled*3 <= 100){
-        img3.style.transform = `translateY(-${percentageScrolled*3}%)`
-    }else{
-        img3.style.transform = `translateY(-${100}%)`
-    }
-
-    // person to the right
-    if(percentageScrolled*4 <= 100){
-        img2.style.transform = `translateY(-${percentageScrolled*4}%)`
-    }else{
-        img2.style.transform = `translateY(-${100}%)`
-    }
-
-    // front ground
-    if(percentageScrolled*5 <= 100){
-        img1.style.transform = `translateY(-${percentageScrolled*5}%)`
-    }else{
-        img1.style.transform = `translateY(-${100}%)`
-    }
+    // Translate the elements in the DOM    
+    translateElements(img5,50,percentageScrolled);  // background mountain
+    translateElements(img4,100,percentageScrolled); // person to the center
+    translateElements(img3,60,percentageScrolled);  // person to the left
+    translateElements(img2,40,percentageScrolled);  // person to the right
 
     console.log('pixelsScrolled: ', pixelsScrolled);
     console.log('percentageScrolled: ', percentageScrolled);
@@ -87,7 +60,21 @@ function ruleOfThree(arg1, arg2, arg3){
     // 5(px) -> ?
     //   ? = (5 * 100)/10 = 50(%) 
     // 
+    // arg1 -> arg2
+    // arg3 -> x
 
     let x = (arg3 * arg2)/arg1
     return x
+}
+
+function translateElements(element, percentageToFinishAt, percentageScrolled){
+    
+    let translate = ruleOfThree(percentageToFinishAt, 100, percentageScrolled);
+    
+    if(translate <= 100){
+        element.style.transform = `translateY(-${translate}%)`
+    }
+    else{
+       element.style.transform = `translateY(-${100}%)`    
+    }
 }
